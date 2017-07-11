@@ -97,6 +97,8 @@ $(document).ready(function(){
     });
 
 
+
+
     //================  eventos en tarjeta wizard-success   ===========
     wizard.el.find(".wizard-success .im-done").click(function() {
       wizard.hide();
@@ -660,6 +662,41 @@ $(document).ready(function(){
 
         return true;
     });
+
+    //Carga los comentarios
+    wizard.cards["card9"].on("loaded", function(card) {
+        $.ajax({
+            type: "POST",
+            url: "../../class/controller_solicitudes.php",
+            data: {
+                "opcion": "6",
+                "solicitudID":$("#solicitud_id").val()
+            },
+            beforeSend: function(){
+                $("#tbody_solicitudes").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
+            },
+            success: function(response){
+                var datos = JSON.parse(response);
+                var html = "No hay comentarios...";
+                if (datos[0].bandera === 1) {
+                    html = "No hay comentarios";
+                    for(var index = 1; index < datos.length ; index++){
+                        html += "<tr class=''>"
+                        +"<td>"+datos[index].modulo+"</td>"
+                        +"<td>"+datos[index].fecha+"</td>"
+                        +"<td>"+datos[index].usuarioID+"</td>"
+                        +"<td>"+datos[index].comentario+"</td>"
+                        +"</tr>";
+                    }
+                    $("#tbody_comentarios").html(html);
+                }
+                else{
+                    console.log("Error al obtener comentarios...");
+                }
+
+            }
+        });
+});
 
 
 });

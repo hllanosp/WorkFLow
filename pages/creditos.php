@@ -127,8 +127,8 @@ else{
 <div class="wizard" id="wizard_EditarSolicitud" data-title="">
   <div class="wizard-card" data-cardname="card1" style="height: 525px;">
     <h3 hidden>Datos generales del prestamo</h3>
-     <input style="visibility:hidden" id="opcion" type="text" class="form-control" name="opcion" value=0 >  
-     <input id="solicitud_id" type="text" class="form-control" name="solicitud_id" style = "visibility:hidden;">                                            
+     <input style="visibility:hidden;" class="" id="opcion" type="text" class="form-control" name="opcion" value=0 >  
+     <input id="solicitud_id" type="text" class="" class="form-control" name="solicitud_id" style = "visibility:hidden;">                                          
     <div class = "form-group">
       <label class= "control-label">Tipo de Solicitud</label>
       <select name="card1_tipoSolicitud" id="card1_tipoSolicitud" data-placeholder="Seleccione el tipo de solicitud" style = "width: 350px" class="form-control">
@@ -138,74 +138,85 @@ else{
         <option value= "3">Solicitud cliente empresarial</option>
       </select>
     </div>
-      <hr>
-      <div class = "form-group">
-        <label class= "control-label">Tipo de Préstamo</label>
-        <select id="card1_tipoPrestamo" name="card1_tipoPrestamo" data-placeholder="Seleccione el tipo de préstamo" style = "width: 350px" class="form-control">
-          <option selected value= "-1">----Seleccione una opcion valida----</option>
-          <option value= "1">Préstamo Fiduciario</option>
-          <option value= "2">Préstamo Prendario</option>
-          <option value= "3">Préstamo Hipotecario</option>
+    <hr>
+    <div class = "form-group">
+      <label class= "control-label">Tipo de Préstamo</label>
+      <select id="card1_tipoPrestamo" name="card1_tipoPrestamo" data-placeholder="Seleccione el tipo de préstamo" style = "width: 350px" class="form-control">
+        <option selected value= "-1">----Seleccione una opcion valida----</option>
+        <option value= "1">Préstamo Fiduciario</option>
+        <option value= "2">Préstamo Prendario</option>
+        <option value= "3">Préstamo Hipotecario</option>
+      </select>
+    </div>
+    <hr>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label" for="">Número de préstamo</label>
+        <input disabled type="text" placeholder="Ingrese el número de préstamos" min="0" name="card1_prestamoID" id="card1_prestamoID" style="width:250px;" class="form-control numeros">
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label" for="">Cantidad Solicitada</label>
+        <div class="input-group" style="width:250px;">
+          <input disabled type="text" placeholder="" min="0" name="card1_cant_solicitada" id="card1_cant_solicitada"  class="form-control numeros">
+          <span class="input-group-addon">LPS</span>
+        </div>
+      </div>
+    </div>
+    <hr>
+    
+    <div class="col-md-5">
+      <div class="form-group">
+        <br>
+        <label class="control-label"  for="">Destino del préstamo</label>
+        <select id = "card1_destino" name="card1_destino" data-placeholder="Seleccione el tipo de préstamo" style = "width: 350px" class="form-control">
+            <option selected value= "-1">----Seleccione una opcion valida----</option>
+            <option value= "1">Adquisición de vivienda y/o terreno</option>
+            <option value= "2">Adquisición de vehículo</option>
+            <option value= "3">Consolidación de Deudas</option>
+            <option value= "4">Reparaciones, mejoras y/o ampliaciones de vivienda</option>
+            <option value= "5">Educación</option>
+            <option value= "6">Gastos de traslado de casa</option>
+            <option value= "7">Viajes/Entretenimiento</option>
+            <option value= "8">Adquisición de Artículos para el hogar</option>
+            <option value= "9">Salud/Tratamientos Médicos</option>
+            <option value= "10">Otros</option>
         </select>
       </div>
+    </div>
+    <div class="col-md-12">
       <hr>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label" for="">Número de préstamo</label>
-          <input disabled type="number" placeholder="Ingrese el número de préstamos" min="0" name="card1_prestamoID" id="card1_prestamoID" style="width:250px;" class="form-control numeros">
-        </div>
-      </div>
-        
-      
-      <div class="col-md-5">
-        <div class="form-group">
-          <label class="control-label"  for="">Destino del préstamo</label>
-          <select id = "card1_destino" name="card1_destino" data-placeholder="Seleccione el tipo de préstamo" style = "width: 350px" class="form-control">
-              <option selected value= "-1">----Seleccione una opcion valida----</option>
-              <option value= "1">Adquisición de vivienda y/o terreno</option>
-              <option value= "2">Adquisición de vehículo</option>
-              <option value= "3">Consolidación de Deudas</option>
-              <option value= "4">Reparaciones, mejoras y/o ampliaciones de vivienda</option>
-              <option value= "5">Educación</option>
-              <option value= "6">Gastos de traslado de casa</option>
-              <option value= "7">Viajes/Entretenimiento</option>
-              <option value= "8">Adquisición de Artículos para el hogar</option>
-              <option value= "9">Salud/Tratamientos Médicos</option>
-              <option value= "10">Otros</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <hr>
-      </div>
-      <div class="col-xs-5 ">
-        <div class="form-group">
-            <label for="card1_resp" class="control-label">Tipo de responsabilidad</label>
-            <div class="col-xs-12">
-              <div class="input-group">
-                  <div id="radioBtn" class="btn-group">
-                      <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="1">Individual</a>
-                      <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="2">Mancomunal</a>
-                  </div>
-                  <input type="text"  style="visibility:hidden" name="card1_res" id="card1_res">
-              </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-5 col-md-offset-1">
-        <div class="form-group">
-          <label for="">Tipo de aprobación</label>
+    </div>
+    <div class="col-xs-5 ">
+      <div class="form-group">
+          <label for="card1_resp" class="control-label">Tipo de responsabilidad</label>
           <div class="col-xs-12">
             <div class="input-group">
-              <div id="radioBtn" class="btn-group">
-                <a class="btn btn-default btn-sm notActive" data-toggle="card1_aval" data-title="1">Con aval</a>
-                <a class="btn btn-default btn-sm notActive" data-toggle="card1_aval" data-title="0">Sin aval</a>
-              </div>
-              <input type="text" style="visibility:hidden" name="card1_aval" id="card1_aval">
+                <div id="radioBtn" class="btn-group">
+                    <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="1">Individual</a>
+                    <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="2">Mancomunal</a>
+                </div>
+                <input type="text"  style="visibility:hidden" name="card1_res" id="card1_res">
             </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+      <div class="form-group">
+        <label for="">Tipo de aprobación</label>
+        <div class="col-xs-12">
+          <div class="input-group">
+            <div id="radioBtn" class="btn-group">
+              <a class="btn btn-default btn-sm notActive" data-toggle="card1_aval" data-title="1">Con aval</a>
+              <a class="btn btn-default btn-sm notActive" data-toggle="card1_aval" data-title="0">Sin aval</a>
+            </div>
+            <input type="text" style="visibility:hidden" name="card1_aval" id="card1_aval">
           </div>
         </div>
       </div>
+    </div>
   </div>
 
   <!-- ============================================ -->
@@ -661,6 +672,21 @@ else{
         <textarea name="card4_analista" maxlength="300" id="card4_analista" cols="55" rows="4" class="form-control"></textarea>
       </div>
     </div>
+  </div>
+
+  <!-- ============================================ -->
+  <div class="wizard-card" data-cardname="card5" style="height: 525px;">
+    <h3 hidden>Comentarios</h3>
+    <table id = "" class = "table table-striped">
+      <thead>
+        <th>Módulo</th>
+        <th>Fecha</th>
+        <th>Usuario</th>
+        <th>Comentario</th>
+      </thead>
+      <tbody id = "tbody_comentarios">
+      </tbody>
+    </table>
   </div>
 
   <!-- tarjetas especiales -->

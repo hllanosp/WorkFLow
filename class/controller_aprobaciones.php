@@ -356,7 +356,66 @@ switch($opcion){
 
             break;
 
-      
+
+
+        case 5: // obtiene los comentarios
+                if(true){ //validacion de roles
+                    $json = array();
+                    $msj ="";
+                    $bandera = 0;
+                    try{
+                        $solicitudID = $_POST["solicitudID"];
+                        $query = $db->prepare("CALL SP_OBTENER_COMENTARIOS(?,@codigoError, @mensajeError);");
+                        $query->bindParam(1, $solicitudID, PDO::PARAM_INT);
+                        $query->execute();
+                        $result = $query->fetchAll();
+
+                        $contadorIteracion = 0;
+                        foreach($result as $fila){ 
+                            $json[$contadorIteracion] = array(
+                                "modulo" =>$fila['modulo'],
+                                "fecha" => $fila['fecha'],
+                                "usuarioID" => $fila['usuarioID'],
+                                "comentario" => $fila['comentario']
+                                );
+
+                            $contadorIteracion++;
+                        }
+
+                     // $output = $db->query("select @codigoError")->fetch(PDO::FETCH_ASSOC);
+                     // $bandera = $output['@codigoError']; 
+
+                     // $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
+                     // $mensaje = $output['@mensajeError'];
+
+
+                        $json[0] = array(
+                         "mensajeError" => "Exito",
+                         "bandera" => 1
+                         );
+
+                // array_unshift($json, $a ); 
+                        echo json_encode($json);
+                    }catch(PDOExecption $e){
+                        $a = array(
+                            "mensajeError" => "Hubo un error al realizar la consulta...",
+                            "bandera" => 0
+                            );
+                        echo json_encode($a);
+                    }
+                }
+                else{
+                    $a = array(
+                        "mensajeError" => "Error : privilegios insuficientes...",
+                        "bandera" => 0
+                        );
+
+                    echo json_encode($a);
+                }
+
+            break;
+
+
 
 
 

@@ -534,7 +534,7 @@
       <hr>
       <div class="row">
         <div class="form-inline">
-          <label for="">Comentarios del analista</label>
+          <label for="">Comentarios del aprobador</label>
           <textarea name="card4_analista" maxlength="300" id="card4_analista" cols="55" rows="4" class="form-control"></textarea>
         </div>
       </div>
@@ -568,6 +568,21 @@
         </div>
       </div>
     </div>
+    <!-- ============================================ -->
+    <div class="wizard-card" data-cardname="card6" style="height: 525px;">
+      <h3 hidden>Comentarios</h3>
+      <table id = "" class = "table table-striped">
+        <thead>
+          <th>Módulo</th>
+          <th>Fecha</th>
+          <th>Usuario</th>
+          <th>Comentario</th>
+        </thead>
+        <tbody id = "tbody_comentarios">
+        </tbody>
+      </table>
+    </div>
+
 
     <!-- tarjetas especiales -->
     

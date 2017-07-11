@@ -84,10 +84,10 @@ $("#btn_confirmEnviar").on("click", function(e){
 
                    tr += '<tr>'
                       +'<td><center>'+datos[index].solicitudID+'</center></td>'
-                      +'<td><center>'+datos[index].identidad+'</center></td>'
-                      +'<td><center>'+datos[index].solicitanteNombre+'</center></td>'
                       + estado
                       +'<td><center>'+datos[index].fechaCreacion+'</center></td>'
+                      +'<td><center>'+datos[index].identidad+'</center></td>'
+                      +'<td><center>'+datos[index].solicitanteNombre+'</center></td>'
                       +' <td><center><label href="#" class="label label-default">'+datos[index].tipoSolicitud+'</label></center></td>'
 
                       + '<td>'
@@ -270,8 +270,8 @@ $("#btn_confirmEnviar").on("click", function(e){
               cancelText: "Cancelar",
               nextText: "Siguiente",
               backText: "Atras",
-              submitText: "Editar",
-              submittingText: "Editando..."
+              submitText: "Guardar",
+              submittingText: "Guardando..."
               },
               // submitUrl: "../../class/controller_solicitudes.php"
 
@@ -349,6 +349,7 @@ $("#btn_confirmEnviar").on("click", function(e){
     });
     //-------------------------- Validacion de la primer tarjeta----------------------------------------- 
     wizard.cards["card1"].on("validate", function(card) {
+      wizard.hidePopovers();
       var sel1 = card.el.find("#card1_tipoSolicitud");
       var sel2 = card.el.find("#card1_tipoPrestamo");
       var txt3 = card.el.find("#card1_prestamoID");
@@ -396,7 +397,7 @@ $("#btn_confirmEnviar").on("click", function(e){
   });
   //--------------------------- Validaci¨®n de la segunda tarjeta--------------------------------------
   wizard.cards["card2"].on("validate", function(card){
-
+    wizard.hidePopovers();
     var txt1 = card.el.find("#card2_Pnombre_sol");
     var txt2 = card.el.find("#card2_Snombre_sol");
     var txt3 = card.el.find("#card2_Papellido_sol");
@@ -470,7 +471,7 @@ $("#btn_confirmEnviar").on("click", function(e){
 
 
  wizard.cards["card3"].on("validate", function(card){
-
+    wizard.hidePopovers();
     var text1 = card.el.find("#card3_Pnombre_fiador");
     var text2 = card.el.find("#card3_Snombre_fiador");
     var text3 = card.el.find("#card3_Papellido_fiador");
@@ -524,7 +525,7 @@ $("#btn_confirmEnviar").on("click", function(e){
   });
   
   wizard.cards["card4"].on("validate", function(card){
-
+    wizard.hidePopovers();
     var text1 = card.el.find("#card4_monto");
     var text2 = card.el.find("#card4_plazoap");
     var text3 = card.el.find("#card4_cuota");
@@ -598,7 +599,40 @@ $("#btn_confirmEnviar").on("click", function(e){
   });
   
 
-  
+ //Carga los comentarios
+ wizard.cards["card6"].on("loaded", function(card) {
+  $.ajax({
+    type: "POST",
+    url: "../../class/controller_solicitudes.php",
+    data: {
+      "opcion": "6",
+      "solicitudID":$("#solicitud_id").val()
+    },
+    beforeSend: function(){
+      $("#tbody_solicitudes").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
+    },
+    success: function(response){
+      var datos = JSON.parse(response);
+      var html = "No hay comentarios...";
+      if (datos[0].bandera === 1) {
+        html = "No hay comentarios";
+        for(var index = 1; index < datos.length ; index++){
+          html += "<tr class=''>"
+          +"<td>"+datos[index].modulo+"</td>"
+          +"<td>"+datos[index].fecha+"</td>"
+          +"<td>"+datos[index].usuarioID+"</td>"
+          +"<td>"+datos[index].comentario+"</td>"
+          +"</tr>";
+        }
+        $("#tbody_comentarios").html(html);
+      }
+      else{
+        console.log("Error al obtener comentarios...");
+      }
+
+    }
+  });
+}); 
 
 
 
