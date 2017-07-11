@@ -156,6 +156,7 @@ $("#btn_confirmEnviar").on("click", function(e){
             $("#card1_tipoSolicitud").val(data[index].tipoSolicitudID);
             $("#card1_tipoPrestamo").val(data[index].tipoPrestamoID);
             $("#card1_prestamoID").val(data[index].prestamoID);
+            $("#card1_cant_solicitada").val(data[index].cantSolicitada);
             $("#card1_destino").val(data[index].destino);
             
             $("#card1_res").val(data[index].responsabilidadID);
