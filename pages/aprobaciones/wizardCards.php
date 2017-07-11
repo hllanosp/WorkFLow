@@ -29,6 +29,17 @@
             <input type="number" placeholder="Ingrese el número de préstamos"  min="0" name="card1_prestamoID" id="card1_prestamoID" style="width:250px;" class="form-control numeros" disabled>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label" for="">Cantidad Solicitada</label>
+            <div class="input-group" style="width:250px;">
+              <input disabled type="text" placeholder="" min="0" name="card1_cant_solicitada" id="card1_cant_solicitada"  class="form-control numeros">
+              <span class="input-group-addon">LPS</span>
+            </div>
+          </div>
+        </div>
+        <hr>
           
         
         <div class="col-md-5">

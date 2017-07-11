@@ -148,6 +148,7 @@ switch($opcion){
                         "tipoSolicitudID" =>$fila['tipoSolicitudID'],
                         "tipoPrestamoID" => $fila['tipoPrestamoID'],
                         "prestamoID" => $fila['prestamoID'],
+                        "cantSolicitada" => $fila['cantSolicitada'],
                         "destino" => $fila['destinoID'],
                         "responsabilidadID" => $fila['responsabilidadID'],
                         "tipo_aprobacion" => $fila['tipo_aprobacion'],
