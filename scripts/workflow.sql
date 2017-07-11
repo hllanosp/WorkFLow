@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-07-2017 a las 06:31:29
+-- Tiempo de generación: 11-07-2017 a las 20:14:00
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -335,7 +335,7 @@ INSERT INTO resolucion_prestamo(resolucion_prestamo.prestamoID) VALUES(PRESTAMO_
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card5_resolucionID` INT, IN `card5_comentario` VARCHAR(200), IN `card4_garantia` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card5_resolucionID` INT, IN `card5_comentario` VARCHAR(200), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
     DECLARE FIADOR_ID INT;
@@ -382,10 +382,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` I
         personas.Sapellido = card2_Sapellido,
         personas.RTN = card2_RTN,
         personas.sexo = card2_sexo,
+        personas.fechaNacimiento = card2_fechaNaci,
         personas.estadoCivilID = card2_estadoCivil
     WHERE  personas.personaID = SOLICITANTE_ID;
     
-    UPDATE datosLaborales SET datosLaborales.aniosTrabajo = card4_tiempo WHERE datosLaborales.personaID = SOLICITANTE_ID;
+    UPDATE datosLaborales SET 
+    datosLaborales.jefeDirecto = card2_jefe,
+    datosLaborales.aniosTrabajo = card4_tiempo WHERE datosLaborales.personaID = SOLICITANTE_ID;
    
 
         UPDATE  prestamos SET
@@ -428,7 +431,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` I
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
     DECLARE FIADOR_ID INT;
@@ -478,10 +481,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS` (IN `solicitudI
         personas.Sapellido = card2_Sapellido,
         personas.RTN = card2_RTN,
         personas.sexo = card2_sexo,
+        personas.fechaNacimiento = card2_fechaNaci,
         personas.estadoCivilID = card2_estadoCivil
     WHERE  personas.personaID = SOLICITANTE_ID;
     
-    UPDATE datosLaborales SET datosLaborales.aniosTrabajo = card4_tiempo where datosLaborales.personaID = SOLICITANTE_ID;
+    UPDATE datosLaborales SET 
+    datosLaborales.jefeDirecto = card2_jefe,
+    datosLaborales.aniosTrabajo = card4_tiempo where datosLaborales.personaID = SOLICITANTE_ID;
    
 
         UPDATE  prestamos SET
@@ -835,7 +841,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_APRO` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)  NO SQL
 BEGIN
-	DECLARE PRESTAMO_ID int;
+    DECLARE PRESTAMO_ID int;
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
     SET mensajeError = 'Hubo un error en la transaccion.';
@@ -848,7 +854,7 @@ BEGIN
    
   START TRANSACTION;
   
-  	SELECT solicitudes.prestamoID INTO PRESTAMO_ID FROM solicitudes  WHERE solicitudes.solicitudID = solicitudID;
+    SELECT solicitudes.prestamoID INTO PRESTAMO_ID FROM solicitudes  WHERE solicitudes.solicitudID = solicitudID;
   
     SELECT 
     solicitudes.tipoSolicitudID,
@@ -857,6 +863,7 @@ BEGIN
     prestamo_destino.destinoID,
     prestamos.responsabilidadID,
     prestamos.tipo_aprobacion,
+    prestamos.cantSolicitada,
 
     solicitante.Pnombre as soli_Pnombre,
     solicitante.Snombre as soli_Snombre,
@@ -865,7 +872,7 @@ BEGIN
     solicitante.identidad as soli_identidad,
     solicitante.RTN as soli_RTN,
     solicitante.sexo as soli_sexo,
-   	solicitante.fechaNacimiento as soli_fechaNacimiento,
+    solicitante.fechaNacimiento as soli_fechaNacimiento,
     solicitante.estadoCivilID as soli_estadoCivil,
     
     soli_datosLaborales.jefeDirecto as soli_jefe,
@@ -913,7 +920,7 @@ INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
        
     INNER JOIN personas as fiador ON fiador.personaID = prestamos.fiadorID
 
-	INNER JOIN datosLaborales as fiador_datosLaborales ON fiador_datosLaborales.personaID = prestamos.fiadorID
+    INNER JOIN datosLaborales as fiador_datosLaborales ON fiador_datosLaborales.personaID = prestamos.fiadorID
     
     INNER JOIN condicion_prestamo ON prestamos.prestamoID = condicion_prestamo.prestamoID
     
@@ -1412,7 +1419,7 @@ CREATE TABLE `condicion_prestamo` (
 --
 
 INSERT INTO `condicion_prestamo` (`prestamoID`, `monto_aprobado`, `plazo_aprobado`, `cuota_nivelada`, `tasa_interes`, `descrpicion_garantia`, `RCI`, `TDI`, `confirmacion`, `comentario_analista`) VALUES
-(38, 23.05, 10, 6.86, 6.94, 'asasd', 7.11, 6.92, 1, '34hvvhghgh'),
+(38, 23.05, 10, 6.86, 6.94, 'asasdssss', 7.11, 6.92, 1, '34h'),
 (39, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
 (40, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
 (42, 3.00, 3, 3.00, 3.00, 'zzzz', 3.00, 3.00, 1, '999'),
@@ -1432,7 +1439,8 @@ INSERT INTO `condicion_prestamo` (`prestamoID`, `monto_aprobado`, `plazo_aprobad
 (56, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
 (57, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
 (58, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
-(59, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0');
+(59, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(60, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0');
 
 -- --------------------------------------------------------
 
@@ -1460,8 +1468,8 @@ CREATE TABLE `datosLaborales` (
 
 INSERT INTO `datosLaborales` (`personaID`, `empresa`, `posicion`, `aniosTrabajo`, `sueldo`, `jefeDirecto`, `otrosIngresos`, `telefono`, `extension`, `actividadEmpresaID`, `direccion`) VALUES
 (117, 'INDAFddd', 'Maestra de quimicaddd', NULL, 15000.24, NULL, NULL, NULL, NULL, NULL, NULL),
-(118, 'Santos y compania', 'Supervisor de obrasd', 3, 38887.94, 'Martin Carrillosdf', 13123, NULL, '77', 3, NULL),
-(119, 'DDsd', 'Jefe de recursos Humanossd', 3, 3423.16, 'Martin Carrillosdf', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(118, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, NULL, '77', 3, NULL),
+(119, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
 (120, 'asdsda', 'asdasd', NULL, 234234, NULL, NULL, NULL, NULL, NULL, NULL),
 (121, 'QWEQWE', 'EQWEQE', 23, 343434, 'asdasd', 324234, '324234', NULL, 6, NULL),
 (122, 'asdasd', 'dasd', 23, 2323, 'asdasd', 2332, '23423', NULL, 5, 'sadasd'),
@@ -1524,7 +1532,10 @@ INSERT INTO `datosLaborales` (`personaID`, `empresa`, `posicion`, `aniosTrabajo`
 (186, 'DDsd', 'Jefe de recursos Humanossd', 342, 3423, 'Martin Carrillosdf', 3423434, '2321334', '77', 5, 'Saucesdfssdf'),
 (187, 'INDAFddd', 'Maestra de quimicaddd', NULL, 15000, NULL, NULL, NULL, NULL, NULL, NULL),
 (188, 'Santos y compania', 'Supervisor de obrasd', 342, 38888, 'Martin Carrillosdf', 13123, '', '77', 3, NULL),
-(189, 'DDsd', 'Jefe de recursos Humanossd', 342, 3423, 'Martin Carrillosdf', 3423434, '2321334', '77', 5, 'Saucesdfssdf');
+(189, 'DDsd', 'Jefe de recursos Humanossd', 342, 3423, 'Martin Carrillosdf', 3423434, '2321334', '77', 5, 'Saucesdfssdf'),
+(190, 'INDAFddd', 'Maestra de quimicaddd', NULL, 15000.24, NULL, NULL, NULL, NULL, NULL, NULL),
+(191, 'Santos y compania ', 'Supervisor de obrasd', 3, 38887.94, 'Martin Carrillosdf', 13123, '23232323', '77', 3, NULL),
+(192, 'DDsd', 'Jefe de recursos Humanossd', 3, 3423.16, 'Martin Carrillosdf', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf');
 
 -- --------------------------------------------------------
 
@@ -1553,6 +1564,7 @@ INSERT INTO `empleadoDatos` (`personaID`, `salarioBruto`, `salarioConDeduccion`,
 (131, 123, 123, 123, 123, 'ASDFASDF'),
 (134, 232, 2323, 2323, 2323, 'as'),
 (139, 34234, 234, 342, 324, 'paselo'),
+(144, 23423.02, 23424.01, 233.99, 2, '34'),
 (150, 34834563, 236726372, 237632, 2323, 'Vamos para analista de créditos ');
 
 -- --------------------------------------------------------
@@ -1634,7 +1646,7 @@ CREATE TABLE `personas` (
 INSERT INTO `personas` (`personaID`, `identidad`, `Pnombre`, `Snombre`, `Papellido`, `Sapellido`, `RTN`, `sexo`, `fechaNacimiento`, `direccion`, `residencia`, `lugarNacimiento`, `nacionalidad`, `ocupacion`, `dependientes`, `hijos`, `estadoCivilID`, `tipoViviendaID`, `pago_mensualVivienda`, `conyugueID`) VALUES
 (117, '234234', 'Mariasd', 'Teresa', 'De Calcutaeeee', 'Sapobledor', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, 'Docentedsd', NULL, NULL, NULL, 4, 888.45, NULL),
 (118, '4234234', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, 4, 666, NULL),
-(119, '24234', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '823878', 'F', '1999-05-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 117),
+(119, '24234', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '823878', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 117),
 (120, '324234', 'asdasd', 'asda', 'asd', 'asdasd', NULL, NULL, '2013-05-02', NULL, NULL, NULL, NULL, 'dadasd', NULL, NULL, NULL, 1, NULL, NULL),
 (121, '234234', 'asdasd', 'asd', 'sda', 'sd', NULL, NULL, NULL, 'eqweqwe', 'deqweqwe', NULL, NULL, NULL, 2, NULL, 2, NULL, NULL, NULL),
 (122, '23213', 'Mario', 'Hector', 'Figueroa', 'Moncada', '123213', 'F', '2003-03-01', 'dfsdfsd', 'sadasd', 'weqwe', 'asdd', 'asdsad', 1, 1, 1, 2, NULL, 120),
@@ -1697,7 +1709,10 @@ INSERT INTO `personas` (`personaID`, `identidad`, `Pnombre`, `Snombre`, `Papelli
 (186, '24234', 'Norberto ffff xxxx', 'Casimiroa fffxxx', 'Paguadafffxxx', 'fffTavoraxxx', '45664532234444', 'F', '1999-05-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 5, 777, 184),
 (187, '234234', 'Mariasd', 'Teresa', 'De Calcutaeeee', 'Sapobledor', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, 'Docentedsd', NULL, NULL, NULL, 4, 888, NULL),
 (188, '4234234', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 1, NULL, 2, NULL, 0, NULL),
-(189, '432434', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '12123', 'F', '1999-05-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 5, 777, 187);
+(189, '432434', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '12123', 'F', '1999-05-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 5, 777, 187),
+(190, '234234', 'Mariasd', 'Teresa', 'De Calcutaeeee', 'Sapobledor', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, 'Docentedsd', NULL, NULL, NULL, 4, 888.45, NULL),
+(191, '4234234', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(192, '3232323', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '343434', 'M', '1999-05-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 190);
 
 -- --------------------------------------------------------
 
@@ -1782,7 +1797,10 @@ INSERT INTO `personas_contacto` (`personaID`, `telefono`, `celular`, `email`) VA
 (186, '123123', '8934834234', 'norberto_tavora@gmail.com'),
 (187, '234234', '234', ''),
 (188, '234243', '3424', 'asdas@das.com'),
-(189, '123123', '8934834234', 'norberto_tavora@gmail.com');
+(189, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(190, '234234', '234', ''),
+(191, '234243', '3424', 'asdas@das.com'),
+(192, '123123', '8934834234', 'norberto_tavora@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1806,7 +1824,7 @@ CREATE TABLE `prestamos` (
 --
 
 INSERT INTO `prestamos` (`prestamoID`, `cantSolicitada`, `plazo`, `destinoID`, `tipoPrestamoID`, `fiadorID`, `responsabilidadID`, `tipo_aprobacion`) VALUES
-(38, '100001.98', 35, 2, 1, 118, 2, 0),
+(38, '100001.98', 35, 2, 1, 118, 2, 1),
 (39, '423423.00', 53, 1, 2, 121, 2, 0),
 (40, '234234.00', 234, 2, 2, 124, 1, 1),
 (41, '234234.05', 243, 1, 1, 127, NULL, NULL),
@@ -1827,7 +1845,8 @@ INSERT INTO `prestamos` (`prestamoID`, `cantSolicitada`, `plazo`, `destinoID`, `
 (56, '3242342.00', 234234, 7, 1, 179, NULL, NULL),
 (57, '9999999999.00', 34, 2, 1, 182, NULL, NULL),
 (58, '9999999999.00', 34, 2, 1, 185, NULL, NULL),
-(59, '9999999999.00', 34, 2, 1, 188, NULL, NULL);
+(59, '9999999999.00', 34, 2, 1, 188, NULL, NULL),
+(60, '100001.98', 35, 2, 1, 191, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1892,7 +1911,8 @@ INSERT INTO `resolucion_prestamo` (`prestamoID`, `resolucionID`, `comentario`) V
 (56, NULL, NULL),
 (57, NULL, NULL),
 (58, NULL, NULL),
-(59, NULL, NULL);
+(59, NULL, NULL),
+(60, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1920,7 +1940,7 @@ INSERT INTO `solicitudes` (`solicitudID`, `solicitanteID`, `tipoSolicitudID`, `p
 (42, 131, 1, 42, 5),
 (43, 134, 1, 43, 5),
 (44, 139, 1, 44, 5),
-(45, 144, 1, 45, 2),
+(45, 144, 1, 45, 3),
 (46, 147, 1, 46, 2),
 (47, 150, 1, 47, 5),
 (48, 153, 1, 48, 2),
@@ -1934,7 +1954,8 @@ INSERT INTO `solicitudes` (`solicitudID`, `solicitanteID`, `tipoSolicitudID`, `p
 (56, 180, 1, 56, 1),
 (57, 183, 1, 57, 1),
 (58, 186, 1, 58, 1),
-(59, 189, 1, 59, 1);
+(59, 189, 1, 59, 1),
+(60, 192, 1, 60, 1);
 
 -- --------------------------------------------------------
 
@@ -1992,6 +2013,7 @@ INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioI
 (44, 5, '2017-05-26 23:56:14', 1, 'p'),
 (45, 1, '2017-05-26 00:25:14', 1, 'Creación de Solicitud'),
 (45, 2, '2017-06-29 21:07:54', 1, 'xcc'),
+(45, 3, '2017-07-11 09:33:01', 1, '34'),
 (46, 1, '2017-05-26 16:20:01', 1, 'Creación de Solicitud'),
 (46, 2, '2017-05-26 16:23:14', 1, 'enviar a RRHH'),
 (47, 1, '2017-06-29 22:36:23', 1, 'Creación de Solicitud'),
@@ -2014,7 +2036,8 @@ INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioI
 (56, 1, '2017-07-07 22:07:11', 1, 'Creación de Solicitud'),
 (57, 1, '2017-07-07 22:08:35', 1, 'Creación de Solicitud'),
 (58, 1, '2017-07-07 22:09:11', 1, 'Creación de Solicitud'),
-(59, 1, '2017-07-10 01:59:33', 1, 'Creación de Solicitud');
+(59, 1, '2017-07-10 01:59:33', 1, 'Creación de Solicitud'),
+(60, 1, '2017-07-11 08:43:08', 1, 'Creación de Solicitud');
 
 -- --------------------------------------------------------
 
@@ -2114,7 +2137,10 @@ INSERT INTO `solicitudes_referencia` (`solicitudID`, `nombre_completo`, `telefon
 (58, 'referencia', '23452345', 'asdgfadfg', 'asdf', 3),
 (59, 'referencia', '23452345', 'asdgfadfg', 'asdf', 1),
 (59, 'referencia', '23452345', 'asdgfadfg', 'asdf', 2),
-(59, 'referencia', '23452345', 'asdgfadfg', 'asdf', 3);
+(59, 'referencia', '23452345', 'asdgfadfg', 'asdf', 3),
+(60, 'referencia', '23452345', '234234', 'asdf', 1),
+(60, 'referencia', '23452345', '234234', 'asdf', 2),
+(60, 'referencia', '23452345', '234234', 'asdf', 3);
 
 -- --------------------------------------------------------
 
@@ -2398,12 +2424,12 @@ ALTER TABLE `estadosCivil`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `personaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `personaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 --
 -- AUTO_INCREMENT de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `prestamoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `prestamoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT de la tabla `prestamo_destino`
 --
@@ -2413,7 +2439,7 @@ ALTER TABLE `prestamo_destino`
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `solicitudID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `solicitudID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT de la tabla `solicitudEstados`
 --

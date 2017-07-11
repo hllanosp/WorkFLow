@@ -265,14 +265,15 @@ switch($opcion){
                     $card4_TDI = $_POST["card4_TDI"];
                     $card4_analista = $_POST["card4_analista"];
                     $card4_confirmacion = $_POST["card4_confirmacion"];
+                    $card2_fechaNaci = $_POST["card2_anyo"]."-".$_POST["card2_Mes"]."-".$_POST["card2_dia"];
                     $card4_garantia = $_POST["card4_garantia"];
-                    $card2_fechaNaci = $_POST["seleccionaAnyo"]."-".$_POST["seleccionaMes"]."-".$_POST["seleccionaDia"];
+                    $card2_jefe = $_POST["card2_Jefe"];
                    
 
                     $query = $db->prepare("CALL SP_EDITAR_CREDITOS (
                         ?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
-                        ?,?,?,?,?,?,?,?,?,?,?,?,?, @codigoError, @mensajeError) ;");
+                        ?,?,?,?,?,?,?,?,?,?,?,?,?,?, @codigoError, @mensajeError) ;");
 
                     $query->bindParam(1,$solicitudID, PDO::PARAM_INT);
                     $query->bindParam(2,$card1_tipoSolicitud, PDO::PARAM_INT);
@@ -310,6 +311,7 @@ switch($opcion){
                     $query->bindParam(31,$card4_confirmacion, PDO::PARAM_INT);
                     $query->bindParam(32,$card2_fechaNaci, PDO::PARAM_STR);
                     $query->bindParam(33,$card4_garantia, PDO::PARAM_STR);
+                    $query->bindParam(34,$card2_jefe, PDO::PARAM_STR);
 
 
                     $query->execute();
