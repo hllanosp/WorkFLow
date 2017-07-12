@@ -350,7 +350,7 @@ switch($opcion){
 
 
 
-        case 5: // obtiene los comentarios
+          case 5: // obtiene los comentarios
                 if(true){ //validacion de roles
                     $json = array();
                     $msj ="";
@@ -382,9 +382,9 @@ switch($opcion){
 
 
                         $json[0] = array(
-                           "mensajeError" => "Exito",
-                           "bandera" => 1
-                           );
+                         "mensajeError" => "Exito",
+                         "bandera" => 1
+                         );
 
                 // array_unshift($json, $a ); 
                         echo json_encode($json);
@@ -405,8 +405,7 @@ switch($opcion){
                     echo json_encode($a);
                 }
 
-                break;
-
+            break;
 
 
 

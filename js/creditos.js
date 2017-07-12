@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
   
    // Llamado a la funcion cargarUsuarios
@@ -538,7 +540,7 @@ $("#btn_confirmEnviar").on("click", function(e){
     var text6 = card.el.find("#card4_RCI");
     var text7 = card.el.find("#card4_TDI");
     var text8 = card.el.find("#card4_confirmacion");
-    // var text9 = card.el.find("#card4_analista");
+    var text9 = card.el.find("#card4_analista");
 
 
     var alerta ="Campo requerido";
@@ -551,7 +553,7 @@ $("#btn_confirmEnviar").on("click", function(e){
     var val6 = text6.val();
     var val7 = text7.val();
     var val8 = text8.val();
-    // var val9 = text9.val();
+    var val9 = text9.val();
     
    
     if (val1 == ""){
@@ -594,50 +596,52 @@ $("#btn_confirmEnviar").on("click", function(e){
       return false;
     }
 
-    // if (val9 == ""){
-    //   card.wizard.errorPopover(text9,alerta);
-    //   return false;
-    // }
+    if (val9 == ""){
+      card.wizard.errorPopover(text9,alerta);
+      return false;
+    }
 
     return true;
   });
   
 
   
-  //Carga los comentarios
-  wizard.cards["card5"].on("loaded", function(card) {
-    $.ajax({
-      type: "POST",
-      url: "../../class/controller_solicitudes.php",
-      data: {
-        "opcion": "6",
-        "solicitudID":$("#solicitud_id").val()
-      },
-      beforeSend: function(){
-        $("#tbody_solicitudes").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
-      },
-      success: function(response){
-        var datos = JSON.parse(response);
-        var html = "No hay comentarios...";
-        if (datos[0].bandera === 1) {
-          html = "No hay comentarios";
-          for(var index = 1; index < datos.length ; index++){
-            html += "<tr class=''>"
-            +"<td>"+datos[index].modulo+"</td>"
-            +"<td>"+datos[index].fecha+"</td>"
-            +"<td>"+datos[index].usuarioID+"</td>"
-            +"<td>"+datos[index].comentario+"</td>"
-            +"</tr>";
-          }
-          $("#tbody_comentarios").html(html);
+  
+ //Carga los comentarios
+ wizard.cards["card5"].on("loaded", function(card) {
+  $.ajax({
+    type: "POST",
+    url: "../class/controller_solicitudes.php",
+    data: {
+      "opcion": "6",
+      "solicitudID":$("#solicitud_id").val()
+    },
+    beforeSend: function(){
+      $("#tbody_solicitudes").html('<div class = ""><img src="../img/load.gif" class = "img-responsive center-block" /></div>');
+    },
+    success: function(response){
+      var datos = JSON.parse(response);
+      var html = "No hay comentarios...";
+      if (datos[0].bandera === 1) {
+        html = "No hay comentarios";
+        for(var index = 1; index < datos.length ; index++){
+          html += "<tr class=''>"
+          +"<td>"+datos[index].modulo+"</td>"
+          +"<td>"+datos[index].fecha+"</td>"
+          +"<td>"+datos[index].usuarioID+"</td>"
+          +"<td>"+datos[index].comentario+"</td>"
+          +"</tr>";
         }
-        else{
-          console.log("Error al obtener comentarios...");
-        }
-
+        $("#tbody_comentarios").html(html);
       }
-    });
-});
+      else{
+        console.log("Error al obtener comentarios...");
+      }
+
+    }
+  });
+}); 
+
 
 
     

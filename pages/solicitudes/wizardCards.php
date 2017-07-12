@@ -610,7 +610,7 @@
     <div class = "row">
       <div class="col-xs-3 col-xs-offset-0">
         <div class="form-group">
-          <label class="control-label">Telefono</label>
+          <label class="control-label">Telefono de casa</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-phone"></i></span>
             <input id="card5_tel" maxlength="20" type="text" class="form-control numeros" name="card5_tel" value="" placeholder="">                                        
@@ -745,7 +745,7 @@
 <div class = "row">
   <div class="col-xs-3 col-xs-offset-0">
     <div class="form-group">
-      <label class="control-label">Telefono</label>
+      <label class="control-label">Telefono de casa</label>
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
         <input id="card6_tel" type="text" maxlength="20" class="form-control numeros" name="card6_tel" value="" placeholder="">                                        

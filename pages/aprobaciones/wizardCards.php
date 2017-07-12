@@ -470,41 +470,51 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-inline">
-            <label for="">Monto aprobado</label> 
-            <div class="input-group">
-              <input type="number" step="0.01" min="0" maxlength="13" style="width:135px;" id="card4_monto" name = "card4_monto" class="form-control numeros">
-              <span class="input-group-addon">LPS</span>
+            <div class="form-group">
+              <label for="">Monto aprobado</label> 
+              <div class="input-group">
+                <input type="number" step="0.01" min="0" maxlength="13" style="width:135px;" id="card4_monto" name = "card4_monto" class="form-control numeros">
+                <span class="input-group-addon">LPS</span>
+              </div>
             </div>
           </div>
           <br>
           <div class="form-inline">
-            <label for="">Plazo aprobado</label>&nbsp; 
-            <div class="input-group">
-              <input type="number" style="width:120px;" id="card4_plazoap"min="0" name = "card4_plazoap" class="form-control numeros">  
-              <span class="input-group-addon">Meses</span>
+            <div class="form-group">
+              <label for="">Plazo aprobado</label>&nbsp; 
+              <div class="input-group">
+                <input type="number" style="width:120px;" id="card4_plazoap"min="0" name = "card4_plazoap" class="form-control numeros">  
+                <span class="input-group-addon">Meses</span>
+              </div>
             </div>
           </div>
           <br>
           <div class="form-inline">
-            <label for="">Cuota nivelada</label>&nbsp;&nbsp; 
-            <div class="input-group">
-              <input type="number" step="0.01" min="0" maxlength="13" style="width:136px;" id="card4_cuota" min="0" name="card4_cuota"class="form-control numeros">  
-              <span class="input-group-addon">LPS</span>
+            <div class="form-group">
+              <label for="">Cuota nivelada</label>&nbsp;&nbsp; 
+              <div class="input-group">
+                <input type="number" step="0.01" min="0" maxlength="13" style="width:136px;" id="card4_cuota" min="0" name="card4_cuota"class="form-control numeros">  
+                <span class="input-group-addon">LPS</span>
+              </div>
             </div>
           </div>
           <br>
           <div class="form-inline">
-            <label for="">Tasa de interes</label>&nbsp;&nbsp;
-            <div class="input-group">
-              <input type="number" step="0.01" style="width:100px;" id="card4_interes" name = "card4_interes" min="0" max="100" class="form-control numeros">  
-              <span class="input-group-addon">%</span>
-            </div> 
+            <div class="form-group">
+              <label for="">Tasa de interes</label>&nbsp;&nbsp;
+              <div class="input-group">
+                <input type="number" step="0.01" style="width:100px;" id="card4_interes" name = "card4_interes" min="0" max="100" class="form-control numeros">  
+                <span class="input-group-addon">%</span>
+              </div> 
+            </div>
           </div>
         </div>
         <div class="col-md-6">
-          <label for="">Descripción de garantia</label>
-          <br>
-          <textarea  id="card4_garantia" maxlength="300" name = "card4_garantia" class="form-control" cols="25" rows="5"></textarea>
+          <div class="form-group">
+            <label for="">Descripción de garantia</label>
+            <br>
+            <textarea  id="card4_garantia" maxlength="300" name = "card4_garantia" class="form-control" cols="25" rows="5"></textarea>
+          </div>
         </div>
       </div>
       <hr>
@@ -512,20 +522,24 @@
       <div class="row">
         <div class="col-xs-6">
           <div class="form-inline">
-            <label for="">Relación Cuota Ingreso (RCI):</label>&nbsp;&nbsp;
-            <div class="input-group">
-              <input type="number" step="0.01" min="0" max="100" id="card4_RCI" name = "card4_RCI" style="width:100px;" class="form-control numeros">
-              <span class="input-group-addon">%</span>
+            <div class="form-group">
+              <label for="">Relación Cuota Ingreso (RCI):</label>&nbsp;&nbsp;
+              <div class="input-group">
+                <input type="number" step="0.01" min="0" max="100" id="card4_RCI" name = "card4_RCI" style="width:100px;" class="form-control numeros">
+                <span class="input-group-addon">%</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-xs-6">
           <div class="form-inline">
             <div class="form-inline">
-              <label for="">Nivel De Endeudamiento (DTI):</label>&nbsp;&nbsp;
-              <div class="input-group">
-                <input type="number" step="0.01" id="card4_TDI" name = "card4_TDI" style="width:100px;" max="100" min="0" class="form-control numeros">
-                <span class="input-group-addon">%</span>
+              <div class="form-group">
+                <label for="">Nivel De Endeudamiento (DTI):</label>&nbsp;&nbsp;
+                <div class="input-group">
+                  <input type="number" step="0.01" id="card4_TDI" name = "card4_TDI" style="width:100px;" max="100" min="0" class="form-control numeros">
+                  <span class="input-group-addon">%</span>
+                </div>
               </div>
             </div>
           </div>
@@ -534,19 +548,25 @@
       <hr>
       <div class="row">
         <label for="">Confirmación de referencias</label>
-        <div class="input-group">
-          <div id="radioBtn" class="btn-group">
-            <a class="btn btn-default btn-sm notActive"  data-toggle="card4_confirmacion" data-title="1">Si</a>
-            <a class="btn btn-default btn-sm notActive"  data-toggle="card4_confirmacion" data-title="0">No</a>
+        <div class="form-group">
+          <div class="input-group">
+            <div id="radioBtn" class="btn-group">
+              <a class="btn btn-default btn-sm notActive"  data-toggle="card4_confirmacion" data-title="1">Si</a>
+              <a class="btn btn-default btn-sm notActive"  data-toggle="card4_confirmacion" data-title="0">No</a>
+            </div>
+
+            <input type="text" style="visibility:hidden" name="card4_confirmacion" id="card4_confirmacion">
           </div>
-          <input type="text" style="visibility:hidden" name="card4_confirmacion" id="card4_confirmacion">
+          
         </div>
       </div>
       <hr>
       <div class="row">
         <div class="form-inline">
-          <label for="">Comentarios del aprobador</label>
-          <textarea name="card4_analista" maxlength="300" id="card4_analista" cols="55" rows="4" class="form-control"></textarea>
+          <div class="form-group">
+            <label for="">Comentarios del analista</label>
+            <textarea name="card4_analista" maxlength="300" id="card4_analista" cols="55" rows="4" class="form-control"></textarea>
+          </div>
         </div>
       </div>
     </div>
