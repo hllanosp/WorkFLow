@@ -549,7 +549,7 @@
       <div class="row">
         <label for="">Confirmación de referencias</label>
         <div class="form-group">
-          <div class="input-group">
+          <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div id="radioBtn" class="btn-group">
               <a class="btn btn-default btn-sm notActive"  data-toggle="card4_confirmacion" data-title="1">Si</a>
               <a class="btn btn-default btn-sm notActive"  data-toggle="card4_confirmacion" data-title="0">No</a>
