@@ -307,7 +307,7 @@ else{
             <div class="form-group">
 
               <label class="control-label">Dia</label>
-              <select name="seleccionaDia" id="card2_dia" class="form-control card2Edad" >
+              <select name="card2_dia" id="card2_dia" class="form-control card2Edad" >
                 <option value="01">01
                 <option value="02">02
                 <option value="03">03
@@ -345,7 +345,7 @@ else{
           <div class="col-xs-3">
             <div class="form-group">
               <label class="control-label">Mes</label>
-              <select name="seleccionaMes" id="card2_Mes" class="form-control card2Edad" onchange="asignaDias()">
+              <select name="card2_Mes" id="card2_Mes" class="form-control card2Edad" onchange="asignaDias()">
                 <option value="01">Enero
                 <option value="02">Febrero
                 <option value="03">Marzo
@@ -364,7 +364,7 @@ else{
           <div class="col-xs-4">
             <div class="form-group">
               <label class="control-label">año</label>
-              <select name="seleccionaAnyo" id="card2_anyo" class="form-control card2Edad" onchange="asignaDias()">
+              <select name="card2_anyo" id="card2_anyo" class="form-control card2Edad" onchange="asignaDias()">
                 <?php
                 for($i=date('o'); $i>=1910; $i--){
                   if ($i == date('o'))

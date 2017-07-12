@@ -33,9 +33,9 @@
  */
     function asignaDias2()
     {
-        comboDias = document.formFecha2.seleccionaDia;
-        comboMeses = document.formFecha2.seleccionaMes;
-        comboAnyos = document.formFecha2.seleccionaAnyo;
+        comboDias = document.formFecha2.card2_dia;
+        comboMeses = document.formFecha2.card2_Mes;
+        comboAnyos = document.formFecha2.card2_anyo;
 
         Month = comboMeses[comboMeses.selectedIndex].text;
         Year = comboAnyos[comboAnyos.selectedIndex].text;
@@ -68,9 +68,9 @@
  */
     function ponDia2()
     {
-        comboDias = eval("document.formFecha.seleccionaDia");
-        comboMeses = eval("document.formFecha.seleccionaMes");
-        comboAnyos = eval("document.formFecha.seleccionaAnyo");
+        comboDias = eval("document.formFecha.card2_dia");
+        comboMeses = eval("document.formFecha.card2_Mes");
+        comboAnyos = eval("document.formFecha.card2_anyo");
 
         comboAnyos[0].selected = true;
         comboMeses[ahoraMonth].selected = true;
