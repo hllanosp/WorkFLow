@@ -580,7 +580,7 @@
           <label class="control-label col-sm-4" for="">Resolución del pŕestamo:</label>
           <div class="form-inline">
             <div class="col-sm-5">
-              <div class="form-group ">
+              <div class="form-group">
                 <select name="card5_resolucion" id="card5_resolucion" class="form-control">
                   <option value= "-1" selected>----Seleccione una opcion valida----</option>
                   <option value= "1">Aprobado</option>
@@ -594,8 +594,10 @@
         <hr>
        <div class="row">
         <div class="form-inline">
-          <label for="">Comentarios del analista</label>
-          <textarea name="card5_coment" maxlength="200" id="card5_coment" cols="55" rows="4" class="form-control"></textarea>
+          <div class="form-group">
+            <label for="">Comentarios del analista</label>
+            <textarea name="card5_coment" maxlength="200" id="card5_coment" cols="55" rows="4" class="form-control"></textarea>
+          </div>
         </div>
       </div>
     </div>

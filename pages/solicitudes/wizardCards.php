@@ -47,9 +47,9 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="nombres" >Nombres:</label>
           <div class="col-sm-4">
-            <input id="card2_Pnombre" type="text" maxlength="30" class="form-control" name="card2_Pnombre" value="" placeholder="">                                        
+            <input id="card2_Pnombre" type="text" maxlength="30" class="form-control" name="card2_Pnombre" value="" placeholder="Ingrese el primer nombre">                                        
           </div><div class="col-sm-4">
-          <input id="card2_Snombre" type="text" maxlength="30" class="form-control" name="card2_Snombre" value="" placeholder="">                                        
+          <input id="card2_Snombre" type="text" maxlength="30" class="form-control" name="card2_Snombre" value="" placeholder="Ingrese el segundo nombre">                                        
         </div>
       </div>
     </div>
@@ -57,9 +57,9 @@
       <div class="form-group">
         <label class="control-label col-sm-2" for="email">Apellidos:</label>
         <div class="col-sm-4">
-          <input id="card2_Papellido" type="text" maxlength="30" class="form-control" name="card2_Papellido" value="" placeholder="">                                        
+          <input id="card2_Papellido" type="text" maxlength="30" class="form-control" name="card2_Papellido" value="" placeholder="Ingrese primer apellido">                                        
         </div><div class="col-sm-4">
-        <input id="card2_Sapellido" type="text" maxlength="30" class="form-control" name="card2_Sapellido" value="" placeholder="">                                        
+        <input id="card2_Sapellido" type="text" maxlength="30" class="form-control" name="card2_Sapellido" value="" placeholder="Ingrese el segundo apellido">                                        
       </div> 
     </div>
   </div>
@@ -503,9 +503,9 @@
             <div class="form-group">
               <label class="control-label col-sm-2" for="nombres" >Nombres:</label>
               <div class="col-sm-4">
-                <input id="card5_Pnombre" type="text" maxlength="30" class="form-control" name="card5_Pnombre" value="" placeholder="">                                        
+                <input id="card5_Pnombre" type="text" maxlength="30" class="form-control" name="card5_Pnombre" value="" placeholder="Ingrese el primer nombre">                                        
               </div><div class="col-sm-4">
-              <input id="card5_Snombre" type="text" maxlength="30" class="form-control" name="card5_Snombre" value="" placeholder="">                                        
+              <input id="card5_Snombre" type="text" maxlength="30" class="form-control" name="card5_Snombre" value="" placeholder="Ingrese el segundo nombre">                                        
             </div>
           </div>
         </div>
@@ -513,9 +513,9 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="email">Apellidos:</label>
             <div class="col-sm-4">
-              <input id="card5_Papellido" type="text" maxlength="30" class="form-control" name="card5_Papellido" value="" placeholder="">                                        
+              <input id="card5_Papellido" type="text" maxlength="30" class="form-control" name="card5_Papellido" value="" placeholder="Ingrese el primer apellido">                                        
             </div><div class="col-sm-4">
-            <input id="card5_Sapellido" type="text" maxlength="30" class="form-control" name="card5_Sapellido" value="" placeholder="">                                        
+            <input id="card5_Sapellido" type="text" maxlength="30" class="form-control" name="card5_Sapellido" value="" placeholder="Ingrese el segundo apellido">                                        
           </div> 
         </div>
       </div>
@@ -697,17 +697,17 @@
       <div class="form-group">
         <label style = "margin-left: -20px;"class="control-label col-sm-2" for="nombres" >Nombres:</label>
         <div class="col-sm-5">
-          <input id="card6_Pnombre" type="text" maxlength="30" class="form-control" name="card6_Pnombre" value="" placeholder="">                                        
+          <input id="card6_Pnombre" type="text" maxlength="30" class="form-control" name="card6_Pnombre" value="" placeholder="Ingrese el primer nombre">                                        
         </div><div class="col-sm-5">
-        <input id="card6_Snombre" type="text" maxlength="30" class="form-control" name="card6_Snombre" value="" placeholder="">                                        
+        <input id="card6_Snombre" type="text" maxlength="30" class="form-control" name="card6_Snombre" value="" placeholder="Ingrese el segundo nombre">                                        
       </div>
     </div>
     <div class="form-group">
       <label style = "margin-left: -20px;" class="control-label col-sm-2" for="email">Apellidos:</label>
       <div class="col-sm-5">
-        <input id="card6_Papellido" type="text" maxlength="30" class="form-control" name="card6_Papellido" value="" placeholder="">                                        
+        <input id="card6_Papellido" type="text" maxlength="30" class="form-control" name="card6_Papellido" value="" placeholder="Ingrese el primer apellido">                                        
       </div><div class="col-sm-5">
-      <input id="card6_Sapellido" type="text" maxlength="30" class="form-control" name="card6_Sapellido" value="" placeholder="">                                        
+      <input id="card6_Sapellido" type="text" maxlength="30" class="form-control" name="card6_Sapellido" value="" placeholder="Ingrese el segundo apellido">                                        
     </div> 
   </div>
 </div>

@@ -598,6 +598,34 @@ $("#btn_confirmEnviar").on("click", function(e){
 
     return true;
   });
+
+
+ wizard.cards["card5"].on("validate", function(card){
+    wizard.hidePopovers();
+    var text1 = card.el.find("#card5_resolucion");
+    var text2 = card.el.find("#card5_coment");
+
+
+    var alerta ="Campo requerido";
+
+    var val1 = text1.val();
+    var val2 = text2.val();
+    
+   
+    if (val1 == "-1"){
+      card.wizard.errorPopover(text1,alerta);
+      return false;
+    }
+
+    if (val2 == ""){
+      card.wizard.errorPopover(text2,alerta);
+      return false;
+    }
+
+   
+
+    return true;
+  });
   
 
  //Carga los comentarios
