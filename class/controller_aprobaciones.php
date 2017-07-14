@@ -92,13 +92,13 @@ switch($opcion){
             $bandera = 0;
 
             try{
-                $comment = $_POST["comment"];
+                $comment = $_POST["card5_coment"];
                 $solicitudID = $_POST["solicitudID"];
-                $nuevoEstado = 5;
+                $resolucion = $_POST["card5_resolucion"];
 
                 $query = $db->prepare("CALL SP_ENVIAR_SOLICITUD_APRO(?,?,?,?, @mensajeError,@codigoError)");
                 $query->bindParam(1,$solicitudID, PDO::PARAM_INT);
-                $query->bindParam(2,$nuevoEstado, PDO::PARAM_INT);
+                $query->bindParam(2,$resolucion, PDO::PARAM_INT);
                 $query->bindParam(3,$usuarioID, PDO::PARAM_INT);
                 $query->bindParam(4,$comment, PDO::PARAM_STR);
                 $query->execute();
@@ -184,10 +184,10 @@ switch($opcion){
                         "RCI" => $fila['RCI'],
                         "TDI" => $fila['TDI'],
                         "confirmacion" => $fila['confirmacion'],
-                        "comentario_analista" => $fila['comentario_analista'],
+                        "comentario_analista" => $fila['comentario_analista']
 
-                        "resolucionID" => $fila['resolucionID'],
-                        "resolucion_comentario" => $fila['resolucion_comentario']
+                        // "resolucionID" => $fila['resolucionID'],
+                        // "resolucion_comentario" => $fila['resolucion_comentario']
                        
 
                     );
@@ -270,8 +270,8 @@ switch($opcion){
                     $card4_confirmacion = $_POST["card4_confirmacion"];
                     $card2_fechaNaci = $_POST["card2_anyo"]."-".$_POST["card2_Mes"]."-".$_POST["card2_dia"];
                    
-                    $card5_resolucion = $_POST["card5_resolucion"];
-                    $card5_coment = $_POST["card5_coment"];
+                    // $card5_resolucion = $_POST["card5_resolucion"];
+                    // $card5_coment = $_POST["card5_coment"];
 
                     $card4_garantia = $_POST["card4_garantia"];
                     $card2_jefe = $_POST["card2_Jefe"];
@@ -280,7 +280,7 @@ switch($opcion){
                     $query = $db->prepare("CALL SP_EDITAR_APRO(
                         ?,?,?,?,?,?,?,?,?,?,
                         ?,?,?,?,?,?,?,?,?,?,
-                        ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, @codigoError, @mensajeError) ;");
+                        ?,?,?,?,?,?,?,?,?,?,?,?,?,?, @codigoError, @mensajeError) ;");
 
                     $query->bindParam(1,$solicitudID, PDO::PARAM_INT);
                     $query->bindParam(2,$card1_tipoSolicitud, PDO::PARAM_INT);
@@ -317,10 +317,10 @@ switch($opcion){
                     $query->bindParam(30,$card4_analista, PDO::PARAM_STR);
                     $query->bindParam(31,$card4_confirmacion, PDO::PARAM_INT);
                     $query->bindParam(32,$card2_fechaNaci, PDO::PARAM_STR);
-                    $query->bindParam(33,$card5_resolucion, PDO::PARAM_INT);
-                    $query->bindParam(34,$card5_coment, PDO::PARAM_STR);
-                    $query->bindParam(35,$card4_garantia, PDO::PARAM_STR);
-                    $query->bindParam(36,$card2_jefe, PDO::PARAM_STR);
+                    // $query->bindParam(33,$card5_resolucion, PDO::PARAM_INT);
+                    // $query->bindParam(34,$card5_coment, PDO::PARAM_STR);
+                    $query->bindParam(33,$card4_garantia, PDO::PARAM_STR);
+                    $query->bindParam(34,$card2_jefe, PDO::PARAM_STR);
 
 
 

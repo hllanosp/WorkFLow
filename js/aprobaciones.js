@@ -18,8 +18,11 @@ $('#radioBtn a').on('click', function(){
 
 $("#btn_confirmEnviar").on("click", function(e){
     e.preventDefault();
-    var comment = $("#comentario").val();
-    $.post('../../class/controller_aprobaciones.php', {"opcion":"2", "comment": comment, "solicitudID": enviarSolicitudID}, function(response){
+    var resolucionID = $("#card5_resolucion").val();
+    var comment = $("#card5_coment").val();
+    if(validarForm()){
+    $.post('../../class/controller_aprobaciones.php', {"opcion":"2", "card5_resolucion":resolucionID, "card5_coment": comment, "solicitudID": enviarSolicitudID}, function(response){
+        console.log(response);
         var data = JSON.parse(response);
         if (data[0].bandera === '1') {
             cargarSolicitudes();
@@ -31,6 +34,7 @@ $("#btn_confirmEnviar").on("click", function(e){
           show_alert(2, data[0].mensajeError);
         }
       });
+  }
 
 });
 
@@ -53,7 +57,7 @@ $("#btn_confirmEnviar").on("click", function(e){
 
   //====================CARGA DE USUARIOS ========================
   function cargarSolicitudes(){
-  $.ajax({
+    $.ajax({
       type: "POST",
       url: "../../class/controller_aprobaciones.php",
       data: {
@@ -63,56 +67,64 @@ $("#btn_confirmEnviar").on("click", function(e){
         $("#tbody_creditos").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
       },
       success: function(response){
-            $("#tbody_creditos").html("");
-            var tr = "";
-            var estado = "";
-            var datos = JSON.parse(response);
-           if (datos[0].bandera  === 1) {
-                for(var index = 1; index < datos.length ; index++){
-                  if (datos[index].estadoID === "4") {
-                  estado = '<td><center><label href="#" class="label label-default">Sin enviar</label></center></td>';
+        $("#tbody_creditos").html("");
+        var tr = "";
+        var estado = "";
+        var datos = JSON.parse(response);
+        if (datos[0].bandera  === 1) {
+          for(var index = 1; index < datos.length ; index++){
+            if (datos[index].estadoID === "4") {
+              estado = '<td><center><label href="#" class="label label-default">Sin resolucion</label></center></td>';
+              enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+            }else{
+              if (datos[index].estadoID === "5") {
+                estado = '<td><center><label href="#" class="label label-success">Aprobada</label></center></td>';
+                enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
+              }else{
+                if(datos[index].estadoID === "6") {
+                  estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
                   enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+
                 }else{
-                  if (datos[index].estadoID === "5") {
-                    estado = '<td><center><label href="#" class="label label-danger">Aprobada</label></center></td>';
-                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
-                  }else{
-                    estado = '<td><center><label href="#" class="label label-success">Enviada</label></center></td>';
-                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
+                  if (datos[index].estadoID === "7"){
+                    estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
+                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
                   }
                 }
-
-                   tr += '<tr>'
-                      +'<td><center>'+datos[index].solicitudID+'</center></td>'
-                      + estado
-                      +'<td><center>'+datos[index].fechaCreacion+'</center></td>'
-                      +'<td><center>'+datos[index].identidad+'</center></td>'
-                      +'<td><center>'+datos[index].solicitanteNombre+'</center></td>'
-                      +' <td><center><label href="#" class="label label-default">'+datos[index].tipoSolicitud+'</label></center></td>'
-
-                      + '<td>'
-                      +    '<center><button  href="#" data-solicitud="'+datos[index].solicitudID+'" class="btn_editar_credito btn btn-info"><i class="glyphicon glyphicon-edit"></i></button></center>'
-                      +  '</td>'
-                      + '<td>'
-                    +    enviada
-                    +  '</td>'
-                  + '</tr>';
-                    + '</tr>';
-                  
-                }
-                  $("#tbody_creditos").html(tr);
-                  eventos_creditos();
-
-                   // estilo de tabla
-                  $('#tbl_creditos').dataTable();
-
-
-                  
+              }
             }
 
-        },
-    });
-  }
+            tr += '<tr>'
+            +'<td><center>'+datos[index].solicitudID+'</center></td>'
+            + estado
+            +'<td><center>'+datos[index].fechaCreacion+'</center></td>'
+            +'<td><center>'+datos[index].identidad+'</center></td>'
+            +'<td><center>'+datos[index].solicitanteNombre+'</center></td>'
+            +' <td><center><label href="#" class="label label-default">'+datos[index].tipoSolicitud+'</label></center></td>'
+
+            + '<td>'
+            +    '<center><button  href="#" data-solicitud="'+datos[index].solicitudID+'" class="btn_editar_credito btn btn-info"><i class="glyphicon glyphicon-edit"></i></button></center>'
+            +  '</td>'
+            + '<td>'
+            +    enviada
+            +  '</td>'
+            + '</tr>';
+            + '</tr>';
+            
+          }
+          $("#tbody_creditos").html(tr);
+          eventos_creditos();
+
+                   // estilo de tabla
+                   $('#tbl_creditos').dataTable();
+
+
+                   
+                 }
+
+               },
+             });
+}
 
   
   // ==========================================================
@@ -239,15 +251,8 @@ $("#btn_confirmEnviar").on("click", function(e){
             
             $("#card4_analista").val(data[index].comentario_analista);
            
-            $("#card5_resolucion").val(data[index].resolucionID);
-            $("#card5_coment").val(data[index].resolucion_comentario);
-
-
-
-
-
-            
-
+            // $("#card5_resolucion").val(data[index].resolucionID);
+            // $("#card5_coment").val(data[index].resolucion_comentario);
         }
         else{
           show_alert(2, data[0].mensajeError);
@@ -599,33 +604,6 @@ $("#btn_confirmEnviar").on("click", function(e){
   });
 
 
- wizard.cards["card5"].on("validate", function(card){
-    wizard.hidePopovers();
-    var text1 = card.el.find("#card5_resolucion");
-    var text2 = card.el.find("#card5_coment");
-
-
-    var alerta ="Campo requerido";
-
-    var val1 = text1.val();
-    var val2 = text2.val();
-    
-   
-    if (val1 == "-1"){
-      card.wizard.errorPopover(text1,alerta);
-      return false;
-    }
-
-    if (val2 == ""){
-      card.wizard.errorPopover(text2,alerta);
-      return false;
-    }
-
-   
-
-    return true;
-  });
-  
 
  //Carga los comentarios
  wizard.cards["card6"].on("loaded", function(card) {
@@ -765,4 +743,30 @@ function calcularEdad(fecha)
 
     // calculamos los meses
     return edad;
+}
+
+function  validarForm(){
+    var card5_resolucion= $("#card5_resolucion").val();
+    var card5_coment= $("#card5_coment").val();
+
+
+      $('.form-group').removeClass("has-error");
+
+      if (card5_resolucion === "-1") {
+          $("#verResolucion").addClass("has-error");
+          $("#verResolucion").find("label").text("Campo requerido.");
+          $("#card5_resolucion").focus();
+          return false;
+      }
+
+      if (card5_coment === "") {
+          $("#verComments").addClass("has-error");
+          $("#verComments").find("label").text("Comentario: Campo requerido.");
+          $("#card5_coment").focus();
+          return false;
+      }
+      
+      return true;
+  
+
 }

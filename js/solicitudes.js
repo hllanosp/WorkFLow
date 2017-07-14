@@ -752,14 +752,29 @@ function cargarSolicitudes(){
                   enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
                 }else{
                   if (datos[index].estadoID === "5") {
-                    estado = '<td><center><label href="#" class="label label-danger">Aprobada</label></center></td>';
+                    estado = '<td><center><label href="#" class="label label-success">Aprobada</label></center></td>';
                     enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
                   }
                   else{
-                    estado = '<td><center><label href="#" class="label label-success">Enviada</label></center></td>';
-                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
-                  }
+                      if(datos[index].estadoID === "2"){
+                        estado = '<td><center><label href="#" class="label label-primary">Enviada</label></center></td>';
+                        enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
+                      }
+                      else{
+                        if(datos[index].estadoID === "6") {
+                          estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
+                          enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+
+                        }else{
+                          if (datos[index].estadoID === "7"){
+                            estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
+                            enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+                          }
+                        }
+                      }
+                    }
                 }
+
 
                  tr += '<tr>'
                     +'<td><center>'+datos[index].solicitudID+'</center></td>'
@@ -1012,3 +1027,4 @@ function calcularEdad(fecha)
     // calculamos los meses
     return edad;
 }
+
