@@ -354,7 +354,7 @@ $(document).ready(function(){
     // ====================  VALIDACION CARD 5  ====================
     wizard.cards["card5"].on("validate", function(card) {
         wizard.hidePopovers();
-        if ($("card2_estadoCivil").val() !== 1) {
+        if ($("#card2_estadoCivil").val() !== "1") {
             var name1 = card.el.find("#card5_Pnombre");
             var name90 = card.el.find("#card5_Papellido");
             var name2 = card.el.find("#card5_identidad");
