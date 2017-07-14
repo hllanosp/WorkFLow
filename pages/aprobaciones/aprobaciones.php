@@ -116,38 +116,57 @@
     </body>
   </html>
 
+
   <!-- ===============MODAL confirm accion============= -->
-  <div class="modal fade" id="modal_confirmEnviar" >
+  <div class="modal fade " id="modal_confirmEnviar" >
     <div class="modal-dialog">
       <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title" id="">Enviar</h4>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="">Enviar</h4>
+          </div>
+          <div class="modal-body">
+            <div class="" style = "padding: 20px;">
+              <form id="formConfirm" class="form" name="formConfirm">
+                <h2>¿Esta seguro de realizar esta acción?</h2>
+                <hr>
+                <div class="row" >
+                 <label class="control-label col-sm-4" for="">Resolución del pŕestamo:</label>
+                 <div class="form-inline">
+                   <div class="col-sm-5">
+                     <div class="form-group verResolucion">
+                       <select name="card5_resolucion" id="card5_resolucion" class="form-control" required>
+                         <option value= "-1" selected>----Seleccione una opcion valida----</option>
+                         <option value= "5">Aprobado</option>
+                         <option value= "6">Denegado</option>
+                         <option value= "7">Devuelto</option>
+                       </select>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <hr>
+               <div class="row">
+                 <div class="form-inline">
+                   <div class="form-group verComments">
+                     <label for="">Comentarios del aprobador</label>
+                     <textarea name="card5_coment" maxlength="200" id="card5_coment" cols="55" rows="4" class="form-control"></textarea>
+                   </div>
+                 </div>
+               </div>
+             </form>
             </div>
-            <div class="modal-body">
-                <form id="formConfirm" class="form" name="formConfirm">
-                  <h2>¿Esta seguro de realizar esta acción?</h2>
-                  <h4>Aprobar la solicitud del cliente</h4>
-                  <br>
-                  <h5>Esta acción no se puede revertir.</h5>
-                    <div id="" class="form-group">
-                        <label class="control-label">Comentario:</label>
-                        <textarea type="text" class="form-control" name="comentario" id="comentario" placeholder = "Ingrese un comentario..." required></textarea>
-                    </div>
-                    
-                    <br>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button id = "btn_confirmEnviar" data-solicitud = "0" type="button" class="btn btn-primary"  >Enviar</button>
-            </div>
-            
-          </div><!-- modal-content -->
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button id = "btn_confirmEnviar" data-solicitud = "0" type="button" class="btn btn-primary"  >Enviar</button>
         </div>
+
+      </div><!-- modal-content -->
     </div>
   </div>
+</div>
 
 
 
