@@ -281,7 +281,6 @@ $("#btn_confirmEnviar").on("click", function(e){
 
     //evento submit del wizard
     wizard.on("submit", function(wizard) {
-      console.log(wizard.serialize());
         $.ajax({
             url: "../../class/controller_aprobaciones.php",
             type: "POST",
@@ -656,12 +655,48 @@ $("#btn_confirmEnviar").on("click", function(e){
         $("#tbody_comentarios").html(html);
       }
       else{
-        console.log("Error al obtener comentarios...");
+        show_alert(2, "Error al obtener comentarios...");
       }
 
     }
   });
 }); 
+
+ //Carga los datos de RRHH
+ wizard.cards["card7"].on("loaded", function(card) {
+   $.ajax({
+     type: "POST",
+     url: "../../class/controller_creditos.php",
+     data: {
+       "opcion": "6",
+       "solicitudID":$("#solicitud_id").val()
+     },
+     beforeSend: function(){
+       $("#tbody_solicitudes").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
+     },
+     success: function(response){
+       var datos = JSON.parse(response);
+       var index = 1;
+       if (datos[0].bandera === 1) {
+         if (datos.length > 1) {
+           $("#rrhh_salarioBruto").val(datos[index].salarioBruto);
+           $("#rrhh_salarioConDeduccion").val(datos[index].salarioConDeduccion);
+           $("#rrhh_derechos").val(datos[index].derechos);
+           $("#rrhh_antiguedad").val(datos[index].tiempoLabor);
+           $("#rrhh_comentario").val(datos[index].comentario);
+         }
+         else{
+           $("#title_rrhh").text("No hay informacion de Recursos Hunamos para este solicitante");
+         }
+       }
+       else{
+         show_alert(2, datos[0].mensajeError);
+       }
+
+     }
+   });
+
+});
 
 
 

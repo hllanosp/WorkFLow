@@ -39,7 +39,7 @@ else{
   <![endif]-->
   
 
- 
+  
 
 </head>
 
@@ -89,36 +89,36 @@ else{
           <div class = "col-md-12">
             <div class="box-body table-responsive">
               <table class="table table-striped table-bordered" cellspacing="0" id="tbl_creditos">
-                  <thead>
-                   <tr>
-                    <th >Solicitud</th>
-                    <th >Estado</th>
-                    <th >Fecha de creación</th>
-                    <th >Identidad</th>
-                    <th >Nombre</th>
-                    <th >Tipo solicitud</th>
-                    <th >Editar</th>
-                    <th>Enviar</th>
-                  </tr>
-                </thead>
-                <tbody id = "tbody_creditos">
-                  
-                </tbody>
-              </table>
-            </div><!-- table-responsive -->
-          </div>
+                <thead>
+                 <tr>
+                  <th >Solicitud</th>
+                  <th >Estado</th>
+                  <th >Fecha de creación</th>
+                  <th >Identidad</th>
+                  <th >Nombre</th>
+                  <th >Tipo solicitud</th>
+                  <th >Editar</th>
+                  <th>Enviar</th>
+                </tr>
+              </thead>
+              <tbody id = "tbody_creditos">
+                
+              </tbody>
+            </table>
+          </div><!-- table-responsive -->
+        </div>
 
-        </div><!-- panel-body -->
-      </div><!-- panel -->
-        
-      </div><!-- contentpanel -->
+      </div><!-- panel-body -->
+    </div><!-- panel -->
+    
+  </div><!-- contentpanel -->
 
-    </div><!-- mainpanel -->
-  </section>
-  <?php  
-  require_once($maindir."pages/footer.php");
-  ?>
-  <script type="text/javascript" src = "../js/creditos.js"></script>
+</div><!-- mainpanel -->
+</section>
+<?php  
+require_once($maindir."pages/footer.php");
+?>
+<script type="text/javascript" src = "../js/creditos.js"></script>
 
 </body>
 </html>
@@ -127,8 +127,8 @@ else{
 <div class="wizard" id="wizard_EditarSolicitud" data-title="">
   <div class="wizard-card" data-cardname="card1" style="height: 525px;">
     <h3 hidden>Datos generales del prestamo</h3>
-     <input style="visibility:hidden;" class="" id="opcion" type="text" class="form-control" name="opcion" value=0 >  
-     <input id="solicitud_id" type="text" class="" class="form-control" name="solicitud_id" style = "visibility:hidden;">                                          
+    <input style="visibility:hidden;" class="" id="opcion" type="text" class="form-control" name="opcion" value=0 >  
+    <input id="solicitud_id" type="text" class="" class="form-control" name="solicitud_id" style = "visibility:hidden;">                                          
     <div class = "form-group">
       <label class= "control-label">Tipo de Solicitud</label>
       <select name="card1_tipoSolicitud" id="card1_tipoSolicitud" data-placeholder="Seleccione el tipo de solicitud" style = "width: 350px" class="form-control">
@@ -172,17 +172,17 @@ else{
         <br>
         <label class="control-label"  for="">Destino del préstamo</label>
         <select id = "card1_destino" name="card1_destino" data-placeholder="Seleccione el tipo de préstamo" style = "width: 350px" class="form-control">
-            <option selected value= "-1">----Seleccione una opcion valida----</option>
-            <option value= "1">Adquisición de vivienda y/o terreno</option>
-            <option value= "2">Adquisición de vehículo</option>
-            <option value= "3">Consolidación de Deudas</option>
-            <option value= "4">Reparaciones, mejoras y/o ampliaciones de vivienda</option>
-            <option value= "5">Educación</option>
-            <option value= "6">Gastos de traslado de casa</option>
-            <option value= "7">Viajes/Entretenimiento</option>
-            <option value= "8">Adquisición de Artículos para el hogar</option>
-            <option value= "9">Salud/Tratamientos Médicos</option>
-            <option value= "10">Otros</option>
+          <option selected value= "-1">----Seleccione una opcion valida----</option>
+          <option value= "1">Adquisición de vivienda y/o terreno</option>
+          <option value= "2">Adquisición de vehículo</option>
+          <option value= "3">Consolidación de Deudas</option>
+          <option value= "4">Reparaciones, mejoras y/o ampliaciones de vivienda</option>
+          <option value= "5">Educación</option>
+          <option value= "6">Gastos de traslado de casa</option>
+          <option value= "7">Viajes/Entretenimiento</option>
+          <option value= "8">Adquisición de Artículos para el hogar</option>
+          <option value= "9">Salud/Tratamientos Médicos</option>
+          <option value= "10">Otros</option>
         </select>
       </div>
     </div>
@@ -191,16 +191,16 @@ else{
     </div>
     <div class="col-xs-5 ">
       <div class="form-group">
-          <label for="card1_resp" class="control-label">Tipo de responsabilidad</label>
-          <div class="col-xs-12">
-            <div class="input-group">
-                <div id="radioBtn" class="btn-group">
-                    <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="1">Individual</a>
-                    <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="2">Mancomunal</a>
-                </div>
-                <input type="text"  style="visibility:hidden" name="card1_res" id="card1_res">
+        <label for="card1_resp" class="control-label">Tipo de responsabilidad</label>
+        <div class="col-xs-12">
+          <div class="input-group">
+            <div id="radioBtn" class="btn-group">
+              <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="1">Individual</a>
+              <a class="btn btn-default btn-sm notActive" data-toggle="card1_res" data-title="2">Mancomunal</a>
             </div>
+            <input type="text"  style="visibility:hidden" name="card1_res" id="card1_res">
           </div>
+        </div>
       </div>
     </div>
     <div class="col-md-5 col-md-offset-1">
@@ -275,8 +275,8 @@ else{
         <div class="form-group">
           <label class="control-label">Edad</label>
           <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-male"></i></span>
-              <input type="text"  id = "card2_edad" name="card2_edad" class="form-control" disabled>
+            <span class="input-group-addon"><i class="fa fa-male"></i></span>
+            <input type="text"  id = "card2_edad" name="card2_edad" class="form-control" disabled>
           </div>
         </div>
       </div>
@@ -284,178 +284,178 @@ else{
     <br>
     <div class="row">
      <div class="col-xs-2 ">
-        <div class="form-group">
-            <label for="card2_sexo" class="control-label">Sexo</label>
-            <div class="col-xs-12">
-              <div class="input-group">
-                  <div id="radioBtn" class="btn-group">
-                      <a class="btn btn-default btn-sm notActive" data-toggle="card2_sexo" data-title="M">M</a>
-                      <a class="btn btn-default btn-sm notActive" data-toggle="card2_sexo" data-title="F">F</a>
-                  </div>
-                  <input type="text" style="visibility:hidden" name="card2_sexo" id="card2_sexo">
-              </div>
+      <div class="form-group">
+        <label for="card2_sexo" class="control-label">Sexo</label>
+        <div class="col-xs-12">
+          <div class="input-group">
+            <div id="radioBtn" class="btn-group">
+              <a class="btn btn-default btn-sm notActive" data-toggle="card2_sexo" data-title="M">M</a>
+              <a class="btn btn-default btn-sm notActive" data-toggle="card2_sexo" data-title="F">F</a>
             </div>
+            <input type="text" style="visibility:hidden" name="card2_sexo" id="card2_sexo">
+          </div>
         </div>
-     </div>
-      <div class="col-xs-5 col-xs-offset-0">
-        <label class="control-label">
-          Fecha Nacimiento
-        </label>
-        <div class="row">
-          <form name="formFecha" class="fecha">
+      </div>
+    </div>
+    <div class="col-xs-5 col-xs-offset-0">
+      <label class="control-label">
+        Fecha Nacimiento
+      </label>
+      <div class="row">
+        <form name="formFecha" class="fecha">
           <div class="col-xs-3">
             <div class="form-group">
 
               <label class="control-label">Dia</label>
               <select name="card2_dia" id="card2_dia" class="form-control card2Edad" >
                 <option value="01">01
-                <option value="02">02
-                <option value="03">03
-                <option value="04">04
-                <option value="05">05
-                <option value="06">06
-                <option value="07">07
-                <option value="08">08
-                <option value="09">09
-                <option value="10">10
-                <option value="11">11
-                <option value="12">12
-                <option value="13">13
-                <option value="14">14
-                <option value="15">15
-                <option value="16">16
-                <option value="17">17
-                <option value="18">18
-                <option value="19">19
-                <option value="20">20
-                <option value="21">21
-                <option value="22">22
-                <option value="23">23
-                <option value="24">24
-                <option value="25">25
-                <option value="26">26
-                <option value="27">27
-                <option value="28">28
-                <option value="29">29
-                <option value="30">30
-                <option value="31">31
-              </select>
-            </div>
-          </div>
-          <div class="col-xs-3">
-            <div class="form-group">
-              <label class="control-label">Mes</label>
-              <select name="card2_Mes" id="card2_Mes" class="form-control card2Edad" onchange="asignaDias()">
-                <option value="01">Enero
-                <option value="02">Febrero
-                <option value="03">Marzo
-                <option value="04">Abril
-                <option value="05">Mayo
-                <option value="06">Junio
-                <option value="07">Julio
-                <option value="08">Agosto
-                <option value="09">Septiembre
-                <option value="10">Octubre
-                <option value="11">Noviembre
-                <option value="12">Diciembre
-              </select>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="form-group">
-              <label class="control-label">año</label>
-              <select name="card2_anyo" id="card2_anyo" class="form-control card2Edad" onchange="asignaDias()">
-                <?php
-                for($i=date('o'); $i>=1910; $i--){
-                  if ($i == date('o'))
-                      echo '<option value="'.$i.'" selected>'.$i.'</option>';
-                  else
-                      echo '<option value="'.$i.'">'.$i.'</option>';
-                  }
-                ?>
-              </select>
-            </div>
-          </div>
-          </form>
-          
-        </div> 
-      </div>
-      <div class="col-xs-4 col-xs-offset-0">
-          <div class="form-group">
-              <label for="card2_estadoCivil" class="control-label">Estado Civil</label>
-              <div class="col-xs-12">
-                  <div class="input-group">
-                      <div id="radioBtn" class="btn-group">
-                          <a class="btn btn-default btn-sm notActive" data-toggle="card2_estadoCivil" data-title="1">Soltero</a>
-                          <a class="btn btn-default btn-sm notActive" data-toggle="card2_estadoCivil" data-title="2">Casado</a>
-                          <a class="btn btn-default btn-sm notActive" data-toggle="card2_estadoCivil" data-title="3">otros</a>
-                      </div>
-                      <input type="text" style="visibility:hidden" name="card2_estadoCivil" id="card2_estadoCivil">
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-xs-5">
-        <div class="form-group">
-          <label class="control-label">Jefe directo</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-king"></i></span>
-            <input id="card2_Jefe" type="text" maxlength="100" class="form-control" name="card2_Jefe" value="" placeholder="Ingrese el nombre del jefe directo">                                        
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-3 col-xs-offset-1">
-        <div class="form-group">
-          <label class="control-label">Tiempo de servicio</label>
-          <div class="input-group">
-            <span class="input-group-addon">Años</span>
-            <input id="card2_Tservicio" type="number" min="0" max="99999" class="form-control numeros" name="card2_Tservicio" value="" placeholder="Ingrese el tiempo del servicio">                                        
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    
-  <!-- ============================================ -->
-  <div class="wizard-card" data-cardname="card3" style="height: 525px;">
-    <h3 hidden>Datos personales del fiador</h3>
-    <div class="row">
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="card3_Pnombre_aval">Nombres:</label>
-        <div class="col-sm-4">
-          <input id="card3_Pnombre_fiador" maxlength="30" type="text" class="form-control" name="card3_Pnombre_fiador" value="" placeholder="Ingrese el primer nombre">                                        
-        </div>
-        <div class="col-sm-4">
-          <input id="card3_Snombre_fiador" maxlength="30" type="text" class="form-control" name="card3_Snombre_fiador" value="" placeholder="Ingrese el segundo nombre">                                        
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="">Apellidos:</label>
-        <div class="col-sm-4">
-          <input id="card3_Papellido_fiador"  maxlength="30" type="text" class="form-control" name="card3_Papellido_fiador" value="" placeholder="Ingrese el primer apellido">                                        
-        </div>
-        <div class="col-sm-4">
-          <input id="card3_Sapellido_fiador" maxlength="30" type="text" class="form-control" name="card3_Sapellido_fiador" value="" placeholder="Ingrese el segundo apellido">                                        
-        </div>
-      </div>
-    </div>
+                  <option value="02">02
+                    <option value="03">03
+                      <option value="04">04
+                        <option value="05">05
+                          <option value="06">06
+                            <option value="07">07
+                              <option value="08">08
+                                <option value="09">09
+                                  <option value="10">10
+                                    <option value="11">11
+                                      <option value="12">12
+                                        <option value="13">13
+                                          <option value="14">14
+                                            <option value="15">15
+                                              <option value="16">16
+                                                <option value="17">17
+                                                  <option value="18">18
+                                                    <option value="19">19
+                                                      <option value="20">20
+                                                        <option value="21">21
+                                                          <option value="22">22
+                                                            <option value="23">23
+                                                              <option value="24">24
+                                                                <option value="25">25
+                                                                  <option value="26">26
+                                                                    <option value="27">27
+                                                                      <option value="28">28
+                                                                        <option value="29">29
+                                                                          <option value="30">30
+                                                                            <option value="31">31
+                                                                            </select>
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="col-xs-3">
+                                                                          <div class="form-group">
+                                                                            <label class="control-label">Mes</label>
+                                                                            <select name="card2_Mes" id="card2_Mes" class="form-control card2Edad" onchange="asignaDias()">
+                                                                              <option value="01">Enero
+                                                                                <option value="02">Febrero
+                                                                                  <option value="03">Marzo
+                                                                                    <option value="04">Abril
+                                                                                      <option value="05">Mayo
+                                                                                        <option value="06">Junio
+                                                                                          <option value="07">Julio
+                                                                                            <option value="08">Agosto
+                                                                                              <option value="09">Septiembre
+                                                                                                <option value="10">Octubre
+                                                                                                  <option value="11">Noviembre
+                                                                                                    <option value="12">Diciembre
+                                                                                                    </select>
+                                                                                                  </div>
+                                                                                                </div>
+                                                                                                <div class="col-xs-4">
+                                                                                                  <div class="form-group">
+                                                                                                    <label class="control-label">año</label>
+                                                                                                    <select name="card2_anyo" id="card2_anyo" class="form-control card2Edad" onchange="asignaDias()">
+                                                                                                      <?php
+                                                                                                      for($i=date('o'); $i>=1910; $i--){
+                                                                                                        if ($i == date('o'))
+                                                                                                          echo '<option value="'.$i.'" selected>'.$i.'</option>';
+                                                                                                        else
+                                                                                                          echo '<option value="'.$i.'">'.$i.'</option>';
+                                                                                                      }
+                                                                                                      ?>
+                                                                                                    </select>
+                                                                                                  </div>
+                                                                                                </div>
+                                                                                              </form>
+                                                                                              
+                                                                                            </div> 
+                                                                                          </div>
+                                                                                          <div class="col-xs-4 col-xs-offset-0">
+                                                                                            <div class="form-group">
+                                                                                              <label for="card2_estadoCivil" class="control-label">Estado Civil</label>
+                                                                                              <div class="col-xs-12">
+                                                                                                <div class="input-group">
+                                                                                                  <div id="radioBtn" class="btn-group">
+                                                                                                    <a class="btn btn-default btn-sm notActive" data-toggle="card2_estadoCivil" data-title="1">Soltero</a>
+                                                                                                    <a class="btn btn-default btn-sm notActive" data-toggle="card2_estadoCivil" data-title="2">Casado</a>
+                                                                                                    <a class="btn btn-default btn-sm notActive" data-toggle="card2_estadoCivil" data-title="3">otros</a>
+                                                                                                  </div>
+                                                                                                  <input type="text" style="visibility:hidden" name="card2_estadoCivil" id="card2_estadoCivil">
+                                                                                                </div>
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <hr>
+                                                                                        <div class="row">
+                                                                                          <div class="col-xs-5">
+                                                                                            <div class="form-group">
+                                                                                              <label class="control-label">Jefe directo</label>
+                                                                                              <div class="input-group">
+                                                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-king"></i></span>
+                                                                                                <input id="card2_Jefe" type="text" maxlength="100" class="form-control" name="card2_Jefe" value="" placeholder="Ingrese el nombre del jefe directo">                                        
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="col-xs-3 col-xs-offset-1">
+                                                                                            <div class="form-group">
+                                                                                              <label class="control-label">Tiempo de servicio</label>
+                                                                                              <div class="input-group">
+                                                                                                <span class="input-group-addon">Años</span>
+                                                                                                <input id="card2_Tservicio" type="number" min="0" max="99999" class="form-control numeros" name="card2_Tservicio" value="" placeholder="Ingrese el tiempo del servicio">                                        
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      
+                                                                                      <!-- ============================================ -->
+                                                                                      <div class="wizard-card" data-cardname="card3" style="height: 525px;">
+                                                                                        <h3 hidden>Datos personales del fiador</h3>
+                                                                                        <div class="row">
+                                                                                          <div class="form-group">
+                                                                                            <label class="control-label col-sm-2" for="card3_Pnombre_aval">Nombres:</label>
+                                                                                            <div class="col-sm-4">
+                                                                                              <input id="card3_Pnombre_fiador" maxlength="30" type="text" class="form-control" name="card3_Pnombre_fiador" value="" placeholder="Ingrese el primer nombre">                                        
+                                                                                            </div>
+                                                                                            <div class="col-sm-4">
+                                                                                              <input id="card3_Snombre_fiador" maxlength="30" type="text" class="form-control" name="card3_Snombre_fiador" value="" placeholder="Ingrese el segundo nombre">                                        
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="form-group">
+                                                                                            <label class="control-label col-sm-2" for="">Apellidos:</label>
+                                                                                            <div class="col-sm-4">
+                                                                                              <input id="card3_Papellido_fiador"  maxlength="30" type="text" class="form-control" name="card3_Papellido_fiador" value="" placeholder="Ingrese el primer apellido">                                        
+                                                                                            </div>
+                                                                                            <div class="col-sm-4">
+                                                                                              <input id="card3_Sapellido_fiador" maxlength="30" type="text" class="form-control" name="card3_Sapellido_fiador" value="" placeholder="Ingrese el segundo apellido">                                        
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
 
-    <br>
-    <div class="row">
-      <div class="col-xs-3 col-xs-offset-3">
-        <div class="form-group">
-          <label class="control-label">Número Identidad</label>
-          <div class="input-group">
-            <!-- <span class="input-group-addon"><i class="fa fa-male"></i></span> -->
-            <input id="card3_identidad_fiador" maxlength="13" type="text" class="form-control numeros" name="card3_identidad_fiador" value="" placeholder="Ingrese número de identidad">                                        
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-xs-3 col-xs-offset-1 ">
+                                                                                        <br>
+                                                                                        <div class="row">
+                                                                                          <div class="col-xs-3 col-xs-offset-3">
+                                                                                            <div class="form-group">
+                                                                                              <label class="control-label">Número Identidad</label>
+                                                                                              <div class="input-group">
+                                                                                                <!-- <span class="input-group-addon"><i class="fa fa-male"></i></span> -->
+                                                                                                <input id="card3_identidad_fiador" maxlength="13" type="text" class="form-control numeros" name="card3_identidad_fiador" value="" placeholder="Ingrese número de identidad">                                        
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          
+                                                                                          <div class="col-xs-3 col-xs-offset-1 ">
         <!-- <div class="form-group">
           <label class="control-label">Edad</label>
           <div class="input-group">
@@ -708,8 +708,68 @@ else{
     </table>
   </div>
 
+  <!-- ==================================================== -->
+
+  <div class="wizard-card" data-cardname="card6" style="height: 525px;">
+    <h3 id = "title_rrhh">Información de RRHH</h3>
+    <form id="" class="form" name="">
+      <input type = "text" id = "data_envio_solicitud" hidden>
+      <br>
+      <div class="row">
+        <div class="form-group" id="verSalarioBruto" >
+          <label class="control-label col-sm-5" style = "text-align: right;" for="rrhh_salarioBruto" >Salario Bruto:</label>
+          <div class="input-group col-sm-5">
+            <input id="rrhh_salarioBruto" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_salarioBruto" value="" placeholder="">
+            <span class="input-group-addon">LPS</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="form-group" id="verSalaConDeduccion">
+          <label class="control-label col-sm-5 " style = "text-align: right;" for="rrhh_salarioConDeduccion">Salario con Deducciones:</label>
+          <div class="input-group col-sm-5">
+            <input id="rrhh_salarioConDeduccion" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_salarioConDeduccion" value="" placeholder="">
+            <span class="input-group-addon">LPS</span>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="form-group" id = "verDerechos">
+          <label class="control-label col-sm-5" style = "text-align: right;" for="rrhh_derechos">Derechos Adquiridos a la Fecha:</label>
+          <div class="input-group col-sm-5">
+            <input id="rrhh_derechos" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_derechos" value="" placeholder="">                                        
+            <span class="input-group-addon">LPS</span>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="form-group" id = "verAntiguedad">
+          <label class="control-label col-sm-5" style = "text-align: right;"for="rrhh_antiguedad">Antiguedad Laboral:</label>
+          <div class="input-group col-sm-5">
+            <input id="rrhh_antiguedad" type="number" min = "0" class="form-control numeros" name="rrhh_antiguedad" value="" placeholder="">
+            <span class="input-group-addon">Años</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="form-group" id = "verComment" >
+          <label class="control-label col-xs-2" style = "text-align: right;">Comentario:</label>
+          <div class="col-xs-10">
+            <textarea type="text" class="form-control" name="rrhh_comentario" id="rrhh_comentario" placeholder = "Ingrese un comentario..." required></textarea>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
   <!-- tarjetas especiales -->
-    
+  
   <!-- Tarjeta a mostrar cuando existe un error al hacer submit del wizard -->
   <div class="wizard-error">
     <div class="alert alert-success">
@@ -717,21 +777,21 @@ else{
     </div>
     <a class="btn btn-success im-done">Salir</a>
   </div>
-    
+  
 
   <div class="wizard-failure">
   <!-- <div class="alert alert-error">
     <strong>There was a problem</strong> submitting the form.
     Please try again in a minute.
   </div> -->
-  </div>
+</div>
 
-  <div class="wizard-success">
-    <div class="alert alert-success">
-      <span class="crearOtraSolicitud"></span>Solicitud editada <strong>Correctamente.</strong>
-    </div>
-    <a class="btn btn-success im-done">Finalizar y salir</a>
+<div class="wizard-success">
+  <div class="alert alert-success">
+    <span class="crearOtraSolicitud"></span>Solicitud editada <strong>Correctamente.</strong>
   </div>
+  <a class="btn btn-success im-done">Finalizar y salir</a>
+</div>
 </div>
 
 
@@ -739,32 +799,32 @@ else{
 <div class="modal fade" id="modal_confirmEnviar" >
   <div class="modal-dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="">Enviar</h4>
-          </div>
-          <div class="modal-body">
-              <form id="formConfirm" class="form" name="formConfirm">
-                <h2>¿Esta seguro de realizar esta acción?</h2>
-                <h4>Aprobar la solicitud del cliente</h4>
-                <br>
-                <h5>Esta acción no se puede revertir.</h5>
-                  <div id="" class="form-group">
-                      <label class="control-label">Comentario:</label>
-                      <textarea type="text" class="form-control" name="comentario" id="comentario" placeholder = "Ingrese un comentario..." required></textarea>
-                  </div>
-                  
-                  <br>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button id = "btn_confirmEnviar" data-solicitud = "0" type="button" class="btn btn-primary"  >Enviar</button>
-          </div>
-          
-        </div><!-- modal-content -->
-      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="">Enviar</h4>
+        </div>
+        <div class="modal-body">
+          <form id="formConfirm" class="form" name="formConfirm">
+            <h2>¿Esta seguro de realizar esta acción?</h2>
+            <h4>Aprobar la solicitud del cliente</h4>
+            <br>
+            <h5>Esta acción no se puede revertir.</h5>
+            <div id="" class="form-group">
+              <label class="control-label">Comentario:</label>
+              <textarea type="text" class="form-control" name="comentario" id="comentario" placeholder = "Ingrese un comentario..." required></textarea>
+            </div>
+            
+            <br>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button id = "btn_confirmEnviar" data-solicitud = "0" type="button" class="btn btn-primary"  >Enviar</button>
+        </div>
+        
+      </div><!-- modal-content -->
+    </div>
   </div>
 </div>
 

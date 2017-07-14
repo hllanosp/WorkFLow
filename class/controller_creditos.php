@@ -6,10 +6,10 @@ if(!(isset($_SESSION['login']) && $_SESSION['login'] == '1')) {
   header("location: ../login/login.php?error_code=2");
 }
 else{
- $maindir = "../";
- $usuario = $_SESSION['usuario'];
- $usuarioID = $_SESSION['usuarioID'];
- $rol = $_SESSION['rol'];
+   $maindir = "../";
+   $usuario = $_SESSION['usuario'];
+   $usuarioID = $_SESSION['usuarioID'];
+   $rol = $_SESSION['rol'];
 }
 ?>
 
@@ -43,7 +43,7 @@ switch($opcion){
                         "solicitanteNombre" => $fila['solicitanteNombre'],
                         "tipoSolicitud" => $fila['tipoSolicitud']
                         
-                    );
+                        );
                     
                     $contadorIteracion++;
                 }
@@ -54,10 +54,10 @@ switch($opcion){
                 // $output = $db->query("select @codigoError")->fetchAll(PDO::FETCH_ASSOC);
                 // $bandera = $output['@codigoError']; 
 
-                 $a = array(
+                $a = array(
                     "mensajeError" =>"exito",
                     "bandera" => 1
-                );
+                    );
 
                 array_unshift($json, $a ); 
                 echo json_encode($json);
@@ -112,7 +112,7 @@ switch($opcion){
                 $json[0] = array(
                     "mensajeError" => $bandera,
                     "bandera" => $mensaje
-                );
+                    );
                 
                 echo json_encode($json);
 
@@ -120,7 +120,7 @@ switch($opcion){
                 $a = array(
                     "mensajeError" => $e,
                     "bandera" => 0
-                );
+                    );
                 echo json_encode($a);
             }
         }
@@ -185,40 +185,40 @@ switch($opcion){
                         "TDI" => $fila['TDI'],
                         "confirmacion" => $fila['confirmacion'],
                         "comentario_analista" => $fila['comentario_analista']
-                       
 
-                    );
-                    
-                    $contadorIteracion++;
-                }
 
-            
+                        );
 
-             $a = array(
-                "mensajeError" =>"exito",
-                "bandera" => "1"
-            );
+$contadorIteracion++;
+}
 
-            array_unshift($json, $a ); 
-            echo json_encode($json);
-            }catch(PDOExecption $e){
-                $a = array(
-                    "mensajeError" => "Hubo un error al realizar la consulta...",
-                    "bandera" => 0
-                    );
-                echo json_encode($a);
-            }
-        }
-        else{
-            $a = array(
-                "mensajeError" => "Error : privilegios insuficientes...",
-                "bandera" => 0
-                );
-            
-            echo json_encode($a);
-        }
 
-        break;
+
+$a = array(
+    "mensajeError" =>"exito",
+    "bandera" => "1"
+    );
+
+array_unshift($json, $a ); 
+echo json_encode($json);
+}catch(PDOExecption $e){
+    $a = array(
+        "mensajeError" => "Hubo un error al realizar la consulta...",
+        "bandera" => 0
+        );
+    echo json_encode($a);
+}
+}
+else{
+    $a = array(
+        "mensajeError" => "Error : privilegios insuficientes...",
+        "bandera" => 0
+        );
+
+    echo json_encode($a);
+}
+
+break;
 
 
         // -----------------------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ switch($opcion){
                     $card2_fechaNaci = $_POST["card2_anyo"]."-".$_POST["card2_Mes"]."-".$_POST["card2_dia"];
                     $card4_garantia = $_POST["card4_garantia"];
                     $card2_jefe = $_POST["card2_Jefe"];
-                   
+
 
                     $query = $db->prepare("CALL SP_EDITAR_CREDITOS (
                         ?,?,?,?,?,?,?,?,?,?,
@@ -326,7 +326,7 @@ switch($opcion){
                     $json[0] = array(
                         "mensajeError" => $mensaje,
                         "bandera" => $bandera
-                    );
+                        );
                     
                     echo json_encode($json);
                 }catch(PDOExecption $e){
@@ -345,7 +345,6 @@ switch($opcion){
                 
                 echo json_encode($a);
             }
-
             break;
 
 
@@ -382,9 +381,9 @@ switch($opcion){
 
 
                         $json[0] = array(
-                         "mensajeError" => "Exito",
-                         "bandera" => 1
-                         );
+                           "mensajeError" => "Exito",
+                           "bandera" => 1
+                           );
 
                 // array_unshift($json, $a ); 
                         echo json_encode($json);
@@ -405,17 +404,71 @@ switch($opcion){
                     echo json_encode($a);
                 }
 
-            break;
-
-
-
+                break;
 
     // -==============================================================================================
 
-        default:
+        case 6: // obtiene los datos de RRHH
+            if(true){ //validacion de roles
+                $json = array();
+                $msj ="";
+                $bandera = 0;
+                try{
+                    $solicitudID = $_POST["solicitudID"];
+                    $query = $db->prepare("CALL SP_OBTENER_RRHH (?,@codigoError, @mensajeError);");
+                    $query->bindParam(1, $solicitudID, PDO::PARAM_INT);
+                    $query->execute();
+                    $result = $query->fetchAll();
+
+                    $contadorIteracion = 0;
+                    foreach($result as $fila){ 
+                        $json[$contadorIteracion] = array(
+                            "salarioBruto" =>$fila['salarioBruto'],
+                            "salarioConDeduccion" => $fila['salarioConDeduccion'],
+                            "derechos" => $fila['derechos'],
+                            "tiempoLabor" => $fila['tiempoLabor'],
+                            "comentario" => $fila['comentario']
+                            );
+
+                        $contadorIteracion++;
+                    }
+
+                                 // $output = $db->query("select @codigoError")->fetch(PDO::FETCH_ASSOC);
+                                 // $bandera = $output['@codigoError']; 
+
+                                 // $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
+                                 // $mensaje = $output['@mensajeError'];
+
+                    $a = array(
+                     "mensajeError" =>"Éxito la transacción se realizó correctamente...",
+                     "bandera" => 1
+                     );
+
+                    array_unshift($json, $a ); 
+                    echo json_encode($json);
+                }catch(PDOExecption $e){
+                    $a = array(
+                        "mensajeError" => "Hubo un error al pbtemer datos de RRHH..",
+                        "bandera" => 0
+                        );
+                    echo json_encode($a);
+                }
+            }
+            else{
+                $a = array(
+                    "mensajeError" => "Error : privilegios insuficientes...",
+                    "bandera" => 0
+                    );
+
+                echo json_encode($a);
+            }
+
+            break;
+
+            default:
             break;
 
 
-    }
+        }
 
-    ?>
+        ?>
