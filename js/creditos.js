@@ -657,7 +657,6 @@ wizard.cards["card4"].on("validate", function(card){
       var datos = JSON.parse(response);
       var html = "No hay comentarios...";
       if (datos[0].bandera === 1) {
-        html = "No hay comentarios";
         for(var index = 1; index < datos.length ; index++){
           html += "<tr class=''>"
           +"<td>"+datos[index].modulo+"</td>"
