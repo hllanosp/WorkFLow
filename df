@@ -1,0 +1,140 @@
+[33mcommit 8212e178f75a51e75d83d4f399d67416368eeba4[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Sat Jul 15 23:04:29 2017 -0600
+
+    reparando error en la carga de comentarios
+
+[33mcommit 6f7fd09edf3a2e2300baff02de1b14ab575d1d2f[m
+Merge: d82c137 5c94f84
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Thu Jul 13 23:51:42 2017 -0600
+
+    Merge pull request #7 from hllanosp/hllanos
+    
+    agregando BD
+
+[33mcommit 5c94f84c87a5e49da8f82eacfa93b9684bc4573e[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Thu Jul 13 23:50:21 2017 -0600
+
+    agregando BD
+
+[33mcommit d82c137a4909f51eced9076c17a213798c406d1b[m
+Merge: e8547f5 9f019e2
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Thu Jul 13 23:46:06 2017 -0600
+
+    Merge pull request #6 from hllanosp/hllanos
+    
+    agregando nuevos estados en aprobaciones, denegado y devuelto
+
+[33mcommit 9f019e29b4094da08e0e750d48214e93a5ccd9d4[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Thu Jul 13 23:44:49 2017 -0600
+
+    agregando nuevos estados en aprobaciones, denegado y devuelto
+
+[33mcommit e8547f5b1bfbc12013e35317482480f1340a48c8[m
+Merge: 68194cb 6d81b27
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Thu Jul 13 18:31:55 2017 -0600
+
+    Merge pull request #5 from hllanosp/hllanos
+    
+    agregando datos de RRHH en creditos y aprobaciones
+
+[33mcommit 6d81b270a8867c73a3062d529250f8b9ee9ac734[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Thu Jul 13 18:30:01 2017 -0600
+
+    agregando datos de RRHH en creditos y aprobaciones
+
+[33mcommit 68194cb06f16e494da0d103fa0488d14406e1466[m
+Merge: 6abb2fc 4c32fff
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Thu Jul 13 18:20:51 2017 -0600
+
+    Merge pull request #4 from hllanosp/daniel
+    
+    cambios
+
+[33mcommit 4c32fffb71071b1c865cb2106c529120ea6db997[m
+Author: daniellopez88 <nelsondaniellopez88@gmail.com>
+Date:   Thu Jul 13 12:14:50 2017 -0600
+
+    cambios
+
+[33mcommit 6abb2fc1c1c823ae463001c3ee8bb9119dca738c[m
+Merge: 3cdd32b 9364549
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Thu Jul 13 06:59:34 2017 -0600
+
+    Merge pull request #3 from hllanosp/daniel
+    
+    Daniel
+
+[33mcommit 9364549f8b1e1bac2105fec38ff325bb1adcad67[m
+Author: daniellopez88 <nelsondaniellopez88@gmail.com>
+Date:   Tue Jul 11 22:42:29 2017 -0600
+
+    ultimas mejoras
+
+[33mcommit cdd811cd126a6264b04f77d1da020dad197f0285[m
+Author: daniellopez88 <nelsondaniellopez88@gmail.com>
+Date:   Tue Jul 11 22:27:04 2017 -0600
+
+    ultimas mejoras
+
+[33mcommit 3cdd32bb7884a9f302ed26490ff6651ae5c6d1b7[m
+Merge: 8a8be61 9971a52
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Tue Jul 11 20:31:54 2017 -0600
+
+    Merge pull request #2 from hllanosp/daniel
+    
+    Daniel
+
+[33mcommit 9971a521f876f25abf9bfa63313ead8ebc7fed2f[m
+Author: daniellopez88 <nelsondaniellopez88@gmail.com>
+Date:   Tue Jul 11 12:18:01 2017 -0600
+
+    ultimas mejora
+
+[33mcommit 508b1a35fd7d0f67024949d7200ca7fdff3d836b[m
+Author: daniellopez88 <nelsondaniellopez88@gmail.com>
+Date:   Mon Jul 10 23:44:15 2017 -0600
+
+    mejoras
+
+[33mcommit 8a8be61d7749473afeaafaccd4270e69cbfa333c[m
+Merge: 7a86b11 fd4db7f
+Author: Hector Llanos <hllanos75@gmail.com>
+Date:   Mon Jul 10 23:12:47 2017 -0600
+
+    Merge pull request #1 from hllanosp/daniel
+    
+    agregando ultimos cambios(cantidad solicitada modulo de aprobaciones)
+
+[33mcommit fd4db7f880068cd6c0504a1bcd0839b07ed20778[m
+Author: daniellopez88 <nelsondaniellopez88@gmail.com>
+Date:   Mon Jul 10 23:10:18 2017 -0600
+
+    agregando ultimos cambios(cantidad solicitada modulo de aprobaciones)
+
+[33mcommit 7a86b11f7b7b70c1f6b39eb8261938eb6e0b8919[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Mon Jul 10 22:42:33 2017 -0600
+
+    Agregando mejoras 10-07-2017 10:42PM
+
+[33mcommit 7bdbeea108124a45f7a34ead4e60e00e5694ee66[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Fri Jul 7 22:46:46 2017 -0600
+
+    Actualizando repositorio 07-07-2017
+
+[33mcommit 1d28c8365f14521f1df18482d17123dd6300d94e[m
+Author: hllanosp <hllanos75@gmail.com>
+Date:   Fri Jul 7 22:44:24 2017 -0600
+
+    iniciando repositorio

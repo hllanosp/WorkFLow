@@ -130,21 +130,25 @@ $("#btn_confirmEnviar").on("click", function(e){
   // ==========================================================
   // ============================Eventos de credito===========================
   function eventos_creditos(){
-    
-
-  
-
-  //evento abrir wizard
-  $('.btn_editar_credito').click(function(e) {
+    // ==== eventos para modal_confirm
+    $(".btn_enviar").on("click", function(e){
         e.preventDefault();
-        wizard.reset();
-        $("#opcion").val("4");
-        var solicitud = $(this).data("solicitud");
-        wizarTitle = "Formulario editar solicitud #"+solicitud;
-        wizard.setTitle(wizarTitle);
-        llenarWizard(solicitud);
-        wizard.show();
-  });
+        enviarSolicitudID = $(this).data("solicitud");
+        $("#enviar_solicitud").data("solicitud_id", enviarSolicitudID);
+        $("#modal_confirmEnviar").modal("show");
+    });
+
+    //evento abrir wizard
+    $('.btn_editar_credito').click(function(e) {
+          e.preventDefault();
+          wizard.reset();
+          $("#opcion").val("4");
+          var solicitud = $(this).data("solicitud");
+          wizarTitle = "Formulario editar solicitud #"+solicitud;
+          wizard.setTitle(wizarTitle);
+          llenarWizard(solicitud);
+          wizard.show();
+    });
 }
 
   function llenarWizard(solicitudID){
