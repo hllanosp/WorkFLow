@@ -131,14 +131,6 @@ $("#btn_confirmEnviar").on("click", function(e){
   // ============================Eventos de credito===========================
   function eventos_creditos(){
     
-  // ==== eventos para modal_confirm
-  $(".btn_enviar").on("click", function(e){
-      e.preventDefault();
-      enviarSolicitudID = $(this).data("solicitud");
-      $("#enviar_solicitud").data("solicitud_id", enviarSolicitudID);
-      $("#modal_confirmEnviar").modal("show");
-
-  });
 
   
 
@@ -621,7 +613,6 @@ $("#btn_confirmEnviar").on("click", function(e){
       var datos = JSON.parse(response);
       var html = "No hay comentarios...";
       if (datos[0].bandera === 1) {
-        html = "No hay comentarios";
         for(var index = 1; index < datos.length ; index++){
           html += "<tr class=''>"
           +"<td>"+datos[index].modulo+"</td>"

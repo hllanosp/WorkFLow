@@ -96,9 +96,6 @@ $(document).ready(function(){
         });
     });
 
-
-
-
     //================  eventos en tarjeta wizard-success   ===========
     wizard.el.find(".wizard-success .im-done").click(function() {
       wizard.hide();
@@ -107,8 +104,10 @@ $(document).ready(function(){
       }, 250);
       
     });
+    
+    //
     wizard.el.find(".wizard-success .crearOtraSolicitud").click(function() {
-      wizard.reset();
+        wizard.reset();
     });
 
     //================  eventos en tarjeta wizard-error   ===========
@@ -126,10 +125,10 @@ $(document).ready(function(){
 
 
     wizard.on("reset", function() {
-      // wizard.modal.find(':input').val('');
-      // wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
-      // $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
-      // $('select').val("-1");
+      wizard.modal.find(':input').val('');
+      wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
+      $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
+      $('select').val("-1");
     });
 
 
@@ -665,6 +664,7 @@ $(document).ready(function(){
 
     //Carga los comentarios
     wizard.cards["card9"].on("loaded", function(card) {
+        console.log("card9 loaded");
         $.ajax({
             type: "POST",
             url: "../../class/controller_solicitudes.php",
@@ -677,26 +677,26 @@ $(document).ready(function(){
             },
             success: function(response){
                 var datos = JSON.parse(response);
-                var html = "No hay comentarios...";
+                var html2 = "No hay comentarios...";
                 if (datos[0].bandera === 1) {
-                    html = "No hay comentarios";
                     for(var index = 1; index < datos.length ; index++){
-                        html += "<tr class=''>"
-                        +"<td>"+datos[index].modulo+"</td>"
-                        +"<td>"+datos[index].fecha+"</td>"
-                        +"<td>"+datos[index].usuarioID+"</td>"
-                        +"<td>"+datos[index].comentario+"</td>"
-                        +"</tr>";
+                        html2 += "<tr class=''>"
+                                +"<td>"+datos[index].modulo+"</td>"
+                                +"<td>"+datos[index].fecha+"</td>"
+                                +"<td>"+datos[index].usuarioID+"</td>"
+                                +"<td>"+datos[index].comentario+"</td>"
+                                +"</tr>";
                     }
-                    $("#tbody_comentarios").html(html);
+                    $("#tbody_comentarios").html(html2);
+                    cargarSolicitudes();
                 }
                 else{
-                    console.log("Error al obtener comentarios...");
+                    show_alert(2,"Error al obtener comentarios...");
                 }
 
             }
         });
-});
+    });
 
 
 });
