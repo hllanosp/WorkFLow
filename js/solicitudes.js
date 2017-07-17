@@ -125,10 +125,10 @@ $(document).ready(function(){
 
 
     wizard.on("reset", function() {
-      wizard.modal.find(':input').val('');
-      wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
-      $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
-      $('select').val("-1");
+      // wizard.modal.find(':input').val('');
+      // wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
+      // $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
+      // $('select').val("-1");
     });
 
 
@@ -924,6 +924,8 @@ function llenarWizard(solicitudID){
             $("#card5_lugarLabor").val(data[index].conyu_empresa);
             $("#card5_ingresoMensual").val(data[index].conyu_sueldo);
             $("#card5_cargo").val(data[index].conyu_cargo);
+            $("#card5_telefono").val(data[index].conyu_empresaTel);
+            $("#card5_telefonoExt").val(data[index].conyu_empresaExt);
 
             $("#card6_Pnombre").val(data[index].fiador_Pnombre);
             $("#card6_Snombre").val(data[index].fiador_Snombre);
@@ -939,6 +941,13 @@ function llenarWizard(solicitudID){
             $("#"+tog).val(sel);
 
             $("#card6_dependientes").val(data[index].fiador_dependientes);
+            $("#card6_hijos").val(data[index].fiador_hijos);
+            tog = "card6_sexo";
+            sel = data[index].fiador_sexo;
+            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+            $("#"+tog).val(sel);
+
+            $("#card6_tipoVivienda").val(data[index].fiador_tipoVivienda);
 
             $("#card6_tel").val(data[index].fiador_telefono);
             $("#card6_cel").val(data[index].fiador_cel);
@@ -954,6 +963,7 @@ function llenarWizard(solicitudID){
             $("#card6_empresaExt").val(data[index].fiador_empresaExt);
             $("#card6_jefe").val(data[index].fiador_jefe);
             $("#card6_selectActividad").val(data[index].fiador_ActividadEmpresa);
+            $("#card6_empresaDireccion").val(data[index].fiador_empresaDireccion);
             cargar_referencias(solicitudID);
         }
         else{

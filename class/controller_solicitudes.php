@@ -84,6 +84,13 @@ switch($opcion){
                     $card5_tipoVivienda = $_POST["card5_tipoVivienda"];
                     $card5_pagoVivienda = $_POST["card5_pagoVivienda"];
 
+                    //nuevos campos conyugue
+                    $card5_empresaTel = $_POST["card5_telefono"];
+                    $card5_empresaExt = $_POST["card5_telefonoExt"];
+                     
+                    if($card5_tipoVivienda == "-1"){
+                        $card5_tipoVivienda = null;
+                    }
 
                     $card6_Pnombre = $_POST["card6_Pnombre"];
                     $card6_Snombre = $_POST["card6_Snombre"];
@@ -107,6 +114,12 @@ switch($opcion){
                     $card6_empresaExt = $_POST["card6_empresaExt"];
                     $card6_jefe = $_POST["card6_jefe"];
                     $card6_selectActividad = $_POST["card6_selectActividad"];
+
+                     //nuevos campos en fiador
+                    $card6_sexo = $_POST["card6_sexo"];
+                    $card6_tipoVivienda = $_POST["card6_tipoVivienda"];
+                    $card6_hijos = $_POST["card6_hijos"];
+                    $card6_empresaDireccion = $_POST["card6_empresaDireccion"];
 
                     $card7_nombre = $_POST["card7_nombre"];
                     $card7_tel = $_POST["card7_tel"];
@@ -132,6 +145,7 @@ switch($opcion){
                         ,?,?,?,?,?,?,?,?,?,?,?
                         ,?,?,?,?,?,?,?,?,?,?
                         ,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
+                        ?,?,?,?,?,?,
                         @mensajeError,@codigoError)");
 
                     $query->bindParam(1,$card1_tipoSolicitud, PDO::PARAM_INT);
@@ -222,7 +236,15 @@ switch($opcion){
                     $query->bindParam(82,$card8_tel, PDO::PARAM_STR);
                     $query->bindParam(83,$card8_trabajo, PDO::PARAM_STR);
                     $query->bindParam(84,$card8_parentesco, PDO::PARAM_STR);
-                    $query->bindParam(85,$usuarioID, PDO::PARAM_INT);
+
+                    $query->bindParam(85,$card5_empresaTel, PDO::PARAM_STR);
+                    $query->bindParam(86,$card5_empresaExt, PDO::PARAM_STR);
+                    $query->bindParam(87,$card6_sexo, PDO::PARAM_STR);
+                    $query->bindParam(88,$card6_tipoVivienda, PDO::PARAM_INT);
+                    $query->bindParam(89,$card6_hijos, PDO::PARAM_INT);
+                    $query->bindParam(90,$card6_empresaDireccion, PDO::PARAM_STR);
+
+                    $query->bindParam(91,$usuarioID, PDO::PARAM_INT);
 
                     $query->execute();
 
@@ -440,6 +462,8 @@ switch($opcion){
                                 "conyu_empresa" => $fila['conyu_empresa'],
                                 "conyu_sueldo" => $fila['conyu_sueldo'],
                                 "conyu_cargo" => $fila['conyu_cargo'],
+                                "conyu_empresaTel" => $fila['conyu_empresaTel'],
+                                "conyu_empresaExt" => $fila['conyu_empresaExt'],
                                 
                                 "fiador_Pnombre" => $fila['fiador_Pnombre'],
                                 "fiador_Snombre" => $fila['fiador_Snombre'],
@@ -450,6 +474,10 @@ switch($opcion){
                                 "fiador_residencia" => $fila['fiador_residencia'],
                                 "fiador_estadoCivil" => $fila['fiador_estadoCivil'],
                                 "fiador_dependientes" => $fila['fiador_dependientes'],
+                                "fiador_sexo" => $fila['fiador_sexo'],
+                                "fiador_hijos" => $fila['fiador_hijos'],
+                                "fiador_tipoVivienda" => $fila['fiador_tipoVivienda'],
+
                                
                                 "fiador_telefono" => $fila['fiador_telefono'],
                                 "fiador_cel" => $fila['fiador_cel'],
@@ -463,7 +491,8 @@ switch($opcion){
                                 "fiador_empresaTel" => $fila['fiador_empresaTel'],
                                 "fiador_empresaExt" => $fila['fiador_empresaExt'],
                                 "fiador_jefe" => $fila['fiador_jefe'],
-                                "fiador_ActividadEmpresa" => $fila['fiador_ActividadEmpresa']
+                                "fiador_ActividadEmpresa" => $fila['fiador_ActividadEmpresa'],
+                                "fiador_empresaDireccion" => $fila['fiador_empresaDireccion']
                              
                             );
                             
@@ -560,6 +589,11 @@ switch($opcion){
                         $card5_tel = $_POST["card5_tel"];
                         $card5_cel = $_POST["card5_cel"];
 
+                        //nuevas mejoras
+                        $card5_empresaTel = $_POST["card5_telefono"];
+                        $card5_empresaExt = $_POST["card5_telefonoExt"];
+
+
                         $card5_tipoVivienda = $_POST["card5_tipoVivienda"];
                         $card5_pagoVivienda = $_POST["card5_pagoVivienda"];
                         $card6_Pnombre = $_POST["card6_Pnombre"];
@@ -573,6 +607,14 @@ switch($opcion){
                         $card6_cel = $_POST["card6_cel"];
                         $card6_email = $_POST["card6_email"];
                         $card6_estadoCivil = $_POST["card6_estadoCivil"];
+                        
+                        //nuevos campos en fiador
+                        $card6_sexo = $_POST["card6_sexo"];
+                        $card6_tipoVivienda = $_POST["card6_tipoVivienda"];
+                        $card6_hijos = $_POST["card6_hijos"];
+                        $card6_empresaDireccion = $_POST["card6_empresaDireccion"];
+
+
                         
                         $card6_dependientes = $_POST["card6_dependientes"];
                         $card6_empresa = $_POST["card6_empresa"];
@@ -608,7 +650,8 @@ switch($opcion){
                             ?,?,?,?,?,?,?,?,?,?,
                             ?,?,?,?,?,?,?,?,?,?,
                             ?,?,?,?,?,?,?,?,?,?,
-                            ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
+                            ?,?,?,?,?,?,?,?,?,?,
+                            ?,?,?,?,?, ?,?,?,?,?,?,
                              @codigoError, @mensajeError) ;");
                         $query->bindParam(1,$solicitudID, PDO::PARAM_INT);
                         $query->bindParam(2,$card1_tipoSolicitud, PDO::PARAM_INT);
@@ -696,7 +739,16 @@ switch($opcion){
                         $query->bindParam(82,$card8_tel, PDO::PARAM_STR);
                         $query->bindParam(83,$card8_trabajo, PDO::PARAM_STR);
                         $query->bindParam(84,$card8_parentesco, PDO::PARAM_STR);
-                        $query->bindParam(85,$usuarioID, PDO::PARAM_INT);
+
+
+                        $query->bindParam(85,$card5_empresaTel, PDO::PARAM_STR);
+                        $query->bindParam(86,$card5_empresaExt, PDO::PARAM_STR);
+                        $query->bindParam(87,$card6_sexo, PDO::PARAM_STR);
+                        $query->bindParam(88,$card6_tipoVivienda, PDO::PARAM_INT);
+                        $query->bindParam(89,$card6_hijos, PDO::PARAM_INT);
+                        $query->bindParam(90,$card6_empresaDireccion, PDO::PARAM_STR);
+                        
+                        $query->bindParam(91,$usuarioID, PDO::PARAM_INT);
                         $query->execute();
 
                         $output = $db->query("select @codigoError")->fetch(PDO::FETCH_ASSOC);
