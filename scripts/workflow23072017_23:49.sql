@@ -331,7 +331,6 @@ BEGIN
      	;
         
         INSERT INTO condicion_prestamo(condicion_prestamo.prestamoID) values(PRESTAMO_ID);
-INSERT INTO resolucion_prestamo(resolucion_prestamo.prestamoID) VALUES(PRESTAMO_ID);
 
 	COMMIT;
 END$$
