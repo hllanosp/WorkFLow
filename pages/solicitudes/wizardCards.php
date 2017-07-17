@@ -112,7 +112,8 @@
           <input  style = "visibility:hidden;" name="card2_sexo" id="card2_sexo">
         </div>
       </div>
-    </div>            </div>
+    </div>            
+  </div>
     <div class="col-xs-5 col-xs-offset-0">
       <div class="form-group">
         <label for="card2_tipoVivienda" class="control-label">Tipo vivienda</label>
@@ -685,9 +686,20 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-5">
+        <div class="form-group">
+          <label class="control-label">Teléfono de Trabajo</label>
+          <div class="input-group">
+            <input id="card5_telefono" type="text" maxlength="20" class="form-control numeros" name="card5_telefono" value="" placeholder=" ">                                        
+            <span class="input-group-addon">Extensión:</i></span>
+            <input id="card5_telefonoExt" type="text" maxlength="5" class="form-control numeros" name="card5_telefonoExt" value="" placeholder=" ">                                        
+          </div>
+        </div>
+      </div>
+    </div>
     <br>
-
-
   </div>
 
   <!-- ============================================ -->
@@ -718,6 +730,39 @@
       <div class="input-group">
         <input id="card6_identidad" maxlength="13" type="text" class="form-control numeros" name="card6_identidad" value="" placeholder="Número de identidad válido">                                        
       </div>
+    </div>
+  </div>
+
+  <div class="col-xs-2 col-xs-offset-1">
+    <div class="form-group">
+      <label for="card6_sexo" class="control-label">Sexo:</label>
+      <div class="col-xs-12">
+        <div class="input-group">
+          <div id="radioBtn" class="btn-group">
+            <a class="btn btn-default btn-sm notActive" data-toggle="card6_sexo" data-title='M'>M</a>
+            <a class="btn btn-default btn-sm notActive" data-toggle="card6_sexo" data-title='F'>F</a>
+          </div>
+          <input  style = "visibility:hidden;" name="card6_sexo" id="card6_sexo">
+        </div>
+      </div>
+    </div>            
+  </div>
+  <div class="col-xs-5 col-xs-offset-0">
+    <div class="form-group">
+      <label for="card6_tipoVivienda" class="control-label">Tipo vivienda</label>
+      <select id = "card6_tipoVivienda" name="card6_tipoVivienda" data-placeholder="Seleccione el tipo de préstamo" style = "width: 200px" class="form-control">
+        <option selected value= "-1">----Seleccione una opcion valida----</option>
+        <option value= "1">Alquilada</option>
+        <option value= "2">Propia</option>
+        <option value= "3">Familiar</option>
+        <option value= "4">Pagándola</option>
+        <option value= "5">Otros</option>
+      </select>
+      <div class="input-group" style="width:200px">
+        <input  type = "number" min = "0" value=0 step = "0.01" name="card6_pagoVivienda" class = "numeros form-control" id="card6_pagoVivienda" placeholder = "Pago Mensual">
+        <span class="input-group-addon">LPS</span>
+      </div>
+
     </div>
   </div>
 </div>
@@ -788,6 +833,7 @@
       </div>
     </div>
   </div>
+
   <div class="col-xs-3 col-xs-offset-0">
     <div class="form-group">
       <label class="control-label">Dependientes</label>
@@ -796,6 +842,16 @@
       </div>
     </div>
   </div>
+
+  <div class="col-xs-3 col-xs-offset-1">
+    <div class="form-group">
+      <label class="control-label">Hijos</label>
+      <div class="input-group">
+        <input id="card6_hijos" type="number" maxlength="8" min="0" class="form-control numeros" name="card6_hijos" value="" placeholder="Cantidad de hijos">                                        
+      </div>
+    </div>
+  </div>
+
 </div>
 <hr>
 <div class="row">
@@ -884,6 +940,16 @@
         <option value= "6">Agricultura</option>
         <option value= "7">Sector Privado</option>
       </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-8">
+    <div class="form-group">
+      <label class="control-label">Dirección de la Empresa</label>
+      <div class="input-group">
+        <input id="card6_empresaDireccion" maxlength="200" type="text" class="form-control" name="card6_empresaDireccion" value="" placeholder="">                                        
+      </div>
     </div>
   </div>
 </div>

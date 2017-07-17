@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.4.3
+-- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 13-07-2017 a las 17:50:09
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Host: localhost
+-- Generation Time: Jul 17, 2017 at 08:12 
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,17 +14,19 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `workflow`
+-- Database: `workflow`
 --
 
 DELIMITER $$
 --
--- Procedimientos
+-- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(13), IN `card2_RTN` VARCHAR(14), IN `card2_edad` INT, IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `usuarioID` INT(11), OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD`(IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(13), IN `card2_RTN` VARCHAR(14), IN `card2_edad` INT, IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `card5_empresaTel` VARCHAR(30), IN `card5_empresaExt` VARCHAR(30), IN `card6_sexo` VARCHAR(1), IN `card6_tipoVivienda` INT, IN `card6_hijos` INT, IN `card6_empresaDireccion` VARCHAR(200), IN `usuarioID` INT(11), OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))
+BEGIN
+
 	DECLARE CONYUGUE_ID INT;
 	DECLARE FIADOR_ID INT;
 	DECLARE SOLICITANTE_ID INT;
@@ -72,13 +74,17 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
 		personaID, 
 		empresa, 
 		posicion, 
-		sueldo
+		sueldo,
+        telefono,
+        extension
 		) 
 	VALUES(
 		CONYUGUE_ID,
 		card5_lugarLabor, 
 		card5_cargo,
-		card5_ingresoMensual
+		card5_ingresoMensual,
+        card5_empresaTel,
+        card5_empresaExt
 	);
 
 	INSERT INTO personas_contacto(
@@ -103,7 +109,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
 		direccion,
 		residencia,
 		dependientes,
-		estadoCivilID
+		estadoCivilID,
+        sexo,
+        tipoViviendaID,
+        hijos
 		) 
 
 	VALUES(
@@ -115,7 +124,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
 		card6_direccion,
 		card6_residencia,
 		card6_dependientes,
-		card6_estadoCivil
+		card6_estadoCivil,
+        card6_sexo,
+        card6_tipoVivienda,
+        card6_hijos
 		);
 
 		SELECT LAST_INSERT_ID() INTO FIADOR_ID;
@@ -130,7 +142,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
 		otrosIngresos,
 		telefono,
         datosLaborales.extension,
-		actividadEmpresaID
+		actividadEmpresaID,
+        direccion
 		) 
 
 	VALUES(
@@ -143,7 +156,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
 		card6_otrosIngresos,
 		card6_empresaTel,
         card6_empresaExt,
-		card6_selectActividad
+		card6_selectActividad,
+        card6_empresaDireccion
 	);
 
 	INSERT INTO personas_contacto(
@@ -298,6 +312,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
 			'Creación de Solicitud'
 		);
         
+
         
         INSERT INTO solicitudes_referencia(
 	     solicitudes_referencia.solicitudID,
@@ -330,12 +345,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD` (IN `card1_tipo
      	;
         
         INSERT INTO condicion_prestamo(condicion_prestamo.prestamoID) values(PRESTAMO_ID);
-INSERT INTO resolucion_prestamo(resolucion_prestamo.prestamoID) VALUES(PRESTAMO_ID);
 
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card5_resolucionID` INT, IN `card5_comentario` VARCHAR(200), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
     DECLARE FIADOR_ID INT;
@@ -387,6 +402,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` I
         personas.fechaNacimiento = card2_fechaNaci,
         personas.estadoCivilID = card2_estadoCivil
     WHERE  personas.personaID = SOLICITANTE_ID;
+
     
     UPDATE datosLaborales SET 
     datosLaborales.jefeDirecto = card2_jefe,
@@ -412,20 +428,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` I
     condicion_prestamo.descrpicion_garantia = card4_garantia
     WHERE condicion_prestamo.prestamoID = PRESTAMO_ID;
     
-     IF (EXISTS(SELECT * FROM resolucion_prestamo WHERE resolucion_prestamo.prestamoID = PRESTAMO_ID )) THEN
-        BEGIN
-            UPDATE resolucion_prestamo SET
-            resolucion_prestamo.resolucionID = card5_resolucionID,
-            resolucion_prestamo.comentario = card5_comentario
-            WHERE resolucion_prestamo.prestamoID = PRESTAMO_ID;
-        END;
-    
-        ELSE
-            BEGIN
-                INSERT INTO resolucion_prestamo(resolucion_prestamo.prestamoID, resolucion_prestamo.resolucionID, resolucion_prestamo.comentario) VALUES(PRESTAMO_ID,card5_resolucionID ,card5_comentario );
-                
-            END;
-    END IF;
         
     SET mensajeError = 'Transaccion exitosa...';
     SET codigoError = 1;
@@ -433,7 +435,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO` (IN `solicitudID` I
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
     DECLARE FIADOR_ID INT;
@@ -520,7 +523,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS` (IN `solicitudI
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(14), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(14), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `card5_empresaTel` VARCHAR(30), IN `card5_empresaExt` VARCHAR(30), IN `card6_sexo` VARCHAR(1), IN `card6_tipoVivienda` INT, IN `card6_hijos` INT, IN `card6_empresaDireccion` VARCHAR(200), IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
     DECLARE CONYUGUE_ID INT;
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
@@ -563,8 +567,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitud
 
         UPDATE  datosLaborales SET
             empresa =  card5_lugarLabor, 
-            posicion = card5_cargo , 
-            sueldo = card5_ingresoMensual
+            posicion = card5_cargo, 
+            sueldo = card5_ingresoMensual,
+            datosLaborales.telefono = card5_empresaTel,
+            datosLaborales.extension = card5_empresaExt
         WHERE datosLaborales.personaID = CONYUGUE_ID;
 
 
@@ -576,6 +582,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitud
         
         
         UPDATE personas SET
+
            Pnombre = card6_Pnombre, 
            Snombre = card6_Snombre, 
 
@@ -585,7 +592,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitud
            direccion = card6_direccion,
            residencia = card6_residencia,
            dependientes = card6_dependientes,
-           estadoCivilID = card6_estadoCivil
+           estadoCivilID = card6_estadoCivil,
+           personas.sexo = card6_sexo,
+           personas.tipoViviendaID = card6_tipoVivienda,
+           personas.hijos = card6_hijos
         WHERE personas.personaID = FIADOR_ID;
 
         
@@ -598,7 +608,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitud
             otrosIngresos = card6_otrosIngresos,
             telefono = card6_empresaTel,
             datosLaborales.extension = card6_empresaExt,
-            actividadEmpresaID = card6_selectActividad
+            actividadEmpresaID = card6_selectActividad,
+            datosLaborales.direccion = card6_empresaDireccion
         WHERE datosLaborales.personaID = FIADOR_ID;
 
         UPDATE personas_contacto SET
@@ -650,6 +661,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitud
         WHERE personas_contacto.personaID = SOLICITANTE_ID;
 
 
+
         UPDATE  prestamos SET
             prestamos.cantSolicitada  = card3_cant,
             prestamos.plazo = card3_plazo,
@@ -690,7 +702,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD` (IN `solicitud
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD` (IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE TIPO_SOLICITUD INT;
     DECLARE NUEVO_ESTADO INT;
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -732,7 +745,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD` (IN `solicitud
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_APRO` (IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_APRO`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE TIPO_SOLICITUD INT;
     DECLARE NUEVO_ESTADO INT;
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -769,7 +783,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_APRO` (IN `soli
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_CREDITOS` (IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_CREDITOS`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
 		SET mensajeError = 'Hubo un error en la transaccion.';
@@ -807,7 +822,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_CREDITOS` (IN `
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_RRHH` (IN `solicitudID` INT, IN `rrhh_salarioBruto` DOUBLE, IN `rrhh_salarioConDeduccion` DOUBLE, IN `rrhh_derechos` DOUBLE, IN `rrhh_antiguedad` DOUBLE, IN `rrhh_comentario` VARCHAR(200), IN `nuevoEstado` INT, IN `usuarioID` INT, OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_RRHH`(IN `solicitudID` INT, IN `rrhh_salarioBruto` DOUBLE, IN `rrhh_salarioConDeduccion` DOUBLE, IN `rrhh_derechos` DOUBLE, IN `rrhh_antiguedad` DOUBLE, IN `rrhh_comentario` VARCHAR(200), IN `nuevoEstado` INT, IN `usuarioID` INT, OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))
+BEGIN
 	
 	DECLARE SOLICITANTE_ID INT;
     
@@ -846,7 +862,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_RRHH` (IN `soli
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_APRO` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_APRO`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+    NO SQL
 BEGIN
     DECLARE PRESTAMO_ID int;
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -883,6 +900,7 @@ BEGIN
     solicitante.estadoCivilID as soli_estadoCivil,
     
     soli_datosLaborales.jefeDirecto as soli_jefe,
+
     soli_datosLaborales.aniosTrabajo as soli_aniosTrabajo,
     
   
@@ -906,10 +924,7 @@ BEGIN
     condicion_prestamo.RCI,
     condicion_prestamo.TDI,
     condicion_prestamo.confirmacion,
-    condicion_prestamo.comentario_analista,
-    
-    (SELECT resolucion_prestamo.resolucionID from resolucion_prestamo where resolucion_prestamo.prestamoID = PRESTAMO_ID) as resolucionID,
-    (SELECT resolucion_prestamo.comentario from resolucion_prestamo where resolucion_prestamo.prestamoID = PRESTAMO_ID)  AS resolucion_comentario
+    condicion_prestamo.comentario_analista
     
        
 
@@ -941,7 +956,8 @@ INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_COMENTARIOS` (IN `solicitudID` INT, OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_COMENTARIOS`(IN `solicitudID` INT, OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200))
+    NO SQL
 BEGIN
 DECLARE CONYUGUE_ID INT;
 DECLARE SOLICITANTE_ID INT;
@@ -966,6 +982,7 @@ SELECT
      WHEN 4 THEN 'Oficial Analista de Créditos' 
      WHEN 5 THEN 'Oficial Aprobador'
      WHEN 6 THEN 'Oficial Aprobador'
+     WHEN 7 THEN 'Oficial Aprobador'
     ELSE '' END as modulo,      
 solicitudesBitacora.fecha, 
 (SELECT usuarios.usuario FROM usuarios WHERE usuarios.usuarioID = solicitudesBitacora.usuarioID) as usuarioID, solicitudesBitacora.comentario from solicitudesBitacora INNER JOIN usuarios ON usuarios.usuarioID = solicitudesBitacora.usuarioID WHERE solicitudesBitacora.solicitudID = solicitudID;
@@ -975,12 +992,15 @@ solicitudesBitacora.fecha,
 SET mensajeError = 'Transaccion exitosa.';
 SET codigoError = 1;
 
+
 COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_CREDITOS` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_CREDITOS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+    NO SQL
 BEGIN
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
+
     BEGIN
     SET mensajeError = 'Hubo un error en la transaccion.';
         SET codigoError = 0;
@@ -995,6 +1015,7 @@ BEGIN
     solicitudes.tipoSolicitudID,
     prestamos.tipoPrestamoID,
     prestamos.prestamoID,
+
     prestamo_destino.destinoID,
     prestamos.responsabilidadID,
     prestamos.tipo_aprobacion,
@@ -1065,7 +1086,8 @@ INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_REFERENCIAS` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitud_id` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_REFERENCIAS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitud_id` INT)
+    NO SQL
 BEGIN
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
@@ -1085,7 +1107,31 @@ BEGIN
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_SOLICITUD` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_RRHH`(IN solicitudID INT(11), OUT codigoError INT(11), OUT mensajeError VARCHAR(200))
+    NO SQL
+BEGIN
+DECLARE SOLICITANTE_ID INT;
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+SET mensajeError = 'Hubo un error en la transaccion.';
+SET codigoError = 0;
+SHOW ERRORS limit 1;
+END;
+
+START TRANSACTION;
+
+SELECT solicitudes.solicitanteID INTO SOLICITANTE_ID FROM solicitudes WHERE solicitudes.solicitudID = solicitudID;
+
+SELECT empleadoDatos.salarioBruto, empleadoDatos.salarioConDeduccion, empleadoDatos.derechos, empleadoDatos.tiempoLabor, empleadoDatos.comentario FROM empleadoDatos WHERE empleadoDatos.personaID = SOLICITANTE_ID;
+
+SET mensajeError = 'Transaccion exitosa.';
+SET codigoError = 1;
+
+COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_SOLICITUD`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+    NO SQL
 BEGIN
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
@@ -1149,6 +1195,7 @@ BEGIN
     conyugue.fechaNacimiento as conyu_fechaNacimiento,
     conyugue.ocupacion as conyu_ocupacion,
     conyugue.tipoViviendaID as conyu_tipoVivienda,
+
     conyugue.pago_mensualVivienda as conyu_pagoVivienda,
 
     conyugueContact.telefono as conyu_tel,
@@ -1157,6 +1204,8 @@ BEGIN
     datosLaboralesConyugue.empresa as conyu_empresa,
     datosLaboralesConyugue.sueldo as conyu_sueldo,
     datosLaboralesConyugue.posicion as conyu_cargo,
+    datosLaboralesConyugue.telefono as conyu_empresaTel,
+    datosLaboralesConyugue.extension as conyu_empresaExt,
 
   
     fiador.Pnombre as fiador_Pnombre,
@@ -1169,6 +1218,11 @@ BEGIN
     fiador.residencia as fiador_residencia,
     fiador.estadoCivilID fiador_estadoCivil,
     fiador.dependientes as fiador_dependientes,
+    fiador.sexo as fiador_sexo,
+    fiador.tipoViviendaID as fiador_tipoVivienda,
+    fiador.hijos as fiador_hijos,
+    
+    
     
     fiadorContact.telefono as fiador_telefono,
     fiadorContact.celular as fiador_cel,
@@ -1176,13 +1230,15 @@ BEGIN
     
     fiador_datosLaborales.empresa as fiador_empresa,
     fiador_datosLaborales.posicion as fiador_posicion,
+
     fiador_datosLaborales.aniosTrabajo as fiador_aniosTrabajo,
     fiador_datosLaborales.sueldo as fiador_sueldo,
     fiador_datosLaborales.otrosIngresos as fiador_otrosIngresos,
     fiador_datosLaborales.telefono as fiador_empresaTel,
     fiador_datosLaborales.extension as fiador_empresaExt,
     fiador_datosLaborales.jefeDirecto as fiador_jefe,
-    fiador_datosLaborales.actividadEmpresaID as fiador_ActividadEmpresa
+    fiador_datosLaborales.actividadEmpresaID as fiador_ActividadEmpresa,
+    fiador_datosLaborales.direccion as fiador_empresaDireccion 
     
     
     
@@ -1218,7 +1274,8 @@ BEGIN
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRUEBA` (IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRUEBA`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
     DECLARE _SOLICITANTE int;
     DECLARE PRESTAMO_ID int;
     
@@ -1292,7 +1349,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRUEBA` (IN `solicitudID` INT(11
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
 		SET mensajeError = 'Hubo un error en la transaccion.';
@@ -1314,14 +1372,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES` (OUT `codigoE
 		FROM solicitudes
 		INNER JOIN personas as solicitante ON solicitudes.solicitanteID = solicitante.personaID
 		INNER JOIN tipoSolicitudes ON solicitudes.tipoSolicitudID = tipoSolicitudes.tipoSolicitudID ;
-        
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_APRO` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_APRO`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
 		SET mensajeError = 'Hubo un error en la transaccion.';
+
         SET codigoError = 0;
         SHOW ERRORS;
     END;
@@ -1336,16 +1395,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_APRO` (OUT `co
 		(SELECT solicitudesBitacora.fecha FROM solicitudesBitacora WHERE solicitudesBitacora.solicitudID = solicitudes.solicitudID AND solicitudesBitacora.estadoID = 4 ) fechaCreacion, 
 		solicitante.identidad,
 		CONCAT(solicitante.Pnombre , ' ' , solicitante.Papellido) AS solicitanteNombre,
+
 		tipoSolicitudes.descripcion AS tipoSolicitud
 		FROM solicitudes
 		INNER JOIN personas as solicitante ON solicitudes.solicitanteID = solicitante.personaID
 		INNER JOIN tipoSolicitudes ON solicitudes.tipoSolicitudID = tipoSolicitudes.tipoSolicitudID 
-        WHERE solicitudes.estadoID in (4,5);
+        WHERE solicitudes.estadoID in (4,5,6,7);
         
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_CREDITOS` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_CREDITOS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
 		SET mensajeError = 'Hubo un error en la transaccion.';
@@ -1367,12 +1428,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_CREDITOS` (OUT
 		FROM solicitudes
 		INNER JOIN personas as solicitante ON solicitudes.solicitanteID = solicitante.personaID
 		INNER JOIN tipoSolicitudes ON solicitudes.tipoSolicitudID = tipoSolicitudes.tipoSolicitudID 
-        WHERE solicitudes.estadoID in (3,4, 5);
+        WHERE solicitudes.estadoID in (3,4, 5, 6, 7);
         
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_RRHH` (OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_RRHH`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
 		SET mensajeError = 'Hubo un error en la transaccion.';
@@ -1395,7 +1457,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_RRHH` (OUT `co
 		FROM solicitudes
 		INNER JOIN personas as solicitante ON solicitudes.solicitanteID = solicitante.personaID
 		INNER JOIN tipoSolicitudes ON solicitudes.tipoSolicitudID = tipoSolicitudes.tipoSolicitudID 
-        WHERE solicitudes.tipoSolicitudID = 1 and solicitudes.estadoID in (2,3,5);
+        WHERE solicitudes.tipoSolicitudID = 1 and solicitudes.estadoID in (2,3,5,6,7);
         
 	COMMIT;
 END$$
@@ -1405,10 +1467,10 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `condicion_prestamo`
+-- Table structure for table `condicion_prestamo`
 --
 
-CREATE TABLE `condicion_prestamo` (
+CREATE TABLE IF NOT EXISTS `condicion_prestamo` (
   `prestamoID` int(11) NOT NULL,
   `monto_aprobado` double(13,2) DEFAULT '0.00',
   `plazo_aprobado` int(11) DEFAULT '0',
@@ -1422,7 +1484,7 @@ CREATE TABLE `condicion_prestamo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `condicion_prestamo`
+-- Dumping data for table `condicion_prestamo`
 --
 
 INSERT INTO `condicion_prestamo` (`prestamoID`, `monto_aprobado`, `plazo_aprobado`, `cuota_nivelada`, `tasa_interes`, `descrpicion_garantia`, `RCI`, `TDI`, `confirmacion`, `comentario_analista`) VALUES
@@ -1448,15 +1510,23 @@ INSERT INTO `condicion_prestamo` (`prestamoID`, `monto_aprobado`, `plazo_aprobad
 (58, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
 (59, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
 (60, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
-(61, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0');
+(61, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(62, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(63, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(64, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(65, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(66, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(67, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(68, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0'),
+(69, 0.00, 0, 0.00, 0.00, '0', 0.00, 0.00, 0, '0');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datosLaborales`
+-- Table structure for table `datosLaborales`
 --
 
-CREATE TABLE `datosLaborales` (
+CREATE TABLE IF NOT EXISTS `datosLaborales` (
   `personaID` int(11) NOT NULL DEFAULT '0',
   `empresa` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
   `posicion` varchar(100) COLLATE latin1_spanish_ci DEFAULT NULL,
@@ -1471,12 +1541,12 @@ CREATE TABLE `datosLaborales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `datosLaborales`
+-- Dumping data for table `datosLaborales`
 --
 
 INSERT INTO `datosLaborales` (`personaID`, `empresa`, `posicion`, `aniosTrabajo`, `sueldo`, `jefeDirecto`, `otrosIngresos`, `telefono`, `extension`, `actividadEmpresaID`, `direccion`) VALUES
-(117, 'INDAFddd', 'Maestra de quimicaddd', NULL, 15000.24, NULL, NULL, NULL, NULL, NULL, NULL),
-(118, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(117, '', '', NULL, 0, NULL, NULL, '555', '444', NULL, NULL),
+(118, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, 'ejemplo cargaZzzzz'),
 (119, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
 (120, 'asdsda', 'asdasd', NULL, 234234, NULL, NULL, NULL, NULL, NULL, NULL),
 (121, 'QWEQWE', 'EQWEQE', 23, 343434, 'asdasd', 324234, '324234', NULL, 6, NULL),
@@ -1512,7 +1582,7 @@ INSERT INTO `datosLaborales` (`personaID`, `empresa`, `posicion`, `aniosTrabajo`
 (155, 'fff', 'ggg', 0, 0, '', 0, NULL, '', 3, NULL),
 (156, 'asdf', 'asdf', 0, 0, 'asdf', 0, '', '', 3, ''),
 (160, '444', '444', NULL, 444, NULL, NULL, NULL, NULL, NULL, NULL),
-(161, 'rrr', 'rrr', 4, 4, 'ggg', 4, '4', NULL, 3, NULL),
+(161, 'rrr', 'rrr', 33, 4, 'fff', 4, '4', NULL, 3, NULL),
 (162, 'ff', 'fff', 33, 33, 'fff', 333, '333', NULL, 1, 'fff'),
 (163, '444', '444', NULL, 444, NULL, NULL, NULL, NULL, NULL, NULL),
 (164, 'rrr', 'rrr', 4, 4, 'ggg', 4, NULL, '', 3, NULL),
@@ -1546,15 +1616,39 @@ INSERT INTO `datosLaborales` (`personaID`, `empresa`, `posicion`, `aniosTrabajo`
 (192, 'DDsd', 'Jefe de recursos Humanossd', 3, 3423.16, 'Martin Carrillosdf', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
 (193, 'asdsda', 'asdasd', NULL, 234234, NULL, NULL, NULL, NULL, NULL, NULL),
 (194, 'QWEQWE', 'EQWEQE', 23, 343434, 'asdasd', 324234, '324234', '', 6, NULL),
-(195, 'asdasd', 'dasd', 23, 2323, 'asdasd', 2332, '23423', '', 5, 'sadasd');
+(195, 'asdasd', 'dasd', 23, 2323, 'asdasd', 2332, '23423', '', 5, 'sadasd'),
+(196, 'asdsda', 'asdasd', NULL, 234234, NULL, NULL, NULL, NULL, NULL, NULL),
+(197, 'QWEQWE', 'EQWEQE', 23, 343434, 'asdasd', 324234, '324234', '', 6, NULL),
+(198, 'asdasd', 'dasd', 23, 2323, 'asdasd', 2332, '23423', '', 5, 'sadasd'),
+(202, 'INDAFddd', 'Maestra de quimicaddd', NULL, 15000.24, NULL, NULL, NULL, NULL, NULL, NULL),
+(203, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(204, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(208, 'INDAFddd', 'Maestra de quimicaddd', NULL, 15000.24, NULL, NULL, NULL, NULL, NULL, NULL),
+(209, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(210, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(211, '', '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(212, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(213, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(214, '', '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(215, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(216, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(218, '', '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(219, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(220, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(221, '', '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(222, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '', '77', 3, NULL),
+(223, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf'),
+(224, '', '', NULL, 0, NULL, NULL, '7777', '77', NULL, NULL),
+(225, 'Santos y compania ', 'Supervisor de obrasd', 4, 38887.94, 'Martin Carrillos', 13123, '234', '77', 3, 'ejemplo creacion'),
+(226, 'DDsd', 'Jefe de recursos Humanossd', 4, 3423.16, 'Martin Carrillos', 3423434.17, '2321334', '77', 5, 'Saucesdfssdf');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empleadoDatos`
+-- Table structure for table `empleadoDatos`
 --
 
-CREATE TABLE `empleadoDatos` (
+CREATE TABLE IF NOT EXISTS `empleadoDatos` (
   `personaID` int(11) NOT NULL,
   `salarioBruto` double NOT NULL,
   `salarioConDeduccion` double NOT NULL,
@@ -1564,7 +1658,7 @@ CREATE TABLE `empleadoDatos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `empleadoDatos`
+-- Dumping data for table `empleadoDatos`
 --
 
 INSERT INTO `empleadoDatos` (`personaID`, `salarioBruto`, `salarioConDeduccion`, `derechos`, `tiempoLabor`, `comentario`) VALUES
@@ -1576,21 +1670,25 @@ INSERT INTO `empleadoDatos` (`personaID`, `salarioBruto`, `salarioConDeduccion`,
 (134, 232, 2323, 2323, 2323, 'as'),
 (139, 34234, 234, 342, 324, 'paselo'),
 (144, 23423.02, 23424.01, 233.99, 2, '34'),
-(150, 34834563, 236726372, 237632, 2323, 'Vamos para analista de créditos ');
+(147, 0, 0, 0, 0, '0'),
+(150, 34834563, 236726372, 237632, 2323, 'Vamos para analista de créditos '),
+(153, 3333, 4, 4, 4, '4'),
+(156, 45425, 656565, 5656, 5, 'ff'),
+(192, 2, 2, 2, 2, 'comentario de RRHH');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empresaActividades`
+-- Table structure for table `empresaActividades`
 --
 
-CREATE TABLE `empresaActividades` (
+CREATE TABLE IF NOT EXISTS `empresaActividades` (
   `empresaActividadID` int(11) NOT NULL,
   `descripcion` varchar(200) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `empresaActividades`
+-- Dumping data for table `empresaActividades`
 --
 
 INSERT INTO `empresaActividades` (`empresaActividadID`, `descripcion`) VALUES
@@ -1604,16 +1702,16 @@ INSERT INTO `empresaActividades` (`empresaActividadID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estadosCivil`
+-- Table structure for table `estadosCivil`
 --
 
-CREATE TABLE `estadosCivil` (
+CREATE TABLE IF NOT EXISTS `estadosCivil` (
   `estadoCivilID` int(11) NOT NULL,
   `descripcion` varchar(200) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `estadosCivil`
+-- Dumping data for table `estadosCivil`
 --
 
 INSERT INTO `estadosCivil` (`estadoCivilID`, `descripcion`) VALUES
@@ -1624,10 +1722,10 @@ INSERT INTO `estadosCivil` (`estadoCivilID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `personas`
+-- Table structure for table `personas`
 --
 
-CREATE TABLE `personas` (
+CREATE TABLE IF NOT EXISTS `personas` (
   `personaID` int(11) NOT NULL,
   `identidad` varchar(13) COLLATE latin1_spanish_ci DEFAULT NULL,
   `Pnombre` varchar(30) COLLATE latin1_spanish_ci DEFAULT NULL,
@@ -1648,16 +1746,16 @@ CREATE TABLE `personas` (
   `tipoViviendaID` int(11) DEFAULT NULL,
   `pago_mensualVivienda` double DEFAULT '0',
   `conyugueID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `personas`
+-- Dumping data for table `personas`
 --
 
 INSERT INTO `personas` (`personaID`, `identidad`, `Pnombre`, `Snombre`, `Papellido`, `Sapellido`, `RTN`, `sexo`, `fechaNacimiento`, `direccion`, `residencia`, `lugarNacimiento`, `nacionalidad`, `ocupacion`, `dependientes`, `hijos`, `estadoCivilID`, `tipoViviendaID`, `pago_mensualVivienda`, `conyugueID`) VALUES
-(117, '23', 'Mariasd', 'Teresa', 'De Calcutaeeee', 'Sapobledor', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, 'Docentedsd', NULL, NULL, NULL, 4, 888.45, NULL),
-(118, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, 4, 666, NULL),
-(119, '22', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '823878', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 117),
+(117, '', '', '', '', '', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 4, 0, NULL),
+(118, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, 'F', NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, 222, 2, 3, 666, NULL),
+(119, '5347634', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '213123', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 117),
 (120, '324234', 'asdasd', 'asda', 'asd', 'asdasd', NULL, NULL, '2013-05-02', NULL, NULL, NULL, NULL, 'dadasd', NULL, NULL, NULL, 1, NULL, NULL),
 (121, '234234', 'asdasd', 'asd', 'sda', 'sd', NULL, NULL, NULL, 'eqweqwe', 'deqweqwe', NULL, NULL, NULL, 2, NULL, 2, NULL, NULL, NULL),
 (122, '23213', 'Mario', 'Hector', 'Figueroa', 'Moncada', '123213', 'F', '2003-03-01', 'dfsdfsd', 'sadasd', 'weqwe', 'asdd', 'asdsad', 1, 1, 1, 2, NULL, 120),
@@ -1726,27 +1824,51 @@ INSERT INTO `personas` (`personaID`, `identidad`, `Pnombre`, `Snombre`, `Papelli
 (192, '3232323', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '343434', 'M', '1999-05-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 190),
 (193, '324234', 'asdasd', 'asda', 'asd', 'asdasd', NULL, NULL, '2013-05-02', NULL, NULL, NULL, NULL, 'dadasd', NULL, NULL, NULL, 1, 0, NULL),
 (194, '234234', 'asdasd', 'asd', 'sda', 'sd', NULL, NULL, NULL, 'eqweqwe', 'deqweqwe', NULL, NULL, NULL, 2, NULL, 2, NULL, 0, NULL),
-(195, '76562323', 'Mario', 'Hector', 'Figueroa', 'Moncada', '123213', 'F', '2003-03-01', 'dfsdfsd', 'sadasd', 'weqwe', 'asdd', 'asdsad', 1, 1, 1, 2, 0, 193);
+(195, '76562323', 'Mario', 'Hector', 'Figueroa', 'Moncada', '123213', 'F', '2003-03-01', 'dfsdfsd', 'sadasd', 'weqwe', 'asdd', 'asdsad', 1, 1, 1, 2, 0, 193),
+(196, '324234', 'asdasd', 'asda', 'asd', 'asdasd', NULL, NULL, '2013-05-02', NULL, NULL, NULL, NULL, 'dadasd', NULL, NULL, NULL, 1, 0, NULL),
+(197, '234234', 'asdasd', 'asd', 'sda', 'sd', NULL, NULL, NULL, 'eqweqwe', 'deqweqwe', NULL, NULL, NULL, 2, NULL, 2, NULL, 0, NULL),
+(198, '928376634', 'Mario', 'Hector', 'Figueroa', 'Moncada', '663526562', 'F', '2003-03-01', 'dfsdfsd', 'sadasd', 'weqwe', 'asdd', 'asdsad', 1, 1, 1, 2, 0, 196),
+(202, '23', 'Mariasd', 'Teresa', 'De Calcutaeeee', 'Sapobledor', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, 'Docentedsd', NULL, NULL, NULL, 4, 888.45, NULL),
+(203, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(204, '2277554566', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '3232433', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 202),
+(208, '23', 'Mariasd', 'Teresa', 'De Calcutaeeee', 'Sapobledor', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, 'Docentedsd', NULL, NULL, NULL, 4, 888.45, NULL),
+(209, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(210, '22', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '823878', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 208),
+(211, '', '', '', '', '', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 4, 0, NULL),
+(212, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(213, '5347634', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '213123', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 211),
+(214, '', '', '', '', '', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 4, 0, NULL),
+(215, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(216, '75326564', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '5623546', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 214),
+(218, '', '', '', '', '', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 4, 0, NULL),
+(219, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(220, '6554545', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '213123', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 218),
+(221, '', '', '', '', '', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, 0, NULL),
+(222, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, NULL, NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, NULL, 2, NULL, 0, NULL),
+(223, '273546523', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '324234', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 221),
+(224, '', '', '', '', '', NULL, NULL, '2017-03-08', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 4, 0, NULL),
+(225, '0273337', 'Carlos', 'Enrrique', 'Aguilar', 'Palma', NULL, 'M', NULL, 'Col. La orquidea', 'TGU', NULL, NULL, NULL, 4, 222, 2, 1, 0, NULL),
+(226, '5546457', 'Norberto ', 'Casimiroa', 'Paguada', 'Tavora', '213123', 'M', '1973-07-02', 'Col. Alameda', 'Col. Pasqual', 'T', 'hondurenio ', 'Lic. Relaciones Publicasss', 2, 2, 1, 2, 777.15, 224);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `personas_contacto`
+-- Table structure for table `personas_contacto`
 --
 
-CREATE TABLE `personas_contacto` (
+CREATE TABLE IF NOT EXISTS `personas_contacto` (
   `personaID` int(11) NOT NULL,
-  `telefono` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
-  `celular` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
-  `email` varchar(200) COLLATE latin1_spanish_ci NOT NULL
+  `telefono` varchar(30) COLLATE latin1_spanish_ci NOT NULL DEFAULT '',
+  `celular` varchar(30) COLLATE latin1_spanish_ci NOT NULL DEFAULT '',
+  `email` varchar(200) COLLATE latin1_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `personas_contacto`
+-- Dumping data for table `personas_contacto`
 --
 
 INSERT INTO `personas_contacto` (`personaID`, `telefono`, `celular`, `email`) VALUES
-(117, '234234', '234', ''),
+(117, '', '', ''),
 (118, '234243', '3424', 'asdas@das.com'),
 (119, '123123', '8934834234', 'norberto_tavora@gmail.com'),
 (120, '234234', '234234', ''),
@@ -1817,15 +1939,39 @@ INSERT INTO `personas_contacto` (`personaID`, `telefono`, `celular`, `email`) VA
 (192, '123123', '8934834234', 'norberto_tavora@gmail.com'),
 (193, '234234', '234234', ''),
 (194, '234234', '234234', 'dasda@ASD.COM'),
-(195, '232132', '345435', 'asdas@das.com');
+(195, '232132', '345435', 'asdas@das.com'),
+(196, '234234', '234234', ''),
+(197, '234234', '234234', 'dasda@ASD.COM'),
+(198, '232132', '345435', 'asdas@das.com'),
+(202, '234234', '234', NULL),
+(203, '234243', '3424', 'asdas@das.com'),
+(204, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(208, '234234', '234', NULL),
+(209, '234243', '3424', 'asdas@das.com'),
+(210, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(211, '', '', NULL),
+(212, '234243', '3424', 'asdas@das.com'),
+(213, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(214, '', '', NULL),
+(215, '234243', '3424', 'asdas@das.com'),
+(216, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(218, '', '', NULL),
+(219, '234243', '3424', 'asdas@das.com'),
+(220, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(221, '', '', NULL),
+(222, '234243', '3424', 'asdas@das.com'),
+(223, '123123', '8934834234', 'norberto_tavora@gmail.com'),
+(224, '', '', NULL),
+(225, '234243', '3424', 'asdas@das.com'),
+(226, '123123', '8934834234', 'norberto_tavora@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prestamos`
+-- Table structure for table `prestamos`
 --
 
-CREATE TABLE `prestamos` (
+CREATE TABLE IF NOT EXISTS `prestamos` (
   `prestamoID` int(11) NOT NULL,
   `cantSolicitada` decimal(14,2) NOT NULL,
   `plazo` int(11) NOT NULL,
@@ -1834,10 +1980,10 @@ CREATE TABLE `prestamos` (
   `fiadorID` int(11) NOT NULL,
   `responsabilidadID` int(11) DEFAULT NULL,
   `tipo_aprobacion` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `prestamos`
+-- Dumping data for table `prestamos`
 --
 
 INSERT INTO `prestamos` (`prestamoID`, `cantSolicitada`, `plazo`, `destinoID`, `tipoPrestamoID`, `fiadorID`, `responsabilidadID`, `tipo_aprobacion`) VALUES
@@ -1848,12 +1994,12 @@ INSERT INTO `prestamos` (`prestamoID`, `cantSolicitada`, `plazo`, `destinoID`, `
 (42, '123.00', 123, 4, 3, 130, 1, 1),
 (43, '23232.00', 2323, 1, 2, 133, 2, 1),
 (44, '324234.00', 234234, 3, 3, 138, 2, 1),
-(45, '234213.00', 334, 3, 2, 143, NULL, NULL),
+(45, '234213.00', 334, 3, 2, 143, 2, 0),
 (46, '500000.00', 22, 1, 3, 146, NULL, NULL),
 (47, '888888888.00', 99999999, 1, 1, 149, 2, 1),
 (48, '3242342.00', 234234, 7, 1, 152, NULL, NULL),
 (49, '1234.00', 1, 3, 2, 155, NULL, NULL),
-(50, '3.00', 3, 3, 1, 161, NULL, NULL),
+(50, '3.00', 3, 3, 1, 161, 1, 1),
 (51, '3.00', 3, 3, 1, 164, NULL, NULL),
 (52, '9999999999.00', 34, 2, 1, 167, NULL, NULL),
 (53, '9999999999.00', 34, 2, 1, 170, NULL, NULL),
@@ -1863,22 +2009,30 @@ INSERT INTO `prestamos` (`prestamoID`, `cantSolicitada`, `plazo`, `destinoID`, `
 (57, '9999999999.00', 34, 2, 1, 182, NULL, NULL),
 (58, '9999999999.00', 34, 2, 1, 185, NULL, NULL),
 (59, '9999999999.00', 34, 2, 1, 188, NULL, NULL),
-(60, '100001.98', 35, 2, 1, 191, NULL, NULL),
-(61, '423423.00', 53, 1, 2, 194, NULL, NULL);
+(60, '100001.98', 35, 3, 1, 191, 2, 1),
+(61, '423423.00', 53, 1, 2, 194, NULL, NULL),
+(62, '423423.00', 53, 1, 2, 197, NULL, NULL),
+(63, '100001.98', 35, 2, 1, 203, NULL, NULL),
+(64, '100001.98', 35, 2, 1, 209, NULL, NULL),
+(65, '100001.98', 35, 2, 1, 212, NULL, NULL),
+(66, '100001.98', 35, 2, 1, 215, NULL, NULL),
+(67, '100001.98', 35, 2, 1, 219, NULL, NULL),
+(68, '100001.98', 35, 2, 1, 222, NULL, NULL),
+(69, '100001.98', 35, 2, 1, 225, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prestamo_destino`
+-- Table structure for table `prestamo_destino`
 --
 
-CREATE TABLE `prestamo_destino` (
+CREATE TABLE IF NOT EXISTS `prestamo_destino` (
   `destinoID` int(11) NOT NULL,
   `descripcion` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `prestamo_destino`
+-- Dumping data for table `prestamo_destino`
 --
 
 INSERT INTO `prestamo_destino` (`destinoID`, `descripcion`) VALUES
@@ -1896,59 +2050,19 @@ INSERT INTO `prestamo_destino` (`destinoID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `resolucion_prestamo`
+-- Table structure for table `solicitudes`
 --
 
-CREATE TABLE `resolucion_prestamo` (
-  `prestamoID` int(11) NOT NULL,
-  `resolucionID` int(11) DEFAULT NULL,
-  `comentario` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `resolucion_prestamo`
---
-
-INSERT INTO `resolucion_prestamo` (`prestamoID`, `resolucionID`, `comentario`) VALUES
-(38, 3, 'ssssdfsfd'),
-(40, 1, 'aaa'),
-(42, 2, '1kkkk'),
-(43, 1, 'asd'),
-(44, NULL, NULL),
-(45, NULL, NULL),
-(46, NULL, NULL),
-(47, 1, 'Que perra mi amiga'),
-(48, NULL, NULL),
-(49, NULL, NULL),
-(50, NULL, NULL),
-(51, NULL, NULL),
-(52, NULL, NULL),
-(53, NULL, NULL),
-(54, NULL, NULL),
-(55, NULL, NULL),
-(56, NULL, NULL),
-(57, NULL, NULL),
-(58, NULL, NULL),
-(59, NULL, NULL),
-(60, NULL, NULL),
-(61, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `solicitudes`
---
-
-CREATE TABLE `solicitudes` (
+CREATE TABLE IF NOT EXISTS `solicitudes` (
   `solicitudID` int(11) NOT NULL,
   `solicitanteID` int(11) NOT NULL,
   `tipoSolicitudID` int(11) NOT NULL,
   `prestamoID` int(11) NOT NULL,
   `estadoID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `solicitudes`
+-- Dumping data for table `solicitudes`
 --
 
 INSERT INTO `solicitudes` (`solicitudID`, `solicitanteID`, `tipoSolicitudID`, `prestamoID`, `estadoID`) VALUES
@@ -1959,13 +2073,13 @@ INSERT INTO `solicitudes` (`solicitudID`, `solicitanteID`, `tipoSolicitudID`, `p
 (42, 131, 1, 42, 5),
 (43, 134, 1, 43, 5),
 (44, 139, 1, 44, 5),
-(45, 144, 1, 45, 3),
-(46, 147, 1, 46, 2),
+(45, 144, 1, 45, 2),
+(46, 147, 1, 46, 5),
 (47, 150, 1, 47, 5),
-(48, 153, 1, 48, 2),
-(49, 156, 1, 49, 2),
-(50, 162, 2, 50, 3),
-(51, 165, 2, 51, 1),
+(48, 153, 1, 48, 3),
+(49, 156, 1, 49, 4),
+(50, 162, 2, 50, 5),
+(51, 165, 2, 51, 3),
 (52, 168, 1, 52, 1),
 (53, 171, 1, 53, 1),
 (54, 174, 1, 54, 2),
@@ -1974,16 +2088,24 @@ INSERT INTO `solicitudes` (`solicitudID`, `solicitanteID`, `tipoSolicitudID`, `p
 (57, 183, 1, 57, 1),
 (58, 186, 1, 58, 1),
 (59, 189, 1, 59, 1),
-(60, 192, 1, 60, 1),
-(61, 195, 1, 61, 1);
+(60, 192, 1, 60, 5),
+(61, 195, 1, 61, 1),
+(62, 198, 1, 62, 1),
+(63, 204, 1, 63, 1),
+(64, 210, 1, 64, 1),
+(65, 213, 1, 65, 1),
+(66, 216, 1, 66, 1),
+(67, 220, 1, 67, 1),
+(68, 223, 1, 68, 1),
+(69, 226, 1, 69, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `solicitudesBitacora`
+-- Table structure for table `solicitudesBitacora`
 --
 
-CREATE TABLE `solicitudesBitacora` (
+CREATE TABLE IF NOT EXISTS `solicitudesBitacora` (
   `solicitudID` int(11) NOT NULL,
   `estadoID` int(11) NOT NULL,
   `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1992,7 +2114,7 @@ CREATE TABLE `solicitudesBitacora` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `solicitudesBitacora`
+-- Dumping data for table `solicitudesBitacora`
 --
 
 INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioID`, `comentario`) VALUES
@@ -2033,9 +2155,19 @@ INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioI
 (44, 5, '2017-05-26 23:56:14', 1, 'p'),
 (45, 1, '2017-05-26 00:25:14', 1, 'Creación de Solicitud'),
 (45, 2, '2017-06-29 21:07:54', 1, 'xcc'),
+(45, 2, '2017-07-13 23:11:43', 1, 'enviada desde 1er modulo'),
 (45, 3, '2017-07-11 09:33:01', 1, '34'),
+(45, 4, '2017-07-13 20:35:09', 1, 'kkkk'),
+(45, 6, '2017-07-13 20:37:45', 1, ''),
+(45, 6, '2017-07-13 20:41:35', 1, 'denegado'),
+(45, 7, '2017-07-13 20:41:22', 1, 'devuelto'),
+(45, 7, '2017-07-13 20:44:22', 1, 'devolver por 2da ves'),
 (46, 1, '2017-05-26 16:20:01', 1, 'Creación de Solicitud'),
 (46, 2, '2017-05-26 16:23:14', 1, 'enviar a RRHH'),
+(46, 3, '2017-07-13 23:02:04', 1, '0'),
+(46, 4, '2017-07-13 23:02:25', 1, 'jjj'),
+(46, 5, '2017-07-17 00:00:11', 1, 'a'),
+(46, 7, '2017-07-13 23:38:59', 1, 'devuelto desde aprobador'),
 (47, 1, '2017-06-29 22:36:23', 1, 'Creación de Solicitud'),
 (47, 2, '2017-06-29 22:37:44', 1, 'Vamos'),
 (47, 3, '2017-06-29 22:38:32', 1, 'Vamos para analista de créditos '),
@@ -2043,11 +2175,18 @@ INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioI
 (47, 5, '2017-06-29 23:37:16', 1, 'Aprobado'),
 (48, 1, '2017-06-29 23:03:35', 1, 'Creación de Solicitud'),
 (48, 2, '2017-07-06 20:27:50', 1, 'a'),
+(48, 3, '2017-07-17 00:06:51', 1, '4'),
 (49, 1, '2017-07-02 22:54:25', 1, 'Creación de Solicitud'),
 (49, 2, '2017-07-06 20:52:39', 1, 'sffsdfsdf'),
+(49, 3, '2017-07-16 21:22:44', 1, 'ff'),
+(49, 4, '2017-07-16 23:59:09', 1, 'a'),
 (50, 1, '2017-07-03 22:46:32', 1, 'Creación de Solicitud'),
 (50, 3, '2017-07-06 21:03:56', 1, 'vvv'),
+(50, 4, '2017-07-13 11:05:16', 1, 'vvvv'),
+(50, 6, '2017-07-13 19:42:55', 1, ''),
+(50, 7, '2017-07-13 19:56:44', 1, ''),
 (51, 1, '2017-07-03 23:08:16', 1, 'Creación de Solicitud'),
+(51, 3, '2017-07-13 23:20:39', 1, 'envio desde RRHH'),
 (52, 1, '2017-07-05 23:55:48', 1, 'Creación de Solicitud'),
 (53, 1, '2017-07-05 23:58:07', 1, 'Creación de Solicitud'),
 (54, 1, '2017-07-06 08:44:15', 1, 'Creación de Solicitud'),
@@ -2058,21 +2197,33 @@ INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioI
 (58, 1, '2017-07-07 22:09:11', 1, 'Creación de Solicitud'),
 (59, 1, '2017-07-10 01:59:33', 1, 'Creación de Solicitud'),
 (60, 1, '2017-07-11 08:43:08', 1, 'Creación de Solicitud'),
-(61, 1, '2017-07-12 16:27:16', 1, 'Creación de Solicitud');
+(60, 2, '2017-07-13 23:21:00', 1, 'dddd'),
+(60, 3, '2017-07-13 23:21:47', 1, 'comentario de RRHH'),
+(60, 4, '2017-07-13 23:22:45', 1, 'comentario desde Cr[editos'),
+(60, 5, '2017-07-16 23:48:14', 1, 'a'),
+(61, 1, '2017-07-12 16:27:16', 1, 'Creación de Solicitud'),
+(62, 1, '2017-07-16 21:38:54', 1, 'Creación de Solicitud'),
+(63, 1, '2017-07-16 22:20:54', 1, 'Creación de Solicitud'),
+(64, 1, '2017-07-16 23:17:01', 1, 'Creación de Solicitud'),
+(65, 1, '2017-07-16 23:22:08', 1, 'Creación de Solicitud'),
+(66, 1, '2017-07-16 23:23:11', 1, 'Creación de Solicitud'),
+(67, 1, '2017-07-16 23:40:59', 1, 'Creación de Solicitud'),
+(68, 1, '2017-07-16 23:54:25', 1, 'Creación de Solicitud'),
+(69, 1, '2017-07-17 12:07:01', 1, 'Creación de Solicitud');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `solicitudEstados`
+-- Table structure for table `solicitudEstados`
 --
 
-CREATE TABLE `solicitudEstados` (
+CREATE TABLE IF NOT EXISTS `solicitudEstados` (
   `estadoID` int(11) NOT NULL,
   `descripcion` varchar(100) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `solicitudEstados`
+-- Dumping data for table `solicitudEstados`
 --
 
 INSERT INTO `solicitudEstados` (`estadoID`, `descripcion`) VALUES
@@ -2080,15 +2231,17 @@ INSERT INTO `solicitudEstados` (`estadoID`, `descripcion`) VALUES
 (2, 'Envio desde ingreso solicitudes'),
 (3, 'Envio desde RRHH'),
 (4, 'Envio desde Creditos'),
-(5, 'Aprobado');
+(5, 'Aprobado'),
+(6, 'Denegado'),
+(7, 'Devuelto');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `solicitudes_referencia`
+-- Table structure for table `solicitudes_referencia`
 --
 
-CREATE TABLE `solicitudes_referencia` (
+CREATE TABLE IF NOT EXISTS `solicitudes_referencia` (
   `solicitudID` int(11) NOT NULL,
   `nombre_completo` varchar(200) COLLATE latin1_spanish_ci DEFAULT NULL,
   `telefono_residencia` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL,
@@ -2098,7 +2251,7 @@ CREATE TABLE `solicitudes_referencia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `solicitudes_referencia`
+-- Dumping data for table `solicitudes_referencia`
 --
 
 INSERT INTO `solicitudes_referencia` (`solicitudID`, `nombre_completo`, `telefono_residencia`, `trabajo`, `parentesco`, `numeroReferencia`) VALUES
@@ -2164,21 +2317,45 @@ INSERT INTO `solicitudes_referencia` (`solicitudID`, `nombre_completo`, `telefon
 (60, 'referencia', '23452345', '234234', 'asdf', 3),
 (61, 'dsdsdsd xxxx', '6767676', 'sdsdsd', 'sdsdsd', 1),
 (61, 'sdsdsd', '232323', 'sdsdds', 'sdsdds', 2),
-(61, '', '', '', '', 3);
+(61, '', '', '', '', 3),
+(62, 'dsdsdsd xxxx', '6767676', 'sdsdsd', 'sdsdsd', 1),
+(62, 'sdsdsd', '232323', 'sdsdds', 'sdsdds', 2),
+(62, '', '', '', '', 3),
+(63, 'referencia', '23452345', '234234', 'asdf', 1),
+(63, 'referencia', '23452345', '234234', 'asdf', 2),
+(63, 'referencia', '23452345', '234234', 'asdf', 3),
+(64, 'referencia', '23452345', '234234', 'asdf', 1),
+(64, 'referencia', '23452345', '234234', 'asdf', 2),
+(64, 'referencia', '23452345', '234234', 'asdf', 3),
+(65, 'referencia', '23452345', '234234', 'asdf', 1),
+(65, 'referencia', '23452345', '234234', 'asdf', 2),
+(65, 'referencia', '23452345', '234234', 'asdf', 3),
+(66, 'referencia', '23452345', '234234', 'asdf', 1),
+(66, 'referencia', '23452345', '234234', 'asdf', 2),
+(66, 'referencia', '23452345', '234234', 'asdf', 3),
+(67, 'referencia', '23452345', '234234', 'asdf', 1),
+(67, 'referencia', '23452345', '234234', 'asdf', 2),
+(67, 'referencia', '23452345', '234234', 'asdf', 3),
+(68, 'referencia', '23452345', '234234', 'asdf', 1),
+(68, 'referencia', '23452345', '234234', 'asdf', 2),
+(68, 'referencia', '23452345', '234234', 'asdf', 3),
+(69, 'referencia', '23452345', '234234', 'asdf', 1),
+(69, 'referencia', '23452345', '234234', 'asdf', 2),
+(69, 'referencia', '23452345', '234234', 'asdf', 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipoPrestamos`
+-- Table structure for table `tipoPrestamos`
 --
 
-CREATE TABLE `tipoPrestamos` (
+CREATE TABLE IF NOT EXISTS `tipoPrestamos` (
   `tipoPrestamosID` int(11) NOT NULL,
   `descripcion` varchar(200) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tipoPrestamos`
+-- Dumping data for table `tipoPrestamos`
 --
 
 INSERT INTO `tipoPrestamos` (`tipoPrestamosID`, `descripcion`) VALUES
@@ -2189,16 +2366,16 @@ INSERT INTO `tipoPrestamos` (`tipoPrestamosID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipoSolicitudes`
+-- Table structure for table `tipoSolicitudes`
 --
 
-CREATE TABLE `tipoSolicitudes` (
+CREATE TABLE IF NOT EXISTS `tipoSolicitudes` (
   `tipoSolicitudID` int(11) NOT NULL,
   `descripcion` varchar(200) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tipoSolicitudes`
+-- Dumping data for table `tipoSolicitudes`
 --
 
 INSERT INTO `tipoSolicitudes` (`tipoSolicitudID`, `descripcion`) VALUES
@@ -2209,16 +2386,16 @@ INSERT INTO `tipoSolicitudes` (`tipoSolicitudID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipoViviendas`
+-- Table structure for table `tipoViviendas`
 --
 
-CREATE TABLE `tipoViviendas` (
+CREATE TABLE IF NOT EXISTS `tipoViviendas` (
   `tipoViviendaID` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tipoViviendas`
+-- Dumping data for table `tipoViviendas`
 --
 
 INSERT INTO `tipoViviendas` (`tipoViviendaID`, `descripcion`) VALUES
@@ -2231,16 +2408,16 @@ INSERT INTO `tipoViviendas` (`tipoViviendaID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_responsabilidad`
+-- Table structure for table `tipo_responsabilidad`
 --
 
-CREATE TABLE `tipo_responsabilidad` (
+CREATE TABLE IF NOT EXISTS `tipo_responsabilidad` (
   `responsabilidadID` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tipo_responsabilidad`
+-- Dumping data for table `tipo_responsabilidad`
 --
 
 INSERT INTO `tipo_responsabilidad` (`responsabilidadID`, `descripcion`) VALUES
@@ -2250,20 +2427,20 @@ INSERT INTO `tipo_responsabilidad` (`responsabilidadID`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuarioID` int(11) NOT NULL,
   `usuario` varchar(30) NOT NULL,
   `contrasenia` text NOT NULL,
   `rol` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `fechaCreacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`usuarioID`, `usuario`, `contrasenia`, `rol`, `estado`, `fechaCreacion`) VALUES
@@ -2273,16 +2450,16 @@ INSERT INTO `usuarios` (`usuarioID`, `usuario`, `contrasenia`, `rol`, `estado`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario_rol`
+-- Table structure for table `usuario_rol`
 --
 
-CREATE TABLE `usuario_rol` (
+CREATE TABLE IF NOT EXISTS `usuario_rol` (
   `rolID` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuario_rol`
+-- Dumping data for table `usuario_rol`
 --
 
 INSERT INTO `usuario_rol` (`rolID`, `descripcion`) VALUES
@@ -2292,42 +2469,42 @@ INSERT INTO `usuario_rol` (`rolID`, `descripcion`) VALUES
 (3, 'Aprobador');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `condicion_prestamo`
+-- Indexes for table `condicion_prestamo`
 --
 ALTER TABLE `condicion_prestamo`
   ADD PRIMARY KEY (`prestamoID`);
 
 --
--- Indices de la tabla `datosLaborales`
+-- Indexes for table `datosLaborales`
 --
 ALTER TABLE `datosLaborales`
   ADD PRIMARY KEY (`personaID`),
   ADD KEY `actividad_Empresa_FK` (`actividadEmpresaID`);
 
 --
--- Indices de la tabla `empleadoDatos`
+-- Indexes for table `empleadoDatos`
 --
 ALTER TABLE `empleadoDatos`
   ADD PRIMARY KEY (`personaID`);
 
 --
--- Indices de la tabla `empresaActividades`
+-- Indexes for table `empresaActividades`
 --
 ALTER TABLE `empresaActividades`
   ADD PRIMARY KEY (`empresaActividadID`);
 
 --
--- Indices de la tabla `estadosCivil`
+-- Indexes for table `estadosCivil`
 --
 ALTER TABLE `estadosCivil`
   ADD PRIMARY KEY (`estadoCivilID`);
 
 --
--- Indices de la tabla `personas`
+-- Indexes for table `personas`
 --
 ALTER TABLE `personas`
   ADD PRIMARY KEY (`personaID`),
@@ -2336,13 +2513,13 @@ ALTER TABLE `personas`
   ADD KEY `tipoVivienda_FK` (`tipoViviendaID`);
 
 --
--- Indices de la tabla `personas_contacto`
+-- Indexes for table `personas_contacto`
 --
 ALTER TABLE `personas_contacto`
   ADD PRIMARY KEY (`personaID`,`telefono`,`celular`);
 
 --
--- Indices de la tabla `prestamos`
+-- Indexes for table `prestamos`
 --
 ALTER TABLE `prestamos`
   ADD PRIMARY KEY (`prestamoID`),
@@ -2352,19 +2529,13 @@ ALTER TABLE `prestamos`
   ADD KEY `prestamo_destino_FK` (`destinoID`);
 
 --
--- Indices de la tabla `prestamo_destino`
+-- Indexes for table `prestamo_destino`
 --
 ALTER TABLE `prestamo_destino`
   ADD PRIMARY KEY (`destinoID`);
 
 --
--- Indices de la tabla `resolucion_prestamo`
---
-ALTER TABLE `resolucion_prestamo`
-  ADD PRIMARY KEY (`prestamoID`);
-
---
--- Indices de la tabla `solicitudes`
+-- Indexes for table `solicitudes`
 --
 ALTER TABLE `solicitudes`
   ADD PRIMARY KEY (`solicitudID`,`prestamoID`),
@@ -2374,150 +2545,150 @@ ALTER TABLE `solicitudes`
   ADD KEY `tipo_solicitudes_FK` (`tipoSolicitudID`);
 
 --
--- Indices de la tabla `solicitudesBitacora`
+-- Indexes for table `solicitudesBitacora`
 --
 ALTER TABLE `solicitudesBitacora`
-  ADD PRIMARY KEY (`solicitudID`,`estadoID`),
+  ADD PRIMARY KEY (`solicitudID`,`estadoID`,`fecha`),
   ADD KEY `estadoIDBitacora_FK` (`estadoID`),
   ADD KEY `usuarioIDBitacora_FK` (`usuarioID`);
 
 --
--- Indices de la tabla `solicitudEstados`
+-- Indexes for table `solicitudEstados`
 --
 ALTER TABLE `solicitudEstados`
   ADD PRIMARY KEY (`estadoID`);
 
 --
--- Indices de la tabla `solicitudes_referencia`
+-- Indexes for table `solicitudes_referencia`
 --
 ALTER TABLE `solicitudes_referencia`
   ADD KEY `referencia_FK` (`solicitudID`);
 
 --
--- Indices de la tabla `tipoPrestamos`
+-- Indexes for table `tipoPrestamos`
 --
 ALTER TABLE `tipoPrestamos`
   ADD PRIMARY KEY (`tipoPrestamosID`);
 
 --
--- Indices de la tabla `tipoSolicitudes`
+-- Indexes for table `tipoSolicitudes`
 --
 ALTER TABLE `tipoSolicitudes`
   ADD PRIMARY KEY (`tipoSolicitudID`);
 
 --
--- Indices de la tabla `tipoViviendas`
+-- Indexes for table `tipoViviendas`
 --
 ALTER TABLE `tipoViviendas`
   ADD PRIMARY KEY (`tipoViviendaID`);
 
 --
--- Indices de la tabla `tipo_responsabilidad`
+-- Indexes for table `tipo_responsabilidad`
 --
 ALTER TABLE `tipo_responsabilidad`
   ADD PRIMARY KEY (`responsabilidadID`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`usuarioID`),
   ADD KEY `usuario_rol_FK` (`rol`);
 
 --
--- Indices de la tabla `usuario_rol`
+-- Indexes for table `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
   ADD PRIMARY KEY (`rolID`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `empresaActividades`
+-- AUTO_INCREMENT for table `empresaActividades`
 --
 ALTER TABLE `empresaActividades`
-  MODIFY `empresaActividadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `empresaActividadID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT de la tabla `estadosCivil`
+-- AUTO_INCREMENT for table `estadosCivil`
 --
 ALTER TABLE `estadosCivil`
-  MODIFY `estadoCivilID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `estadoCivilID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `personas`
+-- AUTO_INCREMENT for table `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `personaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `personaID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=227;
 --
--- AUTO_INCREMENT de la tabla `prestamos`
+-- AUTO_INCREMENT for table `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `prestamoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `prestamoID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
 --
--- AUTO_INCREMENT de la tabla `prestamo_destino`
+-- AUTO_INCREMENT for table `prestamo_destino`
 --
 ALTER TABLE `prestamo_destino`
-  MODIFY `destinoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `destinoID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT de la tabla `solicitudes`
+-- AUTO_INCREMENT for table `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `solicitudID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `solicitudID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
 --
--- AUTO_INCREMENT de la tabla `solicitudEstados`
+-- AUTO_INCREMENT for table `solicitudEstados`
 --
 ALTER TABLE `solicitudEstados`
-  MODIFY `estadoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `estadoID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `tipoPrestamos`
+-- AUTO_INCREMENT for table `tipoPrestamos`
 --
 ALTER TABLE `tipoPrestamos`
-  MODIFY `tipoPrestamosID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tipoPrestamosID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `tipoSolicitudes`
+-- AUTO_INCREMENT for table `tipoSolicitudes`
 --
 ALTER TABLE `tipoSolicitudes`
-  MODIFY `tipoSolicitudID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tipoSolicitudID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `tipoViviendas`
+-- AUTO_INCREMENT for table `tipoViviendas`
 --
 ALTER TABLE `tipoViviendas`
-  MODIFY `tipoViviendaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `tipoViviendaID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de la tabla `tipo_responsabilidad`
+-- AUTO_INCREMENT for table `tipo_responsabilidad`
 --
 ALTER TABLE `tipo_responsabilidad`
-  MODIFY `responsabilidadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `responsabilidadID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `usuarioID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `usuario_rol`
+-- AUTO_INCREMENT for table `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
-  MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `condicion_prestamo`
+-- Constraints for table `condicion_prestamo`
 --
 ALTER TABLE `condicion_prestamo`
   ADD CONSTRAINT `condicion_FK` FOREIGN KEY (`prestamoID`) REFERENCES `prestamos` (`prestamoID`);
 
 --
--- Filtros para la tabla `datosLaborales`
+-- Constraints for table `datosLaborales`
 --
 ALTER TABLE `datosLaborales`
   ADD CONSTRAINT `actividad_Empresa_FK` FOREIGN KEY (`actividadEmpresaID`) REFERENCES `empresaActividades` (`empresaActividadID`),
   ADD CONSTRAINT `personaID_FK` FOREIGN KEY (`personaID`) REFERENCES `personas` (`personaID`);
 
 --
--- Filtros para la tabla `personas`
+-- Constraints for table `personas`
 --
 ALTER TABLE `personas`
   ADD CONSTRAINT `conyugue_FK` FOREIGN KEY (`conyugueID`) REFERENCES `personas` (`personaID`),
@@ -2525,7 +2696,7 @@ ALTER TABLE `personas`
   ADD CONSTRAINT `tipoVivienda_FK` FOREIGN KEY (`tipoViviendaID`) REFERENCES `tipoViviendas` (`tipoViviendaID`);
 
 --
--- Filtros para la tabla `prestamos`
+-- Constraints for table `prestamos`
 --
 ALTER TABLE `prestamos`
   ADD CONSTRAINT `fiadorID_FK` FOREIGN KEY (`fiadorID`) REFERENCES `personas` (`personaID`),
@@ -2534,13 +2705,7 @@ ALTER TABLE `prestamos`
   ADD CONSTRAINT `tipo_prestamo_FK` FOREIGN KEY (`tipoPrestamoID`) REFERENCES `tipoPrestamos` (`tipoPrestamosID`);
 
 --
--- Filtros para la tabla `resolucion_prestamo`
---
-ALTER TABLE `resolucion_prestamo`
-  ADD CONSTRAINT `resolucion_prestamos_FK` FOREIGN KEY (`prestamoID`) REFERENCES `prestamos` (`prestamoID`);
-
---
--- Filtros para la tabla `solicitudes`
+-- Constraints for table `solicitudes`
 --
 ALTER TABLE `solicitudes`
   ADD CONSTRAINT `estadoID_FK` FOREIGN KEY (`estadoID`) REFERENCES `solicitudEstados` (`estadoID`),
@@ -2549,21 +2714,13 @@ ALTER TABLE `solicitudes`
   ADD CONSTRAINT `tipo_solicitudes_FK` FOREIGN KEY (`tipoSolicitudID`) REFERENCES `tipoSolicitudes` (`tipoSolicitudID`);
 
 --
--- Filtros para la tabla `solicitudesBitacora`
---
-ALTER TABLE `solicitudesBitacora`
-  ADD CONSTRAINT `estadoIDBitacora_FK` FOREIGN KEY (`estadoID`) REFERENCES `solicitudEstados` (`estadoID`),
-  ADD CONSTRAINT `solicitudIDBitacora_Fk` FOREIGN KEY (`solicitudID`) REFERENCES `solicitudes` (`solicitudID`),
-  ADD CONSTRAINT `usuarioIDBitacora_FK` FOREIGN KEY (`usuarioID`) REFERENCES `usuarios` (`usuarioID`);
-
---
--- Filtros para la tabla `solicitudes_referencia`
+-- Constraints for table `solicitudes_referencia`
 --
 ALTER TABLE `solicitudes_referencia`
   ADD CONSTRAINT `referencia_FK` FOREIGN KEY (`solicitudID`) REFERENCES `solicitudes` (`solicitudID`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuario_rol_FK` FOREIGN KEY (`rol`) REFERENCES `usuario_rol` (`rolID`);
