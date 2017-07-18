@@ -123,7 +123,7 @@ $(document).ready(function() {
   // //VALIDACION DE LAS TARJETAS DEL MODAL WIZARD
   // ==================================================================================================
   $(".numeros").keypress(function(tecla){
-    if( tecla.charCode >31 && (tecla.charCode < 48 || tecla.charCode > 57) ){
+    if( tecla.charCode >31 && (tecla.charCode < 45 || tecla.charCode > 57) ){
       return false;
     }
     else{

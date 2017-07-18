@@ -89,7 +89,7 @@ switch($opcion){
                     $card5_empresaExt = $_POST["card5_telefonoExt"];
                      
                     if($card5_tipoVivienda == "-1"){
-                        $card5_tipoVivienda = null;
+                        $card5_tipoVivienda = 1;
                     }
 
                     $card6_Pnombre = $_POST["card6_Pnombre"];
@@ -595,6 +595,9 @@ switch($opcion){
 
 
                         $card5_tipoVivienda = $_POST["card5_tipoVivienda"];
+                        if($card5_tipoVivienda == "-1"){
+                            $card5_tipoVivienda = 1;
+                        }
                         $card5_pagoVivienda = $_POST["card5_pagoVivienda"];
                         $card6_Pnombre = $_POST["card6_Pnombre"];
                         $card6_Snombre = $_POST["card6_Snombre"];
