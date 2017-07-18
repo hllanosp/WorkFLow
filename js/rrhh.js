@@ -174,38 +174,40 @@ function cargarSolicitudes(){
       $("#tbody_solicitudes").html("");
       var tr = "";
       var estado = '';
-      var estado = '';
+      var enviada = '';
       var datos = JSON.parse(response);
 
       if (datos[0].bandera  === 1) {
         for(var index = 1; index < datos.length ; index++){
-          if (datos[index].estadoID === "2") {
-            estado = '<td><center><label href="#" class="label label-default">Sin enviar</label></center></td>';
-            enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-          }
-          else{
-              if (datos[index].estadoID === "5") {
-                estado = '<td><center><label href="#" class="label label-success">Aprobada</label></center></td>';
-                enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
-              }else{
-                if(datos[index].estadoID === "6") {
+          switch(datos[index].estadoID) {
+              case "2":
+                  estado = '<td><center><label href="#" class="label label-default">Sin enviar</label></center></td>';
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+                  break;
+              case "5":
+                  estado = '<td><center><label href="#" class="label label-success">Aprobada</label></center></td>';
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
+                  break;
+              case "6":
+                  estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+                  break;
+              case "6":
                   estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
                   enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
 
-                }else{
-                  if (datos[index].estadoID === "7"){
-                    estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
-                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-                  }
-                  else{
-                    estado = '<td><center><label href="#" class="label label-primary">Enviada</label></center></td>';
-                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
-                  }
-                }
-              }
-            }
+                  break;
+              case "7":
+                  estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+                  break;
 
-              
+              default:
+                estado = '<td><center><label href="#" class="label label-primary">Enviada</label></center></td>';
+                enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
+                break;
+          }
+          
           tr += '<tr>'
           +'<td><center>'+datos[index].solicitudID+'</center></td>'
           + estado
