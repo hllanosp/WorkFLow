@@ -9,7 +9,9 @@
         <!-- This is only visible to small devices -->
         <div class="visible-xs hidden-sm hidden-md hidden-lg">   
             <div class="media userlogged">
-                <?php echo "<img alt='' src='".$maindir."img/loggeduser.png' class='media-object'>" ?>
+                <?php 
+                  // echo "<img alt='' src='".$maindir."img/loggeduser.png' class='media-object'>" 
+                ?>
                 
                 <div class="media-body">
                     <h4>Usuario</h4>

@@ -846,7 +846,7 @@ switch($opcion){
                 $query->execute();
                 $result = $query->fetchAll();
 
-                                    $contadorIteracion = 0;
+                    $contadorIteracion = 0;
                     foreach($result as $fila){ 
                         $json[$contadorIteracion] = array(
                             "modulo" =>$fila['modulo'],

@@ -125,10 +125,10 @@ $(document).ready(function(){
 
 
     wizard.on("reset", function() {
-      // wizard.modal.find(':input').val('');
-      // wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
-      // $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
-      // $('select').val("-1");
+      wizard.modal.find(':input').val('');
+      wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
+      $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
+      $('select').val("-1");
     });
 
 

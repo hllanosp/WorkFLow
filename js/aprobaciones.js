@@ -1,45 +1,40 @@
 $(document).ready(function() {
-  
-   // Llamado a la funcion cargarUsuarios
+  // Llamado a la funcion cargarUsuarios
   cargarSolicitudes();
-
   
-      var fecha = rellenaAnyos(150);
-      $("#seleccionaAnyo").html(fecha);
+  var fecha = rellenaAnyos(150);
+  $("#seleccionaAnyo").html(fecha);
 
-   // ========================================================================================================
-$('#radioBtn a').on('click', function(){
-  var sel = $(this).data('title');
-  var tog = $(this).data('toggle');
-  $('#'+tog).prop('value', sel);
-  $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
-  $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-});
+  // ========================================================================================================
+  $('#radioBtn a').on('click', function(){
+    var sel = $(this).data('title');
+    var tog = $(this).data('toggle');
+    $('#'+tog).prop('value', sel);
+    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
+    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+  });
 
-$("#btn_confirmEnviar").on("click", function(e){
-    e.preventDefault();
-    var resolucionID = $("#card5_resolucion").val();
-    var comment = $("#card5_coment").val();
-    if(validarForm()){
-    $.post('../../class/controller_aprobaciones.php', {"opcion":"2", "card5_resolucion":resolucionID, "card5_coment": comment, "solicitudID": enviarSolicitudID}, function(response){
-        console.log(response);
-        var data = JSON.parse(response);
-        if (data[0].bandera === '1') {
-            cargarSolicitudes();
-            show_alert(1, data[0].mensajeError);
-            $("#modal_confirmEnviar").modal("hide");
-            $("#comentario").val("");
-        }
-        else{
-          show_alert(2, data[0].mensajeError);
-        }
-      });
-  }
+  $("#btn_confirmEnviar").on("click", function(e){
+      e.preventDefault();
+      var resolucionID = $("#card5_resolucion").val();
+      var comment = $("#card5_coment").val();
+      if(validarForm()){
+      $.post('../../class/controller_aprobaciones.php', {"opcion":"2", "card5_resolucion":resolucionID, "card5_coment": comment, "solicitudID": enviarSolicitudID}, function(response){
+          console.log(response);
+          var data = JSON.parse(response);
+          if (data[0].bandera === '1') {
+              cargarSolicitudes();
+              show_alert(1, data[0].mensajeError);
+              $("#modal_confirmEnviar").modal("hide");
+              $("#comentario").val("");
+          }
+          else{
+            show_alert(2, data[0].mensajeError);
+          }
+        });
+    }
 
-});
-
-
-
+  });
 
 
   $('.card2Edad').on('change', function(e) {
@@ -48,308 +43,91 @@ $("#btn_confirmEnviar").on("click", function(e){
     $("#card2_edad").val(calcularEdad(fecha));
   })
 
+  //llamado a la modal wizar
+  var wizard = $('#wizard_EditarSolicitud').wizard({
+    keyboard : true,
+    contentHeight : 600,
+    contentWidth : 1000,
+    backdrop: 'static',
+    showCancel: 'true' ,
+    buttons: {
+      cancelText: "Cancelar",
+      nextText: "Siguiente",
+      backText: "Atras",
+      submitText: "Guardar",
+      submittingText: "Guardando..."
+    }
+  });
+
+
+  //evento submit del wizard
+  wizard.on("submit", function(wizard) {
+      $.ajax({
+          url: "../../class/controller_aprobaciones.php",
+          type: "POST",
+          data: wizard.serialize()
+      }).done(function(response) {
+          var data = JSON.parse(response);
+          if(data[0].bandera ===  '1'){
+              show_alert(1, data[0].mensajeError);
+              wizard.submitSuccess();         // displays the success card
+              wizard.hideButtons();           // hides the next and back buttons
+              wizard.updateProgressBar(0);    // sets the progress meter to 0
+          }else{
+              show_alert(2, data[0].mensajeError)
+              wizard.submitError();           // display the error card
+              wizard.hideButtons(); 
+          }
+      }).fail(function(response) {
+          wizard.submitError();           // display the error card
+          wizard.hideButtons(); 
+      });
+  });
+
+  //================  eventos en tarjeta wizard-success   ===========
+  wizard.el.find(".wizard-success .im-done").click(function() {
+    wizard.hide();
+    setTimeout(function() {
+      wizard.reset(); 
+    }, 250);
+    
+  });
 
  
 
+  //================  eventos en tarjeta wizard-error   ===========
+  wizard.el.find(".wizard-error .im-done").click(function() {
+    wizard.hide();
+    setTimeout(function() {
+      wizard.reset(); 
+    }, 250);
+  });
+
+  //================  cerrar y limpiar wizard ===============
+  wizard.on('closed', function(){
+    wizard.reset();
+  });
+
+  wizard.on("reset", function() {
+    wizard.modal.find(':input').val('');
+    wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
+    $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
+    $('select').val("-1");
+  });
 
 
-  
+  // ================================================================================================== 
+  // //VALIDACION DE LAS TARJETAS DEL MODAL WIZARD
+  // ==================================================================================================
+   $(".numeros").keypress(function(tecla){
+     if( tecla.charCode >31 && (tecla.charCode < 48 || tecla.charCode > 57) )  return false;
+     else{
+      return true;
+     }
+  });
 
-  //====================CARGA DE USUARIOS ========================
-  function cargarSolicitudes(){
-    $.ajax({
-      type: "POST",
-      url: "../../class/controller_aprobaciones.php",
-      data: {
-        "opcion": "1"
-      },
-      beforeSend: function(){
-        $("#tbody_creditos").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
-      },
-      success: function(response){
-        $("#tbody_creditos").html("");
-        var tr = "";
-        var estado = "";
-        var datos = JSON.parse(response);
-        if (datos[0].bandera  === 1) {
-          for(var index = 1; index < datos.length ; index++){
-            if (datos[index].estadoID === "4") {
-              estado = '<td><center><label href="#" class="label label-default">Sin resolucion</label></center></td>';
-              enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-            }else{
-              if (datos[index].estadoID === "5") {
-                estado = '<td><center><label href="#" class="label label-success">Aprobada</label></center></td>';
-                enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
-              }else{
-                if(datos[index].estadoID === "6") {
-                  estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
-                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-
-                }else{
-                  if (datos[index].estadoID === "7"){
-                    estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
-                    enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-                  }
-                }
-              }
-            }
-
-            tr += '<tr>'
-            +'<td><center>'+datos[index].solicitudID+'</center></td>'
-            + estado
-            +'<td><center>'+datos[index].fechaCreacion+'</center></td>'
-            +'<td><center>'+datos[index].identidad+'</center></td>'
-            +'<td><center>'+datos[index].solicitanteNombre+'</center></td>'
-            +' <td><center><label href="#" class="label label-default">'+datos[index].tipoSolicitud+'</label></center></td>'
-
-            + '<td>'
-            +    '<center><button  href="#" data-solicitud="'+datos[index].solicitudID+'" class="btn_editar_credito btn btn-info"><i class="glyphicon glyphicon-edit"></i></button></center>'
-            +  '</td>'
-            + '<td>'
-            +    enviada
-            +  '</td>'
-            + '</tr>';
-            + '</tr>';
-            
-          }
-          $("#tbody_creditos").html(tr);
-          eventos_creditos();
-
-                   // estilo de tabla
-                   $('#tbl_creditos').dataTable();
-
-
-                   
-                 }
-
-               },
-             });
-}
-
-  
-  // ==========================================================
-  // ============================Eventos de credito===========================
-  function eventos_creditos(){
-    // ==== eventos para modal_confirm
-    $(".btn_enviar").on("click", function(e){
-        e.preventDefault();
-        enviarSolicitudID = $(this).data("solicitud");
-        $("#enviar_solicitud").data("solicitud_id", enviarSolicitudID);
-        $("#modal_confirmEnviar").modal("show");
-    });
-
-    //evento abrir wizard
-    $('.btn_editar_credito').click(function(e) {
-          e.preventDefault();
-          wizard.reset();
-          $("#opcion").val("4");
-          var solicitud = $(this).data("solicitud");
-          wizarTitle = "Formulario editar solicitud #"+solicitud;
-          wizard.setTitle(wizarTitle);
-          llenarWizard(solicitud);
-          wizard.show();
-    });
-}
-
-  function llenarWizard(solicitudID){
-
-    $.post('../../class/controller_aprobaciones.php', {"opcion":"3", "solicitudID": solicitudID}, function(response){
-        var data = JSON.parse(response);
-        if (data[0].bandera === '1') {
-            var index = 1;
-            $("#solicitud_id").val(solicitudID);
-            
-            $("#card1_tipoSolicitud").val(data[index].tipoSolicitudID);
-            $("#card1_tipoPrestamo").val(data[index].tipoPrestamoID);
-            $("#card1_prestamoID").val(data[index].prestamoID);
-            $("#card1_cant_solicitada").val(data[index].cantSolicitada);
-            $("#card1_destino").val(data[index].destino);
-            
-            $("#card1_res").val(data[index].responsabilidadID);
-            tog = "card1_res";
-            sel = data[index].responsabilidadID;
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-            
-            $("#card1_aval").val(data[index].tipo_aprobacion);
-            tog = "card1_aval";
-            sel = data[index].tipo_aprobacion;
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-            
-
-            $("#card2_Pnombre_sol").val(data[index].soli_Pnombre);
-            $("#card2_Snombre_sol").val(data[index].soli_Snombre);
-            $("#card2_Papellido_sol").val(data[index].soli_Papellido);
-            $("#card2_Sapellido_sol").val(data[index].soli_Sapellido);
-            $("#card2_identidad_sol").val(data[index].soli_identidad);
-            $("#card2_RTN_sol").val(data[index].soli_RTN);
-            
-            $("#card2_sexo").val(data[index].soli_sexo);
-            tog = "card2_sexo";
-            sel = data[index].soli_sexo;
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-            
-            $("#card2_edad").val(calcularEdad(data[index].soli_fechaNacimiento));
-
-            var fechaNac = data[index].soli_fechaNacimiento.split('-');
-            $("#card2_anyo").val(fechaNac[0]);
-            $("#card2_Mes").val(fechaNac[1]);
-            $("#card2_dia").val(fechaNac[2]);
-          
-           
-            $("#card2_estadoCivil").val(data[index].soli_estadoCivil);
-            tog = "card2_estadoCivil";
-            sel = data[index].soli_estadoCivil;
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-
-
-            $("#card2_Jefe").val(data[index].soli_jefe);
-            $("#card2_Tservicio").val(data[index].soli_aniosTrabajo);
-
-
-            $("#card3_Pnombre_fiador").val(data[index].fiador_Pnombre);
-            $("#card3_Snombre_fiador").val(data[index].fiador_Snombre);
-            $("#card3_Papellido_fiador").val(data[index].fiador_Papellido);
-            $("#card3_Sapellido_fiador").val(data[index].fiador_Sapellido);
-            $("#card3_identidad_fiador").val(data[index].fiador_identidad);
-
-
-            // $("#card3_sexo").val(data[index].fiador_sexo);
-            // tog = "card3_sexo";
-            // sel = data[index].fiador_sexo;
-            // $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-            
-
-            $("#card3_nombre_empresa").val(data[index].fiador_empresa);
-            
-                     
-            $("#card3_estadoCivil").val(data[index].fiador_estadoCivil);
-            tog = "card3_estadoCivil";
-            sel = data[index].fiador_estadoCivil;
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-
-            // var fechaNac = data[index].fiador_fechaNacimiento.split('-');
-            // $("#card3_anyo").val(fechaNac[0]);
-            // $("#card3_Mes").val(fechaNac[1]);
-            // $("#card3_dia").val(fechaNac[2]);
-            
-            $("#card4_monto").val(data[index].monto_aprobado);
-            $("#card4_plazoap").val(data[index].plazo_aprobado);
-            $("#card4_cuota").val(data[index].cuota_nivelada);
-            $("#card4_interes").val(data[index].tasa_interes);
-            $("#card4_garantia").val(data[index].descrpicion_garantia);
-            $("#card4_RCI").val(data[index].RCI);
-            $("#card4_TDI").val(data[index].TDI);
-            
-            $("#card4_confirmacion").val(data[index].confirmacion);
-            tog = "card4_confirmacion";
-            sel = data[index].confirmacion;
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
-            
-            $("#card4_analista").val(data[index].comentario_analista);
-           
-            // $("#card5_resolucion").val(data[index].resolucionID);
-            // $("#card5_coment").val(data[index].resolucion_comentario);
-        }
-        else{
-          show_alert(2, data[0].mensajeError);
-        }
-      });
-    }
-
-   
-    
-  
-
-
-  //llamado a la modal wizar
-  var wizard = $('#wizard_EditarSolicitud').wizard({
-          keyboard : true,
-          contentHeight : 600,
-          contentWidth : 1000,
-          backdrop: 'static',
-          showCancel: 'true' ,
-          buttons: {
-              cancelText: "Cancelar",
-              nextText: "Siguiente",
-              backText: "Atras",
-              submitText: "Guardar",
-              submittingText: "Guardando..."
-              },
-              // submitUrl: "../../class/controller_solicitudes.php"
-
-     });
-          
-
-    //evento submit del wizard
-    wizard.on("submit", function(wizard) {
-        $.ajax({
-            url: "../../class/controller_aprobaciones.php",
-            type: "POST",
-            data: wizard.serialize()
-        }).done(function(response) {
-            var data = JSON.parse(response);
-            if(data[0].bandera ===  '1'){
-                show_alert(1, data[0].mensajeError);
-                wizard.submitSuccess();         // displays the success card
-                wizard.hideButtons();           // hides the next and back buttons
-                wizard.updateProgressBar(0);    // sets the progress meter to 0
-                cargarSolicitudes();
-            }else{
-                show_alert(2, data[0].mensajeError)
-                wizard.submitError();           // display the error card
-                wizard.hideButtons(); 
-            }
-
-           
-        }).fail(function(response) {
-            wizard.submitError();           // display the error card
-            wizard.hideButtons(); 
-        });
-    });
-
-    //================  eventos en tarjeta wizard-success   ===========
-    wizard.el.find(".wizard-success .im-done").click(function() {
-      wizard.hide();
-      setTimeout(function() {
-        wizard.reset(); 
-      }, 250);
-      
-    });
-
-   
-
-    //================  eventos en tarjeta wizard-error   ===========
-    wizard.el.find(".wizard-error .im-done").click(function() {
-      wizard.hide();
-      setTimeout(function() {
-        wizard.reset(); 
-      }, 250);
-    });
-
-    //================  cerrar y limpiar wizard ===============
-    wizard.on('closed', function(){
-      wizard.reset();
-    });
-
-    wizard.on("reset", function() {
-      wizard.modal.find(':input').val('');
-      wizard.modal.find('.form-group').removeClass('has-error').removeClass('has-succes');
-      $('#radioBtn a').removeClass('active').removeClass('btn-primary').addClass('notActive').addClass('btn-default');
-      $('select').val("-1");
-    });
-
-
-   // ================================================================================================== 
-    // //VALIDACION DE LAS TARJETAS DEL MODAL WIZARD
-    // ==================================================================================================
-     $(".numeros").keypress(function(tecla){
-       if( tecla.charCode >31 && (tecla.charCode < 48 || tecla.charCode > 57) )  return false;
-       else{
-        return true;
-       }
-    });
-    //-------------------------- Validacion de la primer tarjeta----------------------------------------- 
-    wizard.cards["card1"].on("validate", function(card) {
+  //-------------------------- Validacion de la primer tarjeta----------------------------------------- 
+  wizard.cards["card1"].on("validate", function(card) {
       wizard.hidePopovers();
       var sel1 = card.el.find("#card1_tipoSolicitud");
       var sel2 = card.el.find("#card1_tipoPrestamo");
@@ -393,8 +171,7 @@ $("#btn_confirmEnviar").on("click", function(e){
       if (val6 == ""){
         card.wizard.errorPopover(sel6,"Campo requerido");
         return false;
-      }
-    
+      } 
   });
   //--------------------------- Validaci¨®n de la segunda tarjeta--------------------------------------
   wizard.cards["card2"].on("validate", function(card){
@@ -599,19 +376,21 @@ $("#btn_confirmEnviar").on("click", function(e){
     return true;
   });
 
+});
 
 
- //Carga los comentarios
- wizard.cards["card6"].on("loaded", function(card) {
+
+//===============================CARGAR SOLICITUDES=========================
+function cargarComentarios(solicitudID){
   $.ajax({
     type: "POST",
-    url: "../../class/controller_solicitudes.php",
+    url: "../class/controller_solicitudes.php",
     data: {
       "opcion": "6",
-      "solicitudID":$("#solicitud_id").val()
+      "solicitudID":solicitudID
     },
     beforeSend: function(){
-      $("#tbody_solicitudes").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
+      $("#tbody_solicitudes").html('<div class = ""><img src="../img/load.gif" class = "img-responsive center-block" /></div>');
     },
     success: function(response){
       var datos = JSON.parse(response);
@@ -628,53 +407,257 @@ $("#btn_confirmEnviar").on("click", function(e){
         $("#tbody_comentarios").html(html);
       }
       else{
-        show_alert(2, "Error al obtener comentarios...");
+        console.log("Error al obtener comentarios...");
       }
 
     }
   });
-}); 
+  
+}
 
- //Carga los datos de RRHH
- wizard.cards["card7"].on("loaded", function(card) {
-   $.ajax({
+
+//=======================CARGAR INFORMACION DE RRHH=========================
+function cargarInfoRRHH(solicitudID){
+  $.ajax({
      type: "POST",
-     url: "../../class/controller_creditos.php",
+     url: "../class/controller_creditos.php",
      data: {
        "opcion": "6",
-       "solicitudID":$("#solicitud_id").val()
+       "solicitudID":solicitudID
      },
      beforeSend: function(){
-       $("#tbody_solicitudes").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
+       $("#tbody_solicitudes").html('<div class = ""><img src="../img/load.gif" class = "img-responsive center-block" /></div>');
      },
      success: function(response){
-       var datos = JSON.parse(response);
-       var index = 1;
-       if (datos[0].bandera === 1) {
-         if (datos.length > 1) {
-           $("#rrhh_salarioBruto").val(datos[index].salarioBruto);
-           $("#rrhh_salarioConDeduccion").val(datos[index].salarioConDeduccion);
-           $("#rrhh_derechos").val(datos[index].derechos);
-           $("#rrhh_antiguedad").val(datos[index].tiempoLabor);
-           $("#rrhh_comentario").val(datos[index].comentario);
-         }
-         else{
-           $("#title_rrhh").text("No hay informacion de Recursos Hunamos para este solicitante");
-         }
+      console.log(response);
+      var datos = JSON.parse(response);
+      var index = 1;
+      if (datos[0].bandera === 1) {
+       if (datos.length > 1) {
+         $("#rrhh_salarioBruto").val(datos[index].salarioBruto);
+         $("#rrhh_salarioConDeduccion").val(datos[index].salarioConDeduccion);
+         $("#rrhh_derechos").val(datos[index].derechos);
+         $("#rrhh_antiguedad").val(datos[index].tiempoLabor);
+         $("#rrhh_comentario").val(datos[index].comentario);
        }
        else{
-         show_alert(2, datos[0].mensajeError);
+         $("#title_rrhh").text("No hay informacion de Recursos Hunamos para este solicitante");
+       }
+     }
+     else{
+       show_alert(2, datos[0].mensajeError);
+     }
+
+    }
+  });
+
+}
+
+
+
+function llenarWizard(solicitudID){
+  $.post('../../class/controller_aprobaciones.php', {"opcion":"3", "solicitudID": solicitudID}, function(response){
+      var data = JSON.parse(response);
+      if (data[0].bandera === '1') {
+          var index = 1;
+          $("#solicitud_id").val(solicitudID);
+          
+          $("#card1_tipoSolicitud").val(data[index].tipoSolicitudID);
+          $("#card1_tipoPrestamo").val(data[index].tipoPrestamoID);
+          $("#card1_prestamoID").val(data[index].prestamoID);
+          $("#card1_cant_solicitada").val(data[index].cantSolicitada);
+          $("#card1_destino").val(data[index].destino);
+          
+          $("#card1_res").val(data[index].responsabilidadID);
+          tog = "card1_res";
+          sel = data[index].responsabilidadID;
+          $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+          
+          $("#card1_aval").val(data[index].tipo_aprobacion);
+          tog = "card1_aval";
+          sel = data[index].tipo_aprobacion;
+          $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+          
+
+          $("#card2_Pnombre_sol").val(data[index].soli_Pnombre);
+          $("#card2_Snombre_sol").val(data[index].soli_Snombre);
+          $("#card2_Papellido_sol").val(data[index].soli_Papellido);
+          $("#card2_Sapellido_sol").val(data[index].soli_Sapellido);
+          $("#card2_identidad_sol").val(data[index].soli_identidad);
+          $("#card2_RTN_sol").val(data[index].soli_RTN);
+          
+          $("#card2_sexo").val(data[index].soli_sexo);
+          tog = "card2_sexo";
+          sel = data[index].soli_sexo;
+          $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+          
+          $("#card2_edad").val(calcularEdad(data[index].soli_fechaNacimiento));
+
+          var fechaNac = data[index].soli_fechaNacimiento.split('-');
+          $("#card2_anyo").val(fechaNac[0]);
+          $("#card2_Mes").val(fechaNac[1]);
+          $("#card2_dia").val(fechaNac[2]);
+        
+         
+          $("#card2_estadoCivil").val(data[index].soli_estadoCivil);
+          tog = "card2_estadoCivil";
+          sel = data[index].soli_estadoCivil;
+          $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+
+
+          $("#card2_Jefe").val(data[index].soli_jefe);
+          $("#card2_Tservicio").val(data[index].soli_aniosTrabajo);
+
+
+          $("#card3_Pnombre_fiador").val(data[index].fiador_Pnombre);
+          $("#card3_Snombre_fiador").val(data[index].fiador_Snombre);
+          $("#card3_Papellido_fiador").val(data[index].fiador_Papellido);
+          $("#card3_Sapellido_fiador").val(data[index].fiador_Sapellido);
+          $("#card3_identidad_fiador").val(data[index].fiador_identidad);
+
+
+          // $("#card3_sexo").val(data[index].fiador_sexo);
+          // tog = "card3_sexo";
+          // sel = data[index].fiador_sexo;
+          // $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+          
+
+          $("#card3_nombre_empresa").val(data[index].fiador_empresa);
+          
+                   
+          $("#card3_estadoCivil").val(data[index].fiador_estadoCivil);
+          tog = "card3_estadoCivil";
+          sel = data[index].fiador_estadoCivil;
+          $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+
+          // var fechaNac = data[index].fiador_fechaNacimiento.split('-');
+          // $("#card3_anyo").val(fechaNac[0]);
+          // $("#card3_Mes").val(fechaNac[1]);
+          // $("#card3_dia").val(fechaNac[2]);
+          
+          $("#card4_monto").val(data[index].monto_aprobado);
+          $("#card4_plazoap").val(data[index].plazo_aprobado);
+          $("#card4_cuota").val(data[index].cuota_nivelada);
+          $("#card4_interes").val(data[index].tasa_interes);
+          $("#card4_garantia").val(data[index].descrpicion_garantia);
+          $("#card4_RCI").val(data[index].RCI);
+          $("#card4_TDI").val(data[index].TDI);
+          
+          $("#card4_confirmacion").val(data[index].confirmacion);
+          tog = "card4_confirmacion";
+          sel = data[index].confirmacion;
+          $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').removeClass('btn-default').addClass('btn-primary').addClass('active');
+          
+          $("#card4_analista").val(data[index].comentario_analista);
+         
+          // $("#card5_resolucion").val(data[index].resolucionID);
+          // $("#card5_coment").val(data[index].resolucion_comentario);
+      }
+      else{
+        show_alert(2, data[0].mensajeError);
+      }
+    });
+  }
+
+
+
+// ==========================================================
+//====================CARGA DE USUARIOS ========================
+function cargarSolicitudes(){
+  $.ajax({
+    type: "POST",
+    url: "../../class/controller_aprobaciones.php",
+    data: {
+      "opcion": "1"
+    },
+    beforeSend: function(){
+      $("#tbody_creditos").html('<div class = ""><img src="../../img/load.gif" class = "img-responsive center-block" /></div>');
+    },
+    success: function(response){
+      $("#tbody_creditos").html("");
+      var tr = "";
+      var estado = "";
+      var datos = JSON.parse(response);
+      if (datos[0].bandera  === 1) {
+        for(var index = 1; index < datos.length ; index++){
+          if (datos[index].estadoID === "4") {
+            estado = '<td><center><label href="#" class="label label-default">Sin resolucion</label></center></td>';
+            enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+          }else{
+            if (datos[index].estadoID === "5") {
+              estado = '<td><center><label href="#" class="label label-success">Aprobada</label></center></td>';
+              enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
+            }else{
+              if(datos[index].estadoID === "6") {
+                estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
+                enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+
+              }else{
+                if (datos[index].estadoID === "7"){
+                  estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+                }
+              }
+            }
+          }
+
+          tr += '<tr>'
+          +'<td><center>'+datos[index].solicitudID+'</center></td>'
+          + estado
+          +'<td><center>'+datos[index].fechaCreacion+'</center></td>'
+          +'<td><center>'+datos[index].identidad+'</center></td>'
+          +'<td><center>'+datos[index].solicitanteNombre+'</center></td>'
+          +' <td><center><label href="#" class="label label-default">'+datos[index].tipoSolicitud+'</label></center></td>'
+
+          + '<td>'
+          +    '<center><button  href="#" data-solicitud="'+datos[index].solicitudID+'" class="btn_editar_credito btn btn-info"><i class="glyphicon glyphicon-edit"></i></button></center>'
+          +  '</td>'
+          + '<td>'
+          +    enviada
+          +  '</td>'
+          + '</tr>';
+          + '</tr>';
+
+        }
+        $("#tbody_creditos").html(tr);
+        eventos_creditos();
+
+         // estilo de tabla
+         $('#tbl_creditos').dataTable();
+
+
+         
        }
 
-     }
+     },
    });
+}
 
-});
+  
 
+// ============================Eventos de credito===========================
+function eventos_creditos(){
+  // ==== eventos para modal_confirm
+  $(".btn_enviar").on("click", function(e){
+      e.preventDefault();
+      enviarSolicitudID = $(this).data("solicitud");
+      $("#enviar_solicitud").data("solicitud_id", enviarSolicitudID);
+      $("#modal_confirmEnviar").modal("show");
+  });
 
+  //evento abrir wizard
+  $('.btn_editar_credito').click(function(e) {
+        e.preventDefault();
+        wizard.reset();
+        $("#opcion").val("4");
+        var solicitud = $(this).data("solicitud");
+        wizarTitle = "Formulario editar solicitud #"+solicitud;
+        wizard.setTitle(wizarTitle);
+        llenarWizard(solicitud);
+        wizard.show();
+  });
+}
 
-    
-});
 
 //============================   ALERTAS   =====================================
 function show_alert(option, msj){
