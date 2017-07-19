@@ -44,7 +44,7 @@ $(document).ready(function() {
   })
 
   //llamado a la modal wizar
-  var wizard = $('#wizard_EditarSolicitud').wizard({
+   wizard = $('#wizard_EditarSolicitud').wizard({
     keyboard : true,
     contentHeight : 600,
     contentWidth : 1000,
@@ -384,7 +384,7 @@ $(document).ready(function() {
 function cargarComentarios(solicitudID){
   $.ajax({
     type: "POST",
-    url: "../class/controller_solicitudes.php",
+    url: "../../class/controller_solicitudes.php",
     data: {
       "opcion": "6",
       "solicitudID":solicitudID
@@ -420,7 +420,7 @@ function cargarComentarios(solicitudID){
 function cargarInfoRRHH(solicitudID){
   $.ajax({
      type: "POST",
-     url: "../class/controller_creditos.php",
+     url: "../../class/controller_creditos.php",
      data: {
        "opcion": "6",
        "solicitudID":solicitudID
@@ -557,6 +557,8 @@ function llenarWizard(solicitudID){
         show_alert(2, data[0].mensajeError);
       }
     });
+    cargarComentarios(solicitudID);
+    cargarInfoRRHH(solicitudID);
   }
 
 
