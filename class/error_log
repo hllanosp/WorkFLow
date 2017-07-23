@@ -1,0 +1,19 @@
+[18-Jul-2017 05:20:24 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.' in /home/hiwypani/public_html/class/controller_solicitudes.php:251
+Stack trace:
+#0 /home/hiwypani/public_html/class/controller_solicitudes.php(251): PDO->query('select @mensaje...')
+#1 {main}
+  thrown in /home/hiwypani/public_html/class/controller_solicitudes.php on line 251
+[19-Jul-2017 04:46:58 UTC] PHP Warning:  include(conexion/config.inc.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 18
+[19-Jul-2017 04:46:58 UTC] PHP Warning:  include(conexion/config.inc.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 18
+[19-Jul-2017 04:46:58 UTC] PHP Warning:  include(): Failed opening 'conexion/config.inc.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 18
+[19-Jul-2017 04:46:58 UTC] PHP Warning:  include(scripts/encrypt_functions.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 19
+[19-Jul-2017 04:46:58 UTC] PHP Warning:  include(scripts/encrypt_functions.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 19
+[19-Jul-2017 04:46:58 UTC] PHP Warning:  include(): Failed opening 'scripts/encrypt_functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 19
+[19-Jul-2017 04:46:58 UTC] PHP Fatal error:  Call to a member function prepare() on null in /home/hiwypani/public_html/class/controller_aprobaciones.php on line 140
+[21-Jul-2017 04:18:44 UTC] PHP Warning:  include(conexion/config.inc.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_solicitudes.php on line 18
+[21-Jul-2017 04:18:44 UTC] PHP Warning:  include(conexion/config.inc.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_solicitudes.php on line 18
+[21-Jul-2017 04:18:44 UTC] PHP Warning:  include(): Failed opening 'conexion/config.inc.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/hiwypani/public_html/class/controller_solicitudes.php on line 18
+[21-Jul-2017 04:18:44 UTC] PHP Warning:  include(scripts/encrypt_functions.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_solicitudes.php on line 19
+[21-Jul-2017 04:18:44 UTC] PHP Warning:  include(scripts/encrypt_functions.php): failed to open stream: No such file or directory in /home/hiwypani/public_html/class/controller_solicitudes.php on line 19
+[21-Jul-2017 04:18:44 UTC] PHP Warning:  include(): Failed opening 'scripts/encrypt_functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/hiwypani/public_html/class/controller_solicitudes.php on line 19
+[21-Jul-2017 04:18:44 UTC] PHP Fatal error:  Call to a member function prepare() on null in /home/hiwypani/public_html/class/controller_solicitudes.php on line 396

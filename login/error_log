@@ -1,0 +1,10 @@
+[18-Jul-2017 06:27:18 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hiwypani_workflow3.usuarios' doesn't exist' in /home/hiwypani/public_html/login/login_submit.php:11
+Stack trace:
+#0 /home/hiwypani/public_html/login/login_submit.php(11): PDOStatement->execute()
+#1 {main}
+  thrown in /home/hiwypani/public_html/login/login_submit.php on line 11
+[18-Jul-2017 06:27:31 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hiwypani_workflow3.usuarios' doesn't exist' in /home/hiwypani/public_html/login/login_submit.php:11
+Stack trace:
+#0 /home/hiwypani/public_html/login/login_submit.php(11): PDOStatement->execute()
+#1 {main}
+  thrown in /home/hiwypani/public_html/login/login_submit.php on line 11
