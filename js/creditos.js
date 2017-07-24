@@ -26,20 +26,23 @@ $(document).ready(function() {
 
   $("#btn_confirmEnviar").on("click", function(e){
     e.preventDefault();
-    var comment = $("#comentario").val();
-    $.post('../class/controller_creditos.php', {"opcion":"2", "comment": comment, "solicitudID": enviarSolicitudID}, function(response){
-      console.log(response);
-      var data = JSON.parse(response);
-      if (data[0].bandera === '1') {
-        cargarSolicitudes();
-        show_alert(1, data[0].mensajeError);
-        $("#modal_confirmEnviar").modal("hide");
-        $("#comentario").val("");
-      }
-      else{
-        show_alert(2, data[0].mensajeError);
-      }
-    });
+    var resolucionID = $("#card5_resolucion").val();
+    var comment = $("#card5_coment").val();
+    if(validarForm()){
+      $.post('../class/controller_creditos.php', {"opcion":"2", "comment": comment, "resolucion":resolucionID,"solicitudID": enviarSolicitudID}, function(response){
+        console.log(response);
+        var data = JSON.parse(response);
+        if (data[0].bandera === '1') {
+          cargarSolicitudes();
+          show_alert(1, data[0].mensajeError);
+          $("#modal_confirmEnviar").modal("hide");
+          $("#comentario").val("");
+        }
+        else{
+          show_alert(2, data[0].mensajeError);
+        }
+      });
+    }
   });
 
 
@@ -723,4 +726,27 @@ function calcularEdad(fecha)
 
     // calculamos los meses
     return edad;
+}
+
+
+function  validarForm(){
+    var card5_resolucion= $("#card5_resolucion").val();
+    var card5_coment= $("#card5_coment").val();
+      $('.form-group').removeClass("has-error");
+
+      if (card5_resolucion === "-1") {
+          $("#verResolucion").addClass("has-error");
+          $("#verResolucion").find("label").text("Campo requerido.");
+          $("#card5_resolucion").focus();
+          return false;
+      }
+
+      if (card5_coment === "") {
+          $("#verComments").addClass("has-error");
+          $("#verComments").find("label").text("Comentario: Campo requerido.");
+          $("#card5_coment").focus();
+          return false;
+      }
+      
+      return true;
 }

@@ -127,9 +127,25 @@
                 <form id="" class="form" name="">
                   <input type = "text" id = "data_envio_solicitud"  hidden>
                   <h2>¿Esta seguro de realizar esta acción?</h2>
-                  <h4>Enviar la solicitud a revisión de Recursos Humanos</h4>
-                  <br>
                   <h5>Esta acción no se puede revertir.</h5>
+                  <hr>
+                  <div class="row" >
+                   <label class="control-label col-sm-4" for="">Módulo Destino:</label>
+                   <div class="form-inline">
+                     <div class="col-sm-5">
+                       <div class="form-group verModuloDestino">
+                         <select name="moduloDestino" id="moduloDestino" class="form-control" required>
+                           <option value= "-1" selected>----Seleccione una opcion valida----</option>
+                           <option value= "2">Módulo de Recursos Humanos</option>
+                           <option value= "3">Módulo de Analista de Créditos</option>
+                           <option value= "4">Módulo de Aprobaciones</option>
+                         </select>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+
+                 <br>
                     <div id="" class="form-group">
                         <label class="control-label">Comentario:</label>
                         <textarea type="text" class="form-control" name="comentario" id="comentario" placeholder = "Ingrese un comentario..." required></textarea>

@@ -94,7 +94,7 @@ switch($opcion){
             try{
                 $comment = $_POST["comment"];
                 $solicitudID = $_POST["solicitudID"];
-                $nuevoEstado = 4;
+                $nuevoEstado = $_POST["resolucion"];
 
                 $query = $db->prepare("CALL SP_ENVIAR_SOLICITUD_CREDITOS(?,?,?,?, @mensajeError,@codigoError)");
                 $query->bindParam(1,$solicitudID, PDO::PARAM_INT);
