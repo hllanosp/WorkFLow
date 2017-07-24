@@ -17,9 +17,7 @@ else{
 <?php 
 include ($maindir.'conexion/config.inc.php');
 include ($maindir.'scripts/encrypt_functions.php');
-
 $opcion = $_POST['opcion'];
-
 switch($opcion){
         case 0: // inserta una nueva solicitud con todos sus datos (persona, prestamo)
             if(true){ //validacion de roles
@@ -349,7 +347,7 @@ switch($opcion){
                 try{
                     $comment = $_POST["comment"];
                     $solicitudID = $_POST["solicitudID"];
-                    $nuevoEstado = 2;
+                    $nuevoEstado = $_POST["moduloDestino"];
 
                     $query = $db->prepare("CALL SP_ENVIAR_SOLICITUD(?,?,?,?, @mensajeError,@codigoError)");
                     $query->bindParam(1,$solicitudID, PDO::PARAM_INT);

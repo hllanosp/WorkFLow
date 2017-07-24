@@ -677,7 +677,7 @@
         </div>
       </div>
 
-      <div class="col-xs-5">
+      <div class="col-xs-5 col-xs-offset-2">
         <div class="form-group">
           <label class="control-label">Posición o Cargo</label>
           <div class="input-group">
@@ -1088,7 +1088,7 @@
   </div>
 
 
-  <div class="wizard-failure">
+    <div class="wizard-failure">
       <!-- <div class="alert alert-error">
         <strong>There was a problem</strong> submitting the form.
         Please try again in a minute.

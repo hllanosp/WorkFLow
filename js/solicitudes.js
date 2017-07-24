@@ -25,18 +25,21 @@ $(document).ready(function(){
     $("#enviar_solicitud").on("click", function(e){
         e.preventDefault();
         var comment = $("#comentario").val();
-        $.post('../../class/controller_solicitudes.php', {"opcion":"2", "comment": comment, "solicitudID": enviarSolicitudID}, function(response){
-            var data = JSON.parse(response);
-            if (data[0].bandera === '1') {
-                cargarSolicitudes();
-                show_alert(1, data[0].mensajeError);
-                $("#modal_confirmEnviar").modal("hide");
-                $("#comentario").val("");
-            }
-            else{
-              show_alert(2, data[0].mensajeError);
-            }
-          });
+        var moduloDestino = $("#moduloDestino").val();
+        if (validarForm()) {
+            $.post('../../class/controller_solicitudes.php', {"opcion":"2", "comment": comment, "solicitudID": enviarSolicitudID, "moduloDestino": moduloDestino}, function(response){
+                var data = JSON.parse(response);
+                if (data[0].bandera === '1') {
+                    cargarSolicitudes();
+                    show_alert(1, data[0].mensajeError);
+                    $("#modal_confirmEnviar").modal("hide");
+                    $("#comentario").val("");
+                }
+                else{
+                  show_alert(2, data[0].mensajeError);
+                }
+              });
+        }
 
     });
 
@@ -1040,3 +1043,21 @@ function calcularEdad(fecha)
     return edad;
 }
 
+
+
+function  validarForm(){
+    var moduloDestino= $("#moduloDestino").val();
+
+
+      $('.form-group').removeClass("has-error");
+
+      if (moduloDestino === "-1") {
+          $("#verModuloDestino").addClass("has-error");
+          $("#verModuloDestino").find("label").text("Campo requerido.");
+          $("#moduloDestino").focus();
+          return false;
+      }
+      
+      return true;
+
+}

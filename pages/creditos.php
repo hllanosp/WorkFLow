@@ -807,12 +807,26 @@ require_once($maindir."pages/footer.php");
         <div class="modal-body">
           <form id="formConfirm" class="form" name="formConfirm">
             <h2>¿Esta seguro de realizar esta acción?</h2>
-            <h4>Aprobar la solicitud del cliente</h4>
+             <hr>
+             <div class="row" >
+              <label class="control-label col-sm-4" for="">Resolución del pŕestamo:</label>
+              <div class="form-inline">
+                <div class="col-sm-5">
+                  <div class="form-group verResolucion">
+                    <select name="card5_resolucion" id="card5_resolucion" class="form-control" required>
+                      <option value= "4" selected>Enviar Solicitud al Aprobador</option>
+                      <option value= "1">Devolver a Módulo Ingreso de Solicitudes</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
             <br>
             <h5>Esta acción no se puede revertir.</h5>
-            <div id="" class="form-group">
+            <div id="" class="form-group verComments">
               <label class="control-label">Comentario:</label>
-              <textarea type="text" class="form-control" name="comentario" id="comentario" placeholder = "Ingrese un comentario..." required></textarea>
+              <textarea type="text" class="form-control" name="card5_coment" id="card5_coment" placeholder = "Ingrese un comentario..." required></textarea>
             </div>
             
             <br>
