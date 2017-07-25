@@ -463,6 +463,66 @@
     </div>
 
     <!-- ============================================ -->
+    <!-- ==================================================== -->
+
+    <div class="wizard-card" data-cardname="card7" style="height: 525px;">
+      <h3 id = "title_rrhh">Información de RRHH</h3>
+      <form id="" class="form" name="">
+        <input type = "text" id = "data_envio_solicitud" hidden>
+        <br>
+        <div class="row">
+          <div class="form-group" id="verSalarioBruto" >
+            <label class="control-label col-sm-5" style = "text-align: right;" for="rrhh_salarioBruto" >Salario Bruto:</label>
+            <div class="input-group col-sm-5">
+              <input id="rrhh_salarioBruto" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_salarioBruto" value="" placeholder="">
+              <span class="input-group-addon">LPS</span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group" id="verSalaConDeduccion">
+            <label class="control-label col-sm-5 " style = "text-align: right;" for="rrhh_salarioConDeduccion">Salario con Deducciones:</label>
+            <div class="input-group col-sm-5">
+              <input id="rrhh_salarioConDeduccion" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_salarioConDeduccion" value="" placeholder="">
+              <span class="input-group-addon">LPS</span>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="row">
+          <div class="form-group" id = "verDerechos">
+            <label class="control-label col-sm-5" style = "text-align: right;" for="rrhh_derechos">Derechos Adquiridos a la Fecha:</label>
+            <div class="input-group col-sm-5">
+              <input id="rrhh_derechos" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_derechos" value="" placeholder="">                                        
+              <span class="input-group-addon">LPS</span>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="row">
+          <div class="form-group" id = "verAntiguedad">
+            <label class="control-label col-sm-5" style = "text-align: right;"for="rrhh_antiguedad">Antiguedad Laboral:</label>
+            <div class="input-group col-sm-5">
+              <input id="rrhh_antiguedad" type="number" min = "0" class="form-control numeros" name="rrhh_antiguedad" value="" placeholder="">
+              <span class="input-group-addon">Años</span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group" id = "verComment" >
+            <label class="control-label col-xs-2" style = "text-align: right;">Comentario:</label>
+            <div class="col-xs-10">
+              <textarea type="text" class="form-control" name="rrhh_comentario" id="rrhh_comentario" placeholder = "Ingrese un comentario..." required></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
 
     <!-- ============================================ -->
     <div class="wizard-card" data-cardname="card4" style="height: 525px;">
@@ -564,7 +624,7 @@
       <div class="row">
         <div class="form-inline">
           <div class="form-group">
-            <label for="">Comentarios del analista</label>
+            <label for="">Comentarios del Aprobador</label>
             <textarea name="card4_analista" maxlength="300" id="card4_analista" cols="55" rows="4" class="form-control"></textarea>
           </div>
         </div>
@@ -572,35 +632,6 @@
     </div>
 
 
-    <!-- ============================================ -->
-    <!-- <div class="wizard-card" data-cardname="card5" style="height: 525px;">
-        <h3 hidden>Resolución del Préstamo</h3>
-        <br><br>
-        <div class="row">
-          <label class="control-label col-sm-4" for="">Resolución del pŕestamo:</label>
-          <div class="form-inline">
-            <div class="col-sm-5">
-              <div class="form-group">
-                <select name="card5_resolucion" id="card5_resolucion" class="form-control">
-                  <option value= "-1" selected>----Seleccione una opcion valida----</option>
-                  <option value= "1">Aprobado</option>
-                  <option value= "2">Denegado</option>
-                  <option value= "3">Devuelto</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-       <div class="row">
-        <div class="form-inline">
-          <div class="form-group">
-            <label for="">Comentarios del analista</label>
-            <textarea name="card5_coment" maxlength="200" id="card5_coment" cols="55" rows="4" class="form-control"></textarea>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <!-- ============================================ -->
     <div class="wizard-card" data-cardname="card6" style="height: 525px;">
       <h3 hidden>Comentarios</h3>
@@ -619,66 +650,7 @@
     <!-- ======================================================== -->
 
 
-    <!-- ==================================================== -->
-
-    <div class="wizard-card" data-cardname="card7" style="height: 525px;">
-      <h3 id = "title_rrhh">Información de RRHH</h3>
-      <form id="" class="form" name="">
-        <input type = "text" id = "data_envio_solicitud" hidden>
-        <br>
-        <div class="row">
-          <div class="form-group" id="verSalarioBruto" >
-            <label class="control-label col-sm-5" style = "text-align: right;" for="rrhh_salarioBruto" >Salario Bruto:</label>
-            <div class="input-group col-sm-5">
-              <input id="rrhh_salarioBruto" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_salarioBruto" value="" placeholder="">
-              <span class="input-group-addon">LPS</span>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="form-group" id="verSalaConDeduccion">
-            <label class="control-label col-sm-5 " style = "text-align: right;" for="rrhh_salarioConDeduccion">Salario con Deducciones:</label>
-            <div class="input-group col-sm-5">
-              <input id="rrhh_salarioConDeduccion" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_salarioConDeduccion" value="" placeholder="">
-              <span class="input-group-addon">LPS</span>
-            </div>
-          </div>
-        </div>
-
-        <br>
-        <div class="row">
-          <div class="form-group" id = "verDerechos">
-            <label class="control-label col-sm-5" style = "text-align: right;" for="rrhh_derechos">Derechos Adquiridos a la Fecha:</label>
-            <div class="input-group col-sm-5">
-              <input id="rrhh_derechos" type="number" step="0.01" min="0" maxlength="11" class="form-control numeros" name="rrhh_derechos" value="" placeholder="">                                        
-              <span class="input-group-addon">LPS</span>
-            </div>
-          </div>
-        </div>
-
-        <br>
-        <div class="row">
-          <div class="form-group" id = "verAntiguedad">
-            <label class="control-label col-sm-5" style = "text-align: right;"for="rrhh_antiguedad">Antiguedad Laboral:</label>
-            <div class="input-group col-sm-5">
-              <input id="rrhh_antiguedad" type="number" min = "0" class="form-control numeros" name="rrhh_antiguedad" value="" placeholder="">
-              <span class="input-group-addon">Años</span>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="form-group" id = "verComment" >
-            <label class="control-label col-xs-2" style = "text-align: right;">Comentario:</label>
-            <div class="col-xs-10">
-              <textarea type="text" class="form-control" name="rrhh_comentario" id="rrhh_comentario" placeholder = "Ingrese un comentario..." required></textarea>
-            </div>
-          </div>
-        </div>
-      </form>
-
-    </div>
+    
 
     <!-- =================================================================== -->
 
