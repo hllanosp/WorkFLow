@@ -24,7 +24,7 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CREAR_SOLICITUD`(IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(13), IN `card2_RTN` VARCHAR(14), IN `card2_edad` INT, IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `card5_empresaTel` VARCHAR(30), IN `card5_empresaExt` VARCHAR(30), IN `card6_sexo` VARCHAR(1), IN `card6_tipoVivienda` INT, IN `card6_hijos` INT, IN `card6_empresaDireccion` VARCHAR(200), IN `usuarioID` INT(11), OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_CREAR_SOLICITUD`(IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(13), IN `card2_RTN` VARCHAR(14), IN `card2_edad` INT, IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `card5_empresaTel` VARCHAR(30), IN `card5_empresaExt` VARCHAR(30), IN `card6_sexo` VARCHAR(1), IN `card6_tipoVivienda` INT, IN `card6_hijos` INT, IN `card6_empresaDireccion` VARCHAR(200), IN `usuarioID` INT(11), OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))
 BEGIN
 
 	DECLARE CONYUGUE_ID INT;
@@ -349,7 +349,7 @@ BEGIN
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_APRO`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_EDITAR_APRO`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
@@ -435,7 +435,7 @@ BEGIN
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_CREDITOS`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_EDITAR_CREDITOS`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card1_prestamoID` INT, IN `card3_destino` INT(11), IN `card1_responsabilidad` INT, IN `card1_tipoAprobacion` BOOLEAN, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_estadoCivil` INT, IN `card4_jefe` VARCHAR(100), IN `card4_tiempo` INT, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_empresa` VARCHAR(100), IN `card4_monto` DOUBLE, IN `card4_plazoap` INT, IN `card4_cuota` DOUBLE, IN `card4_interes` DOUBLE, IN `card4_RCI` DOUBLE, IN `card4_TDI` DOUBLE, IN `card4_analista` VARCHAR(200), IN `card4_confirmacion` BOOLEAN, IN `card2_fechaNaci` VARCHAR(10), IN `card4_garantia` VARCHAR(200), IN `card2_jefe` VARCHAR(100), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
     DECLARE SOLICITANTE_ID INT;
     DECLARE PRESTAMO_ID INT;
@@ -523,7 +523,7 @@ BEGIN
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(14), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `card5_empresaTel` VARCHAR(30), IN `card5_empresaExt` VARCHAR(30), IN `card6_sexo` VARCHAR(1), IN `card6_tipoVivienda` INT, IN `card6_hijos` INT, IN `card6_empresaDireccion` VARCHAR(200), IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_EDITAR_SOLICITUD`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_identidad` VARCHAR(14), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_pagoVivienda` DOUBLE, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `card3_cant` DOUBLE, IN `card3_plazo` INT, IN `card3_destino` INT(11), IN `card4_empresa` VARCHAR(50), IN `card4_sueldo` DOUBLE, IN `card4_tiempo` INT, IN `card4_cargo` VARCHAR(100), IN `card4_otroIngreso` VARCHAR(100), IN `card4_direccion` VARCHAR(100), IN `card4_telefono` VARCHAR(36), IN `card4_telefonoExt` VARCHAR(5), IN `card4_jefe` VARCHAR(100), IN `card4_selectActividad` INT, IN `card5_Pnombre` VARCHAR(30), IN `card5_Snombre` VARCHAR(30), IN `card5_Papellido` VARCHAR(30), IN `card5_Sapellido` VARCHAR(30), IN `card5_identidad` VARCHAR(14), IN `card5_fechaNacimiento` VARCHAR(10), IN `card5_profesion` VARCHAR(100), IN `card5_ingresoMensual` DOUBLE, IN `card5_lugarLabor` VARCHAR(100), IN `card5_cargo` VARCHAR(100), IN `card5_tel` VARCHAR(30), IN `card5_cel` VARCHAR(30), IN `card5_tipoVivienda` INT(11), IN `card5_pagoVivienda` DOUBLE, IN `card6_Pnombre` VARCHAR(30), IN `card6_Snombre` VARCHAR(30), IN `card6_Papellido` VARCHAR(30), IN `card6_Sapellido` VARCHAR(30), IN `card6_identidad` VARCHAR(13), IN `card6_residencia` VARCHAR(100), IN `card6_direccion` VARCHAR(100), IN `card6_tel` VARCHAR(30), IN `card6_cel` VARCHAR(30), IN `card6_email` VARCHAR(100), IN `card6_estadoCivil` INT, IN `card6_dependientes` INT, IN `card6_empresa` VARCHAR(100), IN `card6_posicion` VARCHAR(100), IN `card6_tiempoServicio` INT, IN `card6_sueldoMensual` DOUBLE, IN `card6_otrosIngresos` DOUBLE, IN `card6_empresaTel` VARCHAR(30), IN `card6_empresaExt` VARCHAR(5), IN `card6_jefe` VARCHAR(100), IN `card6_selectActividad` INT, IN `card7_nombre` VARCHAR(30), IN `card7_tel` VARCHAR(30), IN `card7_trabajo` VARCHAR(30), IN `card7_parentesco` VARCHAR(30), IN `card7_nombre2` VARCHAR(30), IN `card7_tel2` VARCHAR(30), IN `card7_trabajo2` VARCHAR(30), IN `card7_parentesco2` VARCHAR(30), IN `card8_nombre` VARCHAR(30), IN `card8_tel` VARCHAR(30), IN `card8_trabajo` VARCHAR(30), IN `card8_parentesco` VARCHAR(30), IN `card5_empresaTel` VARCHAR(30), IN `card5_empresaExt` VARCHAR(30), IN `card6_sexo` VARCHAR(1), IN `card6_tipoVivienda` INT, IN `card6_hijos` INT, IN `card6_empresaDireccion` VARCHAR(200), IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
     DECLARE CONYUGUE_ID INT;
     DECLARE SOLICITANTE_ID INT;
@@ -702,7 +702,7 @@ BEGIN
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 	DECLARE TIPO_SOLICITUD INT;
     DECLARE NUEVO_ESTADO INT;
@@ -745,7 +745,7 @@ BEGIN
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_APRO`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_APRO`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 	DECLARE TIPO_SOLICITUD INT;
     DECLARE NUEVO_ESTADO INT;
@@ -783,7 +783,7 @@ BEGIN
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_CREDITOS`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_CREDITOS`(IN `solicitud_ID` INT(11), IN `nuevoEstado` INT, IN `usuarioID` INT, IN `comentario` VARCHAR(200), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
@@ -822,7 +822,7 @@ BEGIN
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_RRHH`(IN `solicitudID` INT, IN `rrhh_salarioBruto` DOUBLE, IN `rrhh_salarioConDeduccion` DOUBLE, IN `rrhh_derechos` DOUBLE, IN `rrhh_antiguedad` DOUBLE, IN `rrhh_comentario` VARCHAR(200), IN `nuevoEstado` INT, IN `usuarioID` INT, OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_ENVIAR_SOLICITUD_RRHH`(IN `solicitudID` INT, IN `rrhh_salarioBruto` DOUBLE, IN `rrhh_salarioConDeduccion` DOUBLE, IN `rrhh_derechos` DOUBLE, IN `rrhh_antiguedad` DOUBLE, IN `rrhh_comentario` VARCHAR(200), IN `nuevoEstado` INT, IN `usuarioID` INT, OUT `mensajeError` VARCHAR(100), OUT `codigoError` INT(11))
 BEGIN
 
 DECLARE SOLICITANTE_ID INT;
@@ -867,7 +867,7 @@ COMMIT;
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_APRO`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_APRO`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
     NO SQL
 BEGIN
     DECLARE PRESTAMO_ID int;
@@ -961,7 +961,7 @@ INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_COMENTARIOS`(IN `solicitudID` INT, OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_COMENTARIOS`(IN `solicitudID` INT, OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200))
     NO SQL
 BEGIN
 DECLARE CONYUGUE_ID INT;
@@ -1001,7 +1001,7 @@ SET codigoError = 1;
 COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_COMENTARIOS_RRHH`(IN `solicitudID` INT, OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_COMENTARIOS_RRHH`(IN `solicitudID` INT, OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200))
     NO SQL
 BEGIN
 
@@ -1027,7 +1027,7 @@ SET codigoError = 1;
 COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_CREDITOS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_CREDITOS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
     NO SQL
 BEGIN
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -1117,7 +1117,7 @@ INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_REFERENCIAS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitud_id` INT)
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_REFERENCIAS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitud_id` INT)
     NO SQL
 BEGIN
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -1138,7 +1138,7 @@ BEGIN
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_RRHH`(IN `solicitudID` INT(11), OUT `codigoError` INT(11), OUT `mensajeError` VARCHAR(200))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_RRHH`(IN `solicitudID` INT(11), OUT `codigoError` INT(11), OUT `mensajeError` VARCHAR(200))
     NO SQL
 BEGIN
 DECLARE SOLICITANTE_ID INT;
@@ -1161,7 +1161,7 @@ SET codigoError = 1;
 COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_SOLICITUD`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_OBTENER_SOLICITUD`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
     NO SQL
 BEGIN
   DECLARE EXIT HANDLER FOR SQLEXCEPTION
@@ -1305,7 +1305,7 @@ BEGIN
   COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_PRUEBA`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_PRUEBA`(IN `solicitudID` INT(11), IN `card1_tipoSolicitud` INT, IN `card1_tipoPrestamo` INT, IN `card2_Pnombre` VARCHAR(30), IN `card2_Snombre` VARCHAR(30), IN `card2_Papellido` VARCHAR(30), IN `card2_Sapellido` VARCHAR(30), IN `card2_RTN` VARCHAR(14), IN `card2_sexo` CHAR(1), IN `card2_tipoVivienda` INT, IN `card2_fechaNacimiento` VARCHAR(10), IN `card2_lugarNaci` VARCHAR(100), IN `card2_direccion` VARCHAR(100), IN `card2_nacionalidad` VARCHAR(50), IN `card2_residencia` VARCHAR(100), IN `card2_ocupacion` VARCHAR(100), IN `card2_email` VARCHAR(100), IN `card2_tel` VARCHAR(15), IN `card2_cel` VARCHAR(15), IN `card2_estadoCivil` INT, IN `card2_dependientes` INT, IN `card2_hijos` INT, IN `usuarioID` INT(11), OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
     DECLARE _SOLICITANTE int;
     DECLARE PRESTAMO_ID int;
@@ -1380,7 +1380,7 @@ BEGIN
     COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -1406,7 +1406,7 @@ START TRANSACTION;
 COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_APRO`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_APRO`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -1437,7 +1437,7 @@ COMMIT;
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_CREDITOS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_CREDITOS`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
@@ -1465,7 +1465,7 @@ BEGIN
 	COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_RRHH`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
+CREATE DEFINER=``cpses_hiwypani`@`localhost` `@`localhost` PROCEDURE `SP_TRAER_SOLICITUDES_RRHH`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(100))
 BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN

@@ -92,11 +92,12 @@ $(document).ready(function(){
 
        //Carga los comentarios
        wizard.cards["card9"].on("loaded", function(card) {
+        console.log("load comments:"+$("#solicitud_id").val());
         $.ajax({
           type: "POST",
-          url: "../class/controller_rrhh.php",
+          url: "../class/controller_solicitudes.php",
           data: {
-            "opcion": "5",
+            "opcion": "6",
             "solicitudID":$("#solicitud_id").val()
           },
           beforeSend: function(){
@@ -189,16 +190,11 @@ function cargarSolicitudes(){
                   break;
               case "6":
                   estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
-                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-                  break;
-              case "6":
-                  estado = '<td><center><label href="#" class="label label-danger">Denegada</label></center></td>';
-                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
-
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
                   break;
               case "7":
                   estado = '<td><center><label href="#" class="label label-primary">Devuelta</label></center></td>';
-                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-success btn_enviar"><i class="glyphicon glyphicon-send"></i></button></center>';
+                  enviada = '<center><button data-solicitud = "'+ datos[index].solicitudID+'"" href="#" class=" btn btn-default "><i class="glyphicon glyphicon-send"></i></button></center>';
                   break;
 
               default:

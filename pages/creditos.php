@@ -693,20 +693,7 @@ require_once($maindir."pages/footer.php");
       </div>
     </div>
   </div>
-  <!-- ============================================ -->
-  <div class="wizard-card" data-cardname="card5" style="height: 525px;">
-    <h3 hidden>Comentarios</h3>
-    <table id = "" class = "table table-striped">
-      <thead>
-        <th>Módulo</th>
-        <th>Fecha</th>
-        <th>Usuario</th>
-        <th>Comentario</th>
-      </thead>
-      <tbody id = "tbody_comentarios">
-      </tbody>
-    </table>
-  </div>
+  
 
   <!-- ==================================================== -->
 
@@ -767,6 +754,21 @@ require_once($maindir."pages/footer.php");
       </div>
     </form>
 
+  </div>
+
+  <!-- ============================================ -->
+  <div class="wizard-card" data-cardname="card5" style="height: 525px;">
+    <h3 hidden>Comentarios</h3>
+    <table id = "" class = "table table-striped">
+      <thead>
+        <th>Módulo</th>
+        <th>Fecha</th>
+        <th>Usuario</th>
+        <th>Comentario</th>
+      </thead>
+      <tbody id = "tbody_comentarios">
+      </tbody>
+    </table>
   </div>
   <!-- tarjetas especiales -->
   
