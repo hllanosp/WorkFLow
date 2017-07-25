@@ -92,12 +92,11 @@ $(document).ready(function(){
 
        //Carga los comentarios
        wizard.cards["card9"].on("loaded", function(card) {
-        console.log("load comments:"+$("#solicitud_id").val());
         $.ajax({
           type: "POST",
-          url: "../class/controller_solicitudes.php",
+          url: "../class/controller_rrhh.php",
           data: {
-            "opcion": "6",
+            "opcion": "5",
             "solicitudID":$("#solicitud_id").val()
           },
           beforeSend: function(){
