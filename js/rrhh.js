@@ -159,6 +159,46 @@ function show_alert(option, msj){
   }
 }
 
+
+
+
+//=======================CARGAR INFORMACION DE RRHH=========================
+function cargarInfoRRHH(solicitudID){
+  $.ajax({
+     type: "POST",
+     url: "../class/controller_creditos.php",
+     data: {
+       "opcion": "6",
+       "solicitudID":solicitudID
+     },
+     beforeSend: function(){
+       $("#tbody_solicitudes").html('<div class = ""><img src="../img/load.gif" class = "img-responsive center-block" /></div>');
+     },
+     success: function(response){
+      console.log(response);
+      var datos = JSON.parse(response);
+      var index = 1;
+      if (datos[0].bandera === 1) {
+       if (datos.length > 1) {
+         $("#rrhh_salarioBruto").val(datos[index].salarioBruto);
+         $("#rrhh_salarioConDeduccion").val(datos[index].salarioConDeduccion);
+         $("#rrhh_derechos").val(datos[index].derechos);
+         $("#rrhh_antiguedad").val(datos[index].tiempoLabor);
+         $("#rrhh_comentario").val(datos[index].comentario);
+       }
+       else{
+         $("#title_rrhh").text("No hay informacion de Recursos Hunamos para este solicitante");
+       }
+     }
+     else{
+       show_alert(2, datos[0].mensajeError);
+     }
+
+    }
+  });
+
+}
+
 //====================CARGA DE solicitudes ========================
 function cargarSolicitudes(){
   $.ajax({
@@ -245,6 +285,7 @@ function eventos_solicitudes(){
     e.preventDefault();
     enviarSolicitudID = $(this).data("solicitud");
     $("#rrhh_enviar_solicitud").data("solicitud_id", enviarSolicitudID);
+    info_RRHH(enviarSolicitudID);
     $("#rrhh_modalEnviar").modal("show");
 
   });
@@ -262,6 +303,13 @@ function eventos_solicitudes(){
   });
 
 }
+
+
+
+
+
+
+
 
 //======================    LLENAR WIZARD ========================
 
@@ -520,4 +568,24 @@ function calcularEdad(fecha)
     return edad;
   }
 
+
+
+function info_RRHH(solicitudID){
+  $.post('../class/controller_rrhh.php', {"opcion":"6", "solicitudID": solicitudID}, function(response){
+    var data = JSON.parse(response);
+    var index = 1;
+    if (data[0].bandera === '1') {
+         $("#rrhh_salarioBruto").val(data[index].salarioBruto);
+         $("#rrhh_salarioConDeduccion").val(data[index].salarioConDeduccion);
+         $("#rrhh_derechos").val(data[index].derechos);
+         $("#rrhh_antiguedad").val(data[index].tiempoLabor);
+         $("#rrhh_comentario").val(data[index].comentario);
+      
+    }
+    else{
+      show_alert(2, data[0].mensajeError);
+    }
+  });
+
+}
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 25, 2017 at 05:05 
+-- Generation Time: Jul 26, 2017 at 06:25 
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `workflow_chele`
+-- Database: `workflow_daniel`
 --
 
 DELIMITER $$
@@ -485,6 +485,7 @@ BEGIN
         personas.Snombre = card2_Snombre,
         personas.Papellido = card2_Papellido, 
         personas.Sapellido = card2_Sapellido,
+
         personas.RTN = card2_RTN,
         personas.sexo = card2_sexo,
         personas.identidad = card2_identidad,
@@ -751,6 +752,7 @@ BEGIN
     DECLARE NUEVO_ESTADO INT;
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
+
 		SET mensajeError = 'Hubo un error en la transaccion.';
         SET codigoError = 0;
         SHOW ERRORS;
@@ -943,6 +945,7 @@ BEGIN
    
     INNER JOIN prestamos ON solicitudes.prestamoID = prestamos.prestamoID
 
+
 INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
        
     INNER JOIN personas as fiador ON fiador.personaID = prestamos.fiadorID
@@ -990,7 +993,8 @@ SELECT
      WHEN 7 THEN 'Oficial Aprobador'
     ELSE '' END as modulo,      
 solicitudesBitacora.fecha, 
-(SELECT usuarios.usuario FROM usuarios WHERE usuarios.usuarioID = solicitudesBitacora.usuarioID) as usuarioID, solicitudesBitacora.comentario from solicitudesBitacora INNER JOIN usuarios ON usuarios.usuarioID = solicitudesBitacora.usuarioID WHERE solicitudesBitacora.solicitudID = solicitudID;
+(SELECT usuarios.usuario FROM usuarios WHERE usuarios.usuarioID = solicitudesBitacora.usuarioID) as usuarioID, solicitudesBitacora.comentario from solicitudesBitacora INNER JOIN usuarios ON usuarios.usuarioID = solicitudesBitacora.usuarioID WHERE solicitudesBitacora.solicitudID = solicitudID
+ORDER BY fecha DESC;
 
 
 
@@ -1038,6 +1042,7 @@ BEGIN
         SHOW ERRORS;
     END;
     
+
   SET mensajeError = 'Transaccion exitosa.';
   SET codigoError = 1;
    
@@ -1112,6 +1117,41 @@ INNER JOIN prestamo_destino on prestamos.destinoID = prestamo_destino.destinoID
 
     
     WHERE solicitudes.solicitudID = solicitudID;
+   
+        
+  COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_OBTENER_INFO_RRHH`(OUT `codigoError` INT, OUT `mensajeError` VARCHAR(200), IN `solicitudID` INT)
+    NO SQL
+BEGIN 
+  DECLARE SOLICITANTE_ID INT;
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION
+
+    BEGIN
+    SET mensajeError = 'Hubo un error en la transaccion.';
+        SET codigoError = 0;
+        SHOW ERRORS;
+    END;
+    
+
+  SET mensajeError = 'Transaccion exitosa.';
+  SET codigoError = 1;
+   
+   
+  SELECT solicitudes.solicitanteID INTO SOLICITANTE_ID FROM solicitudes WHERE solicitudes.solicitudID = solicitudID; 
+   
+   
+  START TRANSACTION;
+    SELECT 
+    empleadoDatos.salarioBruto,
+    empleadoDatos.salarioConDeduccion,
+    empleadoDatos.derechos,
+    empleadoDatos.tiempoLabor,
+    empleadoDatos.comentario
+    FROM empleadoDatos
+    WHERE empleadoDatos.personaID = SOLICITANTE_ID;
+    
    
         
   COMMIT;
@@ -1402,7 +1442,7 @@ START TRANSACTION;
     tipoSolicitudes.descripcion AS tipoSolicitud
     FROM solicitudes
     INNER JOIN personas as solicitante ON solicitudes.solicitanteID = solicitante.personaID
-    INNER JOIN tipoSolicitudes ON solicitudes.tipoSolicitudID = tipoSolicitudes.tipoSolicitudID ;
+    INNER JOIN tipoSolicitudes ON solicitudes.tipoSolicitudID = tipoSolicitudes.tipoSolicitudID ORDER BY fechaCreacion DESC;
 COMMIT;
 END$$
 
@@ -1548,7 +1588,7 @@ CREATE TABLE IF NOT EXISTS `datosLaborales` (
 
 INSERT INTO `datosLaborales` (`personaID`, `empresa`, `posicion`, `aniosTrabajo`, `sueldo`, `jefeDirecto`, `otrosIngresos`, `telefono`, `extension`, `actividadEmpresaID`, `direccion`) VALUES
 (1, '', '', NULL, 0, NULL, NULL, '', '', NULL, NULL),
-(2, 'adsf', 'adsf', 3, 3, 'sadfadsf', 3, '324234', '23423', 3, 'asdfasdf'),
+(2, 'adsf', 'adsf', 4, 3, 'asdfasdf', 3, '324234', '23423', 3, 'asdfasdf'),
 (3, 'Bac', 'Ingeniero de software', 4, 20000, 'asdfasdf', 5000, '123123', '12', 4, 'Bol Morazán');
 
 -- --------------------------------------------------------
@@ -1571,7 +1611,7 @@ CREATE TABLE IF NOT EXISTS `empleadoDatos` (
 --
 
 INSERT INTO `empleadoDatos` (`personaID`, `salarioBruto`, `salarioConDeduccion`, `derechos`, `tiempoLabor`, `comentario`) VALUES
-(3, 2, 2, 2, 2, '2');
+(3, 22222, 2, 2, 2, '2');
 
 -- --------------------------------------------------------
 
@@ -1699,7 +1739,7 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
 --
 
 INSERT INTO `prestamos` (`prestamoID`, `cantSolicitada`, `plazo`, `destinoID`, `tipoPrestamoID`, `fiadorID`, `responsabilidadID`, `tipo_aprobacion`) VALUES
-(1, '300000.01', 45, 2, 1, 2, NULL, NULL);
+(1, '300000.01', 45, 2, 3, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1747,7 +1787,7 @@ CREATE TABLE IF NOT EXISTS `solicitudes` (
 --
 
 INSERT INTO `solicitudes` (`solicitudID`, `solicitanteID`, `tipoSolicitudID`, `prestamoID`, `estadoID`) VALUES
-(1, 3, 1, 1, 2);
+(1, 3, 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -1771,12 +1811,20 @@ INSERT INTO `solicitudesBitacora` (`solicitudID`, `estadoID`, `fecha`, `usuarioI
 (1, 1, '2017-07-24 20:34:19', 1, 'Creación de Solicitud'),
 (1, 1, '2017-07-24 20:40:12', 1, 'devolver hacia solicitudes'),
 (1, 1, '2017-07-24 20:47:53', 1, 'asdfasdf'),
+(1, 1, '2017-07-25 22:15:53', 1, 'mmm'),
 (1, 2, '2017-07-24 20:34:52', 1, 'Envio directo a creditos desde solicitudes'),
 (1, 2, '2017-07-24 20:50:27', 1, 'asdfadsf'),
+(1, 2, '2017-07-25 21:20:14', 1, 'a'),
 (1, 3, '2017-07-24 20:39:52', 1, '2'),
 (1, 3, '2017-07-24 20:40:36', 1, 'segundo envio hasta creditos'),
+(1, 3, '2017-07-24 21:55:34', 1, '2'),
+(1, 3, '2017-07-25 22:10:49', 1, '2'),
+(1, 3, '2017-07-25 22:16:08', 1, ''),
 (1, 4, '2017-07-24 20:48:09', 1, 'adsf'),
-(1, 7, '2017-07-24 20:49:38', 1, 'asdf');
+(1, 4, '2017-07-24 21:55:45', 1, '\\'),
+(1, 6, '2017-07-24 21:57:48', 1, 'KKKK'),
+(1, 7, '2017-07-24 20:49:38', 1, 'asdf'),
+(1, 7, '2017-07-24 22:00:48', 1, 'NNNNN');
 
 -- --------------------------------------------------------
 

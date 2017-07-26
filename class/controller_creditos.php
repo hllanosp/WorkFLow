@@ -189,36 +189,36 @@ switch($opcion){
 
                         );
 
-$contadorIteracion++;
-}
+                        $contadorIteracion++;
+                        }
 
 
 
-$a = array(
-    "mensajeError" =>"exito",
-    "bandera" => "1"
-    );
+                        $a = array(
+                            "mensajeError" =>"exito",
+                            "bandera" => "1"
+                            );
 
-array_unshift($json, $a ); 
-echo json_encode($json);
-}catch(PDOExecption $e){
-    $a = array(
-        "mensajeError" => "Hubo un error al realizar la consulta...",
-        "bandera" => 0
-        );
-    echo json_encode($a);
-}
-}
-else{
-    $a = array(
-        "mensajeError" => "Error : privilegios insuficientes...",
-        "bandera" => 0
-        );
+                        array_unshift($json, $a ); 
+                        echo json_encode($json);
+                        }catch(PDOExecption $e){
+                            $a = array(
+                                "mensajeError" => "Hubo un error al realizar la consulta...",
+                                "bandera" => 0
+                                );
+                            echo json_encode($a);
+                        }
+                        }
+                        else{
+                            $a = array(
+                                "mensajeError" => "Error : privilegios insuficientes...",
+                                "bandera" => 0
+                                );
 
-    echo json_encode($a);
-}
+                            echo json_encode($a);
+                        }
 
-break;
+                        break;
 
 
         // -----------------------------------------------------------------------------------------------
