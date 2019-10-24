@@ -7,9 +7,10 @@
 
  $db = null;
  $host = 'localhost';
- $dbname = 'workflow_chele';
+ $dbname = 'workflow';
  $username = 'root';
  $password = '';
 
  
 ?>
+
